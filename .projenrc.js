@@ -7,6 +7,12 @@ const project = new awscdk.AwsCdkConstructLibrary({
   name: 'awscdk-lambda-layer-awscli-v1',
   repositoryUrl: 'git@github.com:cdklabs/awscdk-lambda-layer-awscli-v1.git',
 
+  autoApproveOptions: {
+    allowedUsernames: ['cdklabs-automation'],
+    secret: 'GITHUB_TOKEN',
+  },
+  autoApproveUpgrades: true,
+
   // deps: [],                /* Runtime dependencies of this module. */
   // description: undefined,  /* The description is just a string that helps people understand the purpose of the package. */
   // devDeps: [],             /* Build dependencies for this module. */
