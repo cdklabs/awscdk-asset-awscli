@@ -1,8 +1,7 @@
 const { awscdk } = require('projen');
 const project = new awscdk.AwsCdkConstructLibrary({
-  author: 'Madeline Kusters',
-  authorAddress: 'mkusters@amazon.com',
-  cdkVersion: '2.1.0',
+  author: 'Amazon Web Services, Inc.',
+  cdkVersion: '2.0.0',
   defaultReleaseBranch: 'main',
   name: 'awscdk-lambda-layer-awscli-v1',
   repositoryUrl: 'git@github.com:cdklabs/awscdk-lambda-layer-awscli-v1.git',
@@ -18,4 +17,6 @@ const project = new awscdk.AwsCdkConstructLibrary({
   // devDeps: [],             /* Build dependencies for this module. */
   // packageName: undefined,  /* The "name" in package.json. */
 });
+
+project.preCompileTask.exec('layer/build.sh');
 project.synth();

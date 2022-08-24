@@ -1,17 +1,27 @@
-## My Project
+# AWS Lambda Layer with AWS CLI v1
+<!--BEGIN STABILITY BANNER-->
 
-TODO: Fill this README out!
+---
 
-Be sure to:
+![cdk-constructs: Stable](https://img.shields.io/badge/cdk--constructs-stable-success.svg?style=for-the-badge)
 
-* Change the title in this README
-* Edit your repository description on GitHub
+---
 
-## Security
+<!--END STABILITY BANNER-->
 
-See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
 
-## License
+This module exports a single class called `AwsCliLayer` which is a `lambda.Layer` that bundles the AWS CLI v1.
 
-This project is licensed under the Apache-2.0 License.
+Any Lambda Function that uses this layer must use a Python 3.x runtime.
 
+Usage:
+
+```ts
+// AwsCliLayer bundles the AWS CLI in a lambda layer
+import { AwsCliLayer } from '@aws-cdk/lambda-layer-awscli';
+
+declare const fn: lambda.Function;
+fn.addLayers(new AwsCliLayer(this, 'AwsCliLayer'));
+```
+
+The CLI will be installed under `/opt/awscli/aws`.
