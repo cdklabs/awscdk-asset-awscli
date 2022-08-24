@@ -18,7 +18,7 @@ Usage:
 
 ```ts
 // AwsCliLayer bundles the AWS CLI in a lambda layer
-import { AwsCliLayer } from '@aws-cdk/lambda-layer-awscli';
+import { AwsCliLayer } from '@aws-cdk/lambda-layer-awscli-v1';
 
 declare const fn: lambda.Function;
 fn.addLayers(new AwsCliLayer(this, 'AwsCliLayer'));
