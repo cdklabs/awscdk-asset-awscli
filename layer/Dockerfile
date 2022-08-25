@@ -1,6 +1,5 @@
 FROM public.ecr.aws/sam/build-python3.7
 
-USER root
 RUN mkdir -p /opt
 WORKDIR /tmp
 

@@ -22,7 +22,6 @@ jobs:
       - name: Install dependencies
         run: yarn install --check-files
       - name: build
-        uses: 
         run: npx projen build
       - id: self_mutation
         name: Find mutations
