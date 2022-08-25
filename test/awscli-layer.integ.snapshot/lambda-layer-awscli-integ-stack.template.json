@@ -7,7 +7,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "2c569e40a3af4d639c64f66cf15fffbb5b1d9f75e7e4b8a262fe0ec9ab57cf2f.zip"
+          "S3Key": "6fc337101ba8eab7d20f61b2b9082713acbd41839bf586eb6f6dd42686f004b1.zip"
         },
         "Description": "/opt/awscli/aws"
       }
