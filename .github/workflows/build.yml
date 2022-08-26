@@ -23,9 +23,6 @@ jobs:
         run: yarn install --check-files
       - name: add docker permissions
         run: sudo chown superchain /var/run/docker.sock
-      - name: Build the docker image
-        id: buildx
-        run: docker build . --file ./layer/Dockerfile --tag my-image-name:$(date +%s)
       - name: build
         run: npx projen build
       - id: self_mutation
