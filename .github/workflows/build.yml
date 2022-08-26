@@ -21,6 +21,9 @@ jobs:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
       - name: Install dependencies
         run: yarn install --check-files
+      - name: Setup docker buildx
+        id: buildx
+        uses: docker/setup-buildx-action@v2
       - name: build
         run: npx projen build
       - id: self_mutation

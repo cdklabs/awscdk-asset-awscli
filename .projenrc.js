@@ -15,4 +15,11 @@ const project = new awscdk.AwsCdkConstructLibrary({
 });
 
 project.preCompileTask.exec('layer/build.sh');
+
+project.buildWorkflow.preBuildSteps.push({
+  name: 'Setup docker buildx',
+  id: 'buildx',
+  uses: 'docker/setup-buildx-action@v2',
+});
+
 project.synth();
