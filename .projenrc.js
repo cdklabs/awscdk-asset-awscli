@@ -12,13 +12,14 @@ const project = new awscdk.AwsCdkConstructLibrary({
   },
   autoApproveUpgrades: true,
   packageName: '@aws-cdk/lambda-layer-awscli-v1',
+  workflowBootstrapSteps: [
+    {
+      name: 'Change permissions on /var/run/docker.sock',
+      run: 'sudo chown superchain /var/run/docker.sock',
+    },
+  ],
 });
 
 project.preCompileTask.exec('layer/build.sh');
-
-project.buildWorkflow.preBuildSteps.push({
-  name: 'add docker permissions',
-  run: 'sudo chown superchain /var/run/docker.sock',
-});
 
 project.synth();
