@@ -17,9 +17,10 @@ const project = new awscdk.AwsCdkConstructLibrary({
 project.preCompileTask.exec('layer/build.sh');
 
 project.buildWorkflow.preBuildSteps.push({
-  name: 'Setup docker buildx',
+  name: 'Build the docker image',
   id: 'buildx',
-  uses: 'docker/setup-buildx-action@v2',
+  uses: 'actions/checkout@v3',
+  run: 'docker build -t aws-lambda-layer ./layer',
 });
 
 project.synth();
