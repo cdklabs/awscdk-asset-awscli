@@ -19,7 +19,6 @@ project.preCompileTask.exec('layer/build.sh');
 project.buildWorkflow.preBuildSteps.push({
   name: 'Build the docker image',
   id: 'buildx',
-  uses: 'actions/checkout@v3',
   run: 'docker build -t aws-lambda-layer ./layer',
 });
 
