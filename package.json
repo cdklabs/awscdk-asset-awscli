@@ -1,5 +1,5 @@
 {
-  "name": "@aws-cdk/lambda-layer-awscli-v1",
+  "name": "lambda-layer-awscli-v1",
   "repository": {
     "type": "git",
     "url": "git@github.com:cdklabs/awscdk-lambda-layer-awscli-v1.git"
