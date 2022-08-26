@@ -1,5 +1,5 @@
 {
-  "name": "awscdk-lambda-layer-awscli-v1",
+  "name": "@aws-cdk/lambda-layer-awscli-v1",
   "repository": {
     "type": "git",
     "url": "git@github.com:cdklabs/awscdk-lambda-layer-awscli-v1.git"
@@ -14,6 +14,12 @@
     "docgen": "npx projen docgen",
     "eject": "npx projen eject",
     "eslint": "npx projen eslint",
+    "integ:awscli-layer:assert": "npx projen integ:awscli-layer:assert",
+    "integ:awscli-layer:deploy": "npx projen integ:awscli-layer:deploy",
+    "integ:awscli-layer:destroy": "npx projen integ:awscli-layer:destroy",
+    "integ:awscli-layer:snapshot": "npx projen integ:awscli-layer:snapshot",
+    "integ:awscli-layer:watch": "npx projen integ:awscli-layer:watch",
+    "integ:snapshot-all": "npx projen integ:snapshot-all",
     "package": "npx projen package",
     "package-all": "npx projen package-all",
     "package:js": "npx projen package:js",
@@ -30,8 +36,7 @@
     "projen": "npx projen"
   },
   "author": {
-    "name": "Madeline Kusters",
-    "email": "mkusters@amazon.com",
+    "name": "Amazon Web Services, Inc.",
     "organization": false
   },
   "devDependencies": {
@@ -39,7 +44,8 @@
     "@types/node": "^14",
     "@typescript-eslint/eslint-plugin": "^5",
     "@typescript-eslint/parser": "^5",
-    "aws-cdk-lib": "2.1.0",
+    "aws-cdk": "^2",
+    "aws-cdk-lib": "2.0.0",
     "constructs": "10.0.5",
     "eslint": "^8",
     "eslint-import-resolver-node": "^0.3.6",
@@ -56,10 +62,11 @@
     "projen": "^0.61.27",
     "standard-version": "^9",
     "ts-jest": "^27",
+    "ts-node": "^10.9.1",
     "typescript": "^4.7.4"
   },
   "peerDependencies": {
-    "aws-cdk-lib": "^2.1.0",
+    "aws-cdk-lib": "^2.0.0",
     "constructs": "^10.0.5"
   },
   "keywords": [
