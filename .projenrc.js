@@ -17,9 +17,15 @@ const project = new awscdk.AwsCdkConstructLibrary({
 project.preCompileTask.exec('layer/build.sh');
 
 project.buildWorkflow.preBuildSteps.push({
+  name: 'add docker permissions',
+  run: 'sudo chown superchain /var/run/docker.sock',
+});
+
+project.buildWorkflow.preBuildSteps.push({
   name: 'Build the docker image',
   id: 'buildx',
   run: 'docker build . --file ./layer/Dockerfile --tag my-image-name:$(date +%s)',
 });
+
 
 project.synth();
