@@ -1,6 +1,6 @@
 {
   "name": "lambda-layer-awscli-v1",
-  "description": "An AWS Lambda layer that contains the AWS CLI",
+  "description": "A Lambda Code object that contains the AWS CLI, for use in Lambda Layers",
   "repository": {
     "type": "git",
     "url": "git@github.com:cdklabs/awscdk-lambda-layer-awscli-v1.git"
@@ -47,6 +47,7 @@
     "@typescript-eslint/parser": "^5",
     "aws-cdk": "^2",
     "aws-cdk-lib": "2.0.0",
+    "constructs": "^10.1.92",
     "eslint": "^8",
     "eslint-import-resolver-node": "^0.3.6",
     "eslint-import-resolver-typescript": "^3.5.0",
