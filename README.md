@@ -10,7 +10,7 @@
 <!--END STABILITY BANNER-->
 
 
-This module exports a single class called `AwsCliLayerCode` which has a `lambda.Code` that bundles the AWS CLI v1.
+This module exports a single class called `AwsCliLambdaCode` which is a `lambda.AssetCode` that bundles the AWS CLI v1.
 
 Any Lambda Function or Lambda Layer that uses this code must use a Python 3.x runtime.
 
@@ -18,11 +18,11 @@ Usage:
 
 ```ts
 // AwsCliLayer bundles the AWS CLI in a lambda layer
-import { AwsCliLayerCode } from '@aws-cdk/lambda-layer-awscli-v1';
+import { AwsCliLambdaCode } from '@aws-cdk/lambda-layer-awscli-v1';
 
 declare const fn: lambda.Function;
 fn.addLayers(new lambda.LayerVersion(this, 'AwsCliLayer', {
-  code: AwsCliLayerCode.code
+  code: new AwsCliLambdaCode()
 }));
 ```
 
