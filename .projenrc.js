@@ -4,6 +4,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   cdkVersion: '2.0.0',
   defaultReleaseBranch: 'main',
   name: 'awscdk-lambda-layer-awscli-v1',
+  description: 'A Lambda Code object that contains the AWS CLI, for use in Lambda Layers',
   repositoryUrl: 'git@github.com:cdklabs/awscdk-lambda-layer-awscli-v1.git',
 
   autoApproveOptions: {
@@ -19,6 +20,8 @@ const project = new awscdk.AwsCdkConstructLibrary({
     },
   ],
 });
+
+project.deps._deps = project.deps._deps.filter((dep) => dep.name !== 'constructs');
 
 project.preCompileTask.exec('layer/build.sh');
 
