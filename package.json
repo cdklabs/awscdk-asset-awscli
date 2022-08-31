@@ -1,5 +1,5 @@
 {
-  "name": "lambda-layer-awscli-v1",
+  "name": "lambda-code-awscli-v1",
   "description": "A Lambda Code object that contains the AWS CLI, for use in Lambda Layers",
   "repository": {
     "type": "git",

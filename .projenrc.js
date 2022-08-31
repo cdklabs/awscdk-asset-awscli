@@ -12,7 +12,8 @@ const project = new awscdk.AwsCdkConstructLibrary({
     secret: 'GITHUB_TOKEN',
   },
   autoApproveUpgrades: true,
-  packageName: 'lambda-layer-awscli-v1',
+  // TODO: add the @aws-cdk namespace
+  packageName: 'lambda-code-awscli-v1',
   workflowBootstrapSteps: [
     {
       name: 'Change permissions on /var/run/docker.sock',
