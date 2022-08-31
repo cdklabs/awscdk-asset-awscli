@@ -1,7 +1,7 @@
 import { Stack } from 'aws-cdk-lib';
 import { Template } from 'aws-cdk-lib/assertions';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
-import { AwsCliLayerCode } from '../lib';
+import { AwsCliLambdaCode } from '../lib';
 
 test('synthesized to a layer version', () => {
   //GIVEN
@@ -9,7 +9,7 @@ test('synthesized to a layer version', () => {
 
   // WHEN
   new lambda.LayerVersion(stack, 'MyLayer', {
-    code: AwsCliLayerCode.code,
+    code: new AwsCliLambdaCode(),
     description: '/opt/awscli/aws',
   });
 

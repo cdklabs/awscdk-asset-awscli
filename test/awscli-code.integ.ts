@@ -3,7 +3,7 @@ import * as lambda from 'aws-cdk-lib/aws-lambda';
 import * as cdk from 'aws-cdk-lib/core';
 import * as cr from 'aws-cdk-lib/custom-resources';
 
-import { AwsCliLayerCode } from '../lib';
+import { AwsCliLambdaCode } from '../lib';
 
 /**
  * Test verifies that AWS CLI is invoked successfully inside Lambda runtime.
@@ -13,7 +13,7 @@ const app = new cdk.App();
 
 const stack = new cdk.Stack(app, 'lambda-layer-awscli-integ-stack');
 const layer = new lambda.LayerVersion(stack, 'AwsCliLayer', {
-  code: AwsCliLayerCode.code,
+  code: new AwsCliLambdaCode(),
   description: '/opt/awscli/aws',
 });
 

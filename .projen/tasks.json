@@ -130,66 +130,66 @@
         }
       ]
     },
-    "integ:awscli-layer:assert": {
-      "name": "integ:awscli-layer:assert",
-      "description": "assert the snapshot of integration test 'awscli-layer'",
+    "integ:awscli-code:assert": {
+      "name": "integ:awscli-code:assert",
+      "description": "assert the snapshot of integration test 'awscli-code'",
       "steps": [
         {
-          "exec": "[ -d \"test/awscli-layer.integ.snapshot\" ] || (echo \"No snapshot available for integration test 'awscli-layer'. Run 'projen integ:awscli-layer:deploy' to capture.\" && exit 1)"
+          "exec": "[ -d \"test/awscli-code.integ.snapshot\" ] || (echo \"No snapshot available for integration test 'awscli-code'. Run 'projen integ:awscli-code:deploy' to capture.\" && exit 1)"
         },
         {
-          "exec": "cdk synth --app \"ts-node -P tsconfig.dev.json test/awscli-layer.integ.ts\" --no-version-reporting --no-asset-metadata --no-path-metadata -o test/.tmp/awscli-layer.integ/assert.cdk.out > /dev/null"
+          "exec": "cdk synth --app \"ts-node -P tsconfig.dev.json test/awscli-code.integ.ts\" --no-version-reporting --no-asset-metadata --no-path-metadata -o test/.tmp/awscli-code.integ/assert.cdk.out > /dev/null"
         },
         {
-          "exec": "diff -r -x asset.* -x cdk.out -x manifest.json -x tree.json test/awscli-layer.integ.snapshot/ test/.tmp/awscli-layer.integ/assert.cdk.out/"
+          "exec": "diff -r -x asset.* -x cdk.out -x manifest.json -x tree.json test/awscli-code.integ.snapshot/ test/.tmp/awscli-code.integ/assert.cdk.out/"
         }
       ]
     },
-    "integ:awscli-layer:deploy": {
-      "name": "integ:awscli-layer:deploy",
-      "description": "deploy integration test 'awscli-layer' and capture snapshot",
+    "integ:awscli-code:deploy": {
+      "name": "integ:awscli-code:deploy",
+      "description": "deploy integration test 'awscli-code' and capture snapshot",
       "steps": [
         {
-          "exec": "rm -fr test/.tmp/awscli-layer.integ/deploy.cdk.out"
+          "exec": "rm -fr test/.tmp/awscli-code.integ/deploy.cdk.out"
         },
         {
-          "exec": "cdk deploy --app \"ts-node -P tsconfig.dev.json test/awscli-layer.integ.ts\" --no-version-reporting --no-asset-metadata --no-path-metadata '**' --require-approval=never -o test/.tmp/awscli-layer.integ/deploy.cdk.out"
+          "exec": "cdk deploy --app \"ts-node -P tsconfig.dev.json test/awscli-code.integ.ts\" --no-version-reporting --no-asset-metadata --no-path-metadata '**' --require-approval=never -o test/.tmp/awscli-code.integ/deploy.cdk.out"
         },
         {
-          "exec": "rm -fr test/awscli-layer.integ.snapshot"
+          "exec": "rm -fr test/awscli-code.integ.snapshot"
         },
         {
-          "exec": "mv test/.tmp/awscli-layer.integ/deploy.cdk.out test/awscli-layer.integ.snapshot"
+          "exec": "mv test/.tmp/awscli-code.integ/deploy.cdk.out test/awscli-code.integ.snapshot"
         },
         {
-          "spawn": "integ:awscli-layer:destroy"
+          "spawn": "integ:awscli-code:destroy"
         }
       ]
     },
-    "integ:awscli-layer:destroy": {
-      "name": "integ:awscli-layer:destroy",
-      "description": "destroy integration test 'awscli-layer'",
+    "integ:awscli-code:destroy": {
+      "name": "integ:awscli-code:destroy",
+      "description": "destroy integration test 'awscli-code'",
       "steps": [
         {
-          "exec": "cdk destroy --app test/awscli-layer.integ.snapshot '**' --no-version-reporting"
+          "exec": "cdk destroy --app test/awscli-code.integ.snapshot '**' --no-version-reporting"
         }
       ]
     },
-    "integ:awscli-layer:snapshot": {
-      "name": "integ:awscli-layer:snapshot",
-      "description": "update snapshot for integration test \"awscli-layer\"",
+    "integ:awscli-code:snapshot": {
+      "name": "integ:awscli-code:snapshot",
+      "description": "update snapshot for integration test \"awscli-code\"",
       "steps": [
         {
-          "exec": "cdk synth --app \"ts-node -P tsconfig.dev.json test/awscli-layer.integ.ts\" --no-version-reporting --no-asset-metadata --no-path-metadata -o test/awscli-layer.integ.snapshot > /dev/null"
+          "exec": "cdk synth --app \"ts-node -P tsconfig.dev.json test/awscli-code.integ.ts\" --no-version-reporting --no-asset-metadata --no-path-metadata -o test/awscli-code.integ.snapshot > /dev/null"
         }
       ]
     },
-    "integ:awscli-layer:watch": {
-      "name": "integ:awscli-layer:watch",
-      "description": "watch integration test 'awscli-layer' (without updating snapshots)",
+    "integ:awscli-code:watch": {
+      "name": "integ:awscli-code:watch",
+      "description": "watch integration test 'awscli-code' (without updating snapshots)",
       "steps": [
         {
-          "exec": "cdk watch --app \"ts-node -P tsconfig.dev.json test/awscli-layer.integ.ts\" --no-version-reporting --no-asset-metadata --no-path-metadata '**' -o test/.tmp/awscli-layer.integ/deploy.cdk.out"
+          "exec": "cdk watch --app \"ts-node -P tsconfig.dev.json test/awscli-code.integ.ts\" --no-version-reporting --no-asset-metadata --no-path-metadata '**' -o test/.tmp/awscli-code.integ/deploy.cdk.out"
         }
       ]
     },
@@ -198,7 +198,7 @@
       "description": "update snapshot for all integration tests",
       "steps": [
         {
-          "spawn": "integ:awscli-layer:snapshot"
+          "spawn": "integ:awscli-code:snapshot"
         }
       ]
     },
@@ -286,7 +286,7 @@
           "spawn": "eslint"
         },
         {
-          "spawn": "integ:awscli-layer:assert"
+          "spawn": "integ:awscli-code:assert"
         }
       ]
     },
