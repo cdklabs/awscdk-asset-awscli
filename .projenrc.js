@@ -14,12 +14,6 @@ const project = new awscdk.AwsCdkConstructLibrary({
   autoApproveUpgrades: true,
   // TODO: add the @aws-cdk namespace
   packageName: 'lambda-code-awscli-v1',
-  workflowBootstrapSteps: [
-    {
-      name: 'Change permissions on /var/run/docker.sock',
-      run: 'sudo chown superchain /var/run/docker.sock',
-    },
-  ],
 });
 project.deps.removeDependency('constructs', DependencyType.PEER);
 project.deps.addDependency('constructs', DependencyType.BUILD);
