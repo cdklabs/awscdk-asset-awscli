@@ -4,7 +4,7 @@ import * as s3_assets from 'aws-cdk-lib/aws-s3-assets';
 import { Construct } from 'constructs';
 
 /**
- * An AWS Lambda layer that includes the AWS CLI.
+ * A CDK Asset construct that contains the AWS CLI.
  */
 export class AwsCliAsset extends s3_assets.Asset {
   constructor(scope: Construct, id: string, options: s3_assets.AssetOptions = {}) {
