@@ -14,7 +14,7 @@
 
 This module exports a single class called `AwsCliAsset` which is an `s3_assets.Asset` that bundles the AWS CLI v1.
 
-Any Lambda Function or Lambda Layer that uses this code must use a Python 3.x runtime.
+Any Lambda Function or Lambda Layer that uses this Asset as its code must use a Python 3.x runtime.
 
 Usage:
 
