@@ -3,7 +3,7 @@
   "description": "An Asset construct that contains the AWS CLI, for use in Lambda Layers",
   "repository": {
     "type": "git",
-    "url": "git@github.com:cdklabs/awscdk-asset-awscli-v1.git"
+    "url": "git@github.com:cdklabs/awscdk-asset-awscli.git"
   },
   "scripts": {
     "build": "npx projen build",
@@ -75,6 +75,7 @@
   ],
   "main": "lib/index.js",
   "license": "Apache-2.0",
+  "homepage": "https://github.com/cdklabs/awscdk-asset-awscli#readme",
   "version": "0.0.0",
   "jest": {
     "testMatch": [
