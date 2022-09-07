@@ -5,7 +5,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   defaultReleaseBranch: 'main',
   name: 'awscdk-asset-awscli-v1',
   description: 'An Asset construct that contains the AWS CLI, for use in Lambda Layers',
-  repositoryUrl: 'git@github.com:cdklabs/awscdk-lambda-layer-awscli-v1.git',
+  repositoryUrl: 'git@github.com:cdklabs/awscdk-asset-awscli-v1.git',
 
   autoApproveOptions: {
     allowedUsernames: ['cdklabs-automation'],

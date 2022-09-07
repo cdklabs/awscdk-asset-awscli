@@ -1,9 +1,9 @@
 {
   "name": "asset-awscli-v1",
-  "description": "A Lambda Code object that contains the AWS CLI, for use in Lambda Layers",
+  "description": "An Asset construct that contains the AWS CLI, for use in Lambda Layers",
   "repository": {
     "type": "git",
-    "url": "git@github.com:cdklabs/awscdk-lambda-layer-awscli-v1.git"
+    "url": "git@github.com:cdklabs/awscdk-asset-awscli-v1.git"
   },
   "scripts": {
     "build": "npx projen build",
