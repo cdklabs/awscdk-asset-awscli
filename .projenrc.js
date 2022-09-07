@@ -25,7 +25,6 @@ const project = new awscdk.AwsCdkConstructLibrary({
 const buildWorkflow = project.tryFindObjectFile('.github/workflows/build.yml');
 buildWorkflow.patch(JsonPatch.add('/jobs/build/container/options', '--group-add sudo'));
 
-
 project.preCompileTask.exec('layer/build.sh');
 
 project.synth();
