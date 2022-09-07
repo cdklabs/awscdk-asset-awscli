@@ -4,7 +4,7 @@
 
 ### AwsCliAsset <a name="AwsCliAsset" id="asset-awscli-v1.AwsCliAsset"></a>
 
-An AWS Lambda layer that includes the AWS CLI.
+A CDK Asset construct that contains the AWS CLI.
 
 #### Initializers <a name="Initializers" id="asset-awscli-v1.AwsCliAsset.Initializer"></a>
 
