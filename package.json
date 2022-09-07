@@ -1,5 +1,5 @@
 {
-  "name": "lambda-code-awscli-v1",
+  "name": "asset-awscli-v1",
   "description": "A Lambda Code object that contains the AWS CLI, for use in Lambda Layers",
   "repository": {
     "type": "git",
@@ -15,11 +15,11 @@
     "docgen": "npx projen docgen",
     "eject": "npx projen eject",
     "eslint": "npx projen eslint",
-    "integ:awscli-code:assert": "npx projen integ:awscli-code:assert",
-    "integ:awscli-code:deploy": "npx projen integ:awscli-code:deploy",
-    "integ:awscli-code:destroy": "npx projen integ:awscli-code:destroy",
-    "integ:awscli-code:snapshot": "npx projen integ:awscli-code:snapshot",
-    "integ:awscli-code:watch": "npx projen integ:awscli-code:watch",
+    "integ:awscli-asset:assert": "npx projen integ:awscli-asset:assert",
+    "integ:awscli-asset:deploy": "npx projen integ:awscli-asset:deploy",
+    "integ:awscli-asset:destroy": "npx projen integ:awscli-asset:destroy",
+    "integ:awscli-asset:snapshot": "npx projen integ:awscli-asset:snapshot",
+    "integ:awscli-asset:watch": "npx projen integ:awscli-asset:watch",
     "integ:snapshot-all": "npx projen integ:snapshot-all",
     "package": "npx projen package",
     "package-all": "npx projen package-all",
@@ -67,7 +67,8 @@
     "typescript": "^4.7.4"
   },
   "peerDependencies": {
-    "aws-cdk-lib": "^2.0.0"
+    "aws-cdk-lib": "^2.0.0",
+    "constructs": "^10.0.5"
   },
   "keywords": [
     "cdk"

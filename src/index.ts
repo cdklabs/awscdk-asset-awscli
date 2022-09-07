@@ -1,1 +1,1 @@
-export * from './awscli-code';
+export * from './awscli-asset';

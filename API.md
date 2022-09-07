@@ -1,28 +1,40 @@
 # API Reference <a name="API Reference" id="api-reference"></a>
 
+## Constructs <a name="Constructs" id="Constructs"></a>
 
-
-## Classes <a name="Classes" id="Classes"></a>
-
-### AwsCliLambdaCode <a name="AwsCliLambdaCode" id="lambda-code-awscli-v1.AwsCliLambdaCode"></a>
+### AwsCliAsset <a name="AwsCliAsset" id="lambda-code-awscli-v1.AwsCliAsset"></a>
 
 An AWS Lambda layer that includes the AWS CLI.
 
-#### Initializers <a name="Initializers" id="lambda-code-awscli-v1.AwsCliLambdaCode.Initializer"></a>
+#### Initializers <a name="Initializers" id="lambda-code-awscli-v1.AwsCliAsset.Initializer"></a>
 
 ```typescript
-import { AwsCliLambdaCode } from 'lambda-code-awscli-v1'
+import { AwsCliAsset } from 'lambda-code-awscli-v1'
 
-new AwsCliLambdaCode(options?: AssetOptions)
+new AwsCliAsset(scope: Construct, id: string, options?: AssetOptions)
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#lambda-code-awscli-v1.AwsCliLambdaCode.Initializer.parameter.options">options</a></code> | <code>aws-cdk-lib.aws_s3_assets.AssetOptions</code> | *No description.* |
+| <code><a href="#lambda-code-awscli-v1.AwsCliAsset.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
+| <code><a href="#lambda-code-awscli-v1.AwsCliAsset.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#lambda-code-awscli-v1.AwsCliAsset.Initializer.parameter.options">options</a></code> | <code>aws-cdk-lib.aws_s3_assets.AssetOptions</code> | *No description.* |
 
 ---
 
-##### `options`<sup>Optional</sup> <a name="options" id="lambda-code-awscli-v1.AwsCliLambdaCode.Initializer.parameter.options"></a>
+##### `scope`<sup>Required</sup> <a name="scope" id="lambda-code-awscli-v1.AwsCliAsset.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="lambda-code-awscli-v1.AwsCliAsset.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+---
+
+##### `options`<sup>Optional</sup> <a name="options" id="lambda-code-awscli-v1.AwsCliAsset.Initializer.parameter.options"></a>
 
 - *Type:* aws-cdk-lib.aws_s3_assets.AssetOptions
 
@@ -32,45 +44,64 @@ new AwsCliLambdaCode(options?: AssetOptions)
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#lambda-code-awscli-v1.AwsCliLambdaCode.bind">bind</a></code> | Called when the lambda or layer is initialized to allow this object to bind to the stack, add resources and have fun. |
-| <code><a href="#lambda-code-awscli-v1.AwsCliLambdaCode.bindToResource">bindToResource</a></code> | Called after the CFN function resource has been created to allow the code class to bind to it. |
+| <code><a href="#lambda-code-awscli-v1.AwsCliAsset.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#lambda-code-awscli-v1.AwsCliAsset.addResourceMetadata">addResourceMetadata</a></code> | Adds CloudFormation template metadata to the specified resource with information that indicates which resource property is mapped to this local asset. |
+| <code><a href="#lambda-code-awscli-v1.AwsCliAsset.grantRead">grantRead</a></code> | Grants read permissions to the principal on the assets bucket. |
 
 ---
 
-##### `bind` <a name="bind" id="lambda-code-awscli-v1.AwsCliLambdaCode.bind"></a>
+##### `toString` <a name="toString" id="lambda-code-awscli-v1.AwsCliAsset.toString"></a>
 
 ```typescript
-public bind(scope: Construct): CodeConfig
+public toString(): string
 ```
 
-Called when the lambda or layer is initialized to allow this object to bind to the stack, add resources and have fun.
+Returns a string representation of this construct.
 
-###### `scope`<sup>Required</sup> <a name="scope" id="lambda-code-awscli-v1.AwsCliLambdaCode.bind.parameter.scope"></a>
-
-- *Type:* constructs.Construct
-
----
-
-##### `bindToResource` <a name="bindToResource" id="lambda-code-awscli-v1.AwsCliLambdaCode.bindToResource"></a>
+##### `addResourceMetadata` <a name="addResourceMetadata" id="lambda-code-awscli-v1.AwsCliAsset.addResourceMetadata"></a>
 
 ```typescript
-public bindToResource(resource: CfnResource, options?: ResourceBindOptions): void
+public addResourceMetadata(resource: CfnResource, resourceProperty: string): void
 ```
 
-Called after the CFN function resource has been created to allow the code class to bind to it.
+Adds CloudFormation template metadata to the specified resource with information that indicates which resource property is mapped to this local asset.
 
-Specifically it's required to allow assets to add
-metadata for tooling like SAM CLI to be able to find their origins.
+This can be used by tools such as SAM CLI to provide local
+experience such as local invocation and debugging of Lambda functions.
 
-###### `resource`<sup>Required</sup> <a name="resource" id="lambda-code-awscli-v1.AwsCliLambdaCode.bindToResource.parameter.resource"></a>
+Asset metadata will only be included if the stack is synthesized with the
+"aws:cdk:enable-asset-metadata" context key defined, which is the default
+behavior when synthesizing via the CDK Toolkit.
+
+> [https://github.com/aws/aws-cdk/issues/1432](https://github.com/aws/aws-cdk/issues/1432)
+
+###### `resource`<sup>Required</sup> <a name="resource" id="lambda-code-awscli-v1.AwsCliAsset.addResourceMetadata.parameter.resource"></a>
 
 - *Type:* aws-cdk-lib.CfnResource
 
+The CloudFormation resource which is using this asset [disable-awslint:ref-via-interface].
+
 ---
 
-###### `options`<sup>Optional</sup> <a name="options" id="lambda-code-awscli-v1.AwsCliLambdaCode.bindToResource.parameter.options"></a>
+###### `resourceProperty`<sup>Required</sup> <a name="resourceProperty" id="lambda-code-awscli-v1.AwsCliAsset.addResourceMetadata.parameter.resourceProperty"></a>
 
-- *Type:* aws-cdk-lib.aws_lambda.ResourceBindOptions
+- *Type:* string
+
+The property name where this asset is referenced (e.g. "Code" for AWS::Lambda::Function).
+
+---
+
+##### `grantRead` <a name="grantRead" id="lambda-code-awscli-v1.AwsCliAsset.grantRead"></a>
+
+```typescript
+public grantRead(grantee: IGrantable): void
+```
+
+Grants read permissions to the principal on the assets bucket.
+
+###### `grantee`<sup>Required</sup> <a name="grantee" id="lambda-code-awscli-v1.AwsCliAsset.grantRead.parameter.grantee"></a>
+
+- *Type:* aws-cdk-lib.aws_iam.IGrantable
 
 ---
 
@@ -78,188 +109,25 @@ metadata for tooling like SAM CLI to be able to find their origins.
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#lambda-code-awscli-v1.AwsCliLambdaCode.fromAsset">fromAsset</a></code> | Loads the function code from a local disk path. |
-| <code><a href="#lambda-code-awscli-v1.AwsCliLambdaCode.fromAssetImage">fromAssetImage</a></code> | Create an ECR image from the specified asset and bind it as the Lambda code. |
-| <code><a href="#lambda-code-awscli-v1.AwsCliLambdaCode.fromBucket">fromBucket</a></code> | Lambda handler code as an S3 object. |
-| <code><a href="#lambda-code-awscli-v1.AwsCliLambdaCode.fromCfnParameters">fromCfnParameters</a></code> | Creates a new Lambda source defined using CloudFormation parameters. |
-| <code><a href="#lambda-code-awscli-v1.AwsCliLambdaCode.fromDockerBuild">fromDockerBuild</a></code> | Loads the function code from an asset created by a Docker build. |
-| <code><a href="#lambda-code-awscli-v1.AwsCliLambdaCode.fromEcrImage">fromEcrImage</a></code> | Use an existing ECR image as the Lambda code. |
-| <code><a href="#lambda-code-awscli-v1.AwsCliLambdaCode.fromInline">fromInline</a></code> | Inline code for Lambda handler. |
+| <code><a href="#lambda-code-awscli-v1.AwsCliAsset.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
 
 ---
 
-##### `fromAsset` <a name="fromAsset" id="lambda-code-awscli-v1.AwsCliLambdaCode.fromAsset"></a>
+##### ~~`isConstruct`~~ <a name="isConstruct" id="lambda-code-awscli-v1.AwsCliAsset.isConstruct"></a>
 
 ```typescript
-import { AwsCliLambdaCode } from 'lambda-code-awscli-v1'
+import { AwsCliAsset } from 'lambda-code-awscli-v1'
 
-AwsCliLambdaCode.fromAsset(path: string, options?: AssetOptions)
+AwsCliAsset.isConstruct(x: any)
 ```
 
-Loads the function code from a local disk path.
+Checks if `x` is a construct.
 
-###### `path`<sup>Required</sup> <a name="path" id="lambda-code-awscli-v1.AwsCliLambdaCode.fromAsset.parameter.path"></a>
+###### `x`<sup>Required</sup> <a name="x" id="lambda-code-awscli-v1.AwsCliAsset.isConstruct.parameter.x"></a>
 
-- *Type:* string
+- *Type:* any
 
-Either a directory with the Lambda code bundle or a .zip file.
-
----
-
-###### `options`<sup>Optional</sup> <a name="options" id="lambda-code-awscli-v1.AwsCliLambdaCode.fromAsset.parameter.options"></a>
-
-- *Type:* aws-cdk-lib.aws_s3_assets.AssetOptions
-
----
-
-##### `fromAssetImage` <a name="fromAssetImage" id="lambda-code-awscli-v1.AwsCliLambdaCode.fromAssetImage"></a>
-
-```typescript
-import { AwsCliLambdaCode } from 'lambda-code-awscli-v1'
-
-AwsCliLambdaCode.fromAssetImage(directory: string, props?: AssetImageCodeProps)
-```
-
-Create an ECR image from the specified asset and bind it as the Lambda code.
-
-###### `directory`<sup>Required</sup> <a name="directory" id="lambda-code-awscli-v1.AwsCliLambdaCode.fromAssetImage.parameter.directory"></a>
-
-- *Type:* string
-
-the directory from which the asset must be created.
-
----
-
-###### `props`<sup>Optional</sup> <a name="props" id="lambda-code-awscli-v1.AwsCliLambdaCode.fromAssetImage.parameter.props"></a>
-
-- *Type:* aws-cdk-lib.aws_lambda.AssetImageCodeProps
-
-properties to further configure the selected image.
-
----
-
-##### `fromBucket` <a name="fromBucket" id="lambda-code-awscli-v1.AwsCliLambdaCode.fromBucket"></a>
-
-```typescript
-import { AwsCliLambdaCode } from 'lambda-code-awscli-v1'
-
-AwsCliLambdaCode.fromBucket(bucket: IBucket, key: string, objectVersion?: string)
-```
-
-Lambda handler code as an S3 object.
-
-###### `bucket`<sup>Required</sup> <a name="bucket" id="lambda-code-awscli-v1.AwsCliLambdaCode.fromBucket.parameter.bucket"></a>
-
-- *Type:* aws-cdk-lib.aws_s3.IBucket
-
-The S3 bucket.
-
----
-
-###### `key`<sup>Required</sup> <a name="key" id="lambda-code-awscli-v1.AwsCliLambdaCode.fromBucket.parameter.key"></a>
-
-- *Type:* string
-
-The object key.
-
----
-
-###### `objectVersion`<sup>Optional</sup> <a name="objectVersion" id="lambda-code-awscli-v1.AwsCliLambdaCode.fromBucket.parameter.objectVersion"></a>
-
-- *Type:* string
-
-Optional S3 object version.
-
----
-
-##### `fromCfnParameters` <a name="fromCfnParameters" id="lambda-code-awscli-v1.AwsCliLambdaCode.fromCfnParameters"></a>
-
-```typescript
-import { AwsCliLambdaCode } from 'lambda-code-awscli-v1'
-
-AwsCliLambdaCode.fromCfnParameters(props?: CfnParametersCodeProps)
-```
-
-Creates a new Lambda source defined using CloudFormation parameters.
-
-###### `props`<sup>Optional</sup> <a name="props" id="lambda-code-awscli-v1.AwsCliLambdaCode.fromCfnParameters.parameter.props"></a>
-
-- *Type:* aws-cdk-lib.aws_lambda.CfnParametersCodeProps
-
-optional construction properties of {@link CfnParametersCode}.
-
----
-
-##### `fromDockerBuild` <a name="fromDockerBuild" id="lambda-code-awscli-v1.AwsCliLambdaCode.fromDockerBuild"></a>
-
-```typescript
-import { AwsCliLambdaCode } from 'lambda-code-awscli-v1'
-
-AwsCliLambdaCode.fromDockerBuild(path: string, options?: DockerBuildAssetOptions)
-```
-
-Loads the function code from an asset created by a Docker build.
-
-By default, the asset is expected to be located at `/asset` in the
-image.
-
-###### `path`<sup>Required</sup> <a name="path" id="lambda-code-awscli-v1.AwsCliLambdaCode.fromDockerBuild.parameter.path"></a>
-
-- *Type:* string
-
-The path to the directory containing the Docker file.
-
----
-
-###### `options`<sup>Optional</sup> <a name="options" id="lambda-code-awscli-v1.AwsCliLambdaCode.fromDockerBuild.parameter.options"></a>
-
-- *Type:* aws-cdk-lib.aws_lambda.DockerBuildAssetOptions
-
-Docker build options.
-
----
-
-##### `fromEcrImage` <a name="fromEcrImage" id="lambda-code-awscli-v1.AwsCliLambdaCode.fromEcrImage"></a>
-
-```typescript
-import { AwsCliLambdaCode } from 'lambda-code-awscli-v1'
-
-AwsCliLambdaCode.fromEcrImage(repository: IRepository, props?: EcrImageCodeProps)
-```
-
-Use an existing ECR image as the Lambda code.
-
-###### `repository`<sup>Required</sup> <a name="repository" id="lambda-code-awscli-v1.AwsCliLambdaCode.fromEcrImage.parameter.repository"></a>
-
-- *Type:* aws-cdk-lib.aws_ecr.IRepository
-
-the ECR repository that the image is in.
-
----
-
-###### `props`<sup>Optional</sup> <a name="props" id="lambda-code-awscli-v1.AwsCliLambdaCode.fromEcrImage.parameter.props"></a>
-
-- *Type:* aws-cdk-lib.aws_lambda.EcrImageCodeProps
-
-properties to further configure the selected image.
-
----
-
-##### `fromInline` <a name="fromInline" id="lambda-code-awscli-v1.AwsCliLambdaCode.fromInline"></a>
-
-```typescript
-import { AwsCliLambdaCode } from 'lambda-code-awscli-v1'
-
-AwsCliLambdaCode.fromInline(code: string)
-```
-
-Inline code for Lambda handler.
-
-###### `code`<sup>Required</sup> <a name="code" id="lambda-code-awscli-v1.AwsCliLambdaCode.fromInline.parameter.code"></a>
-
-- *Type:* string
-
-The actual handler code (limited to 4KiB).
+Any object.
 
 ---
 
@@ -267,34 +135,167 @@ The actual handler code (limited to 4KiB).
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#lambda-code-awscli-v1.AwsCliLambdaCode.property.isInline">isInline</a></code> | <code>boolean</code> | Determines whether this Code is inline code or not. |
-| <code><a href="#lambda-code-awscli-v1.AwsCliLambdaCode.property.path">path</a></code> | <code>string</code> | The path to the asset file or directory. |
+| <code><a href="#lambda-code-awscli-v1.AwsCliAsset.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#lambda-code-awscli-v1.AwsCliAsset.property.assetHash">assetHash</a></code> | <code>string</code> | A hash of this asset, which is available at construction time. |
+| <code><a href="#lambda-code-awscli-v1.AwsCliAsset.property.assetPath">assetPath</a></code> | <code>string</code> | The path to the asset, relative to the current Cloud Assembly. |
+| <code><a href="#lambda-code-awscli-v1.AwsCliAsset.property.bucket">bucket</a></code> | <code>aws-cdk-lib.aws_s3.IBucket</code> | The S3 bucket in which this asset resides. |
+| <code><a href="#lambda-code-awscli-v1.AwsCliAsset.property.httpUrl">httpUrl</a></code> | <code>string</code> | Attribute which represents the S3 HTTP URL of this asset. |
+| <code><a href="#lambda-code-awscli-v1.AwsCliAsset.property.isFile">isFile</a></code> | <code>boolean</code> | Indicates if this asset is a single file. |
+| <code><a href="#lambda-code-awscli-v1.AwsCliAsset.property.isZipArchive">isZipArchive</a></code> | <code>boolean</code> | Indicates if this asset is a zip archive. |
+| <code><a href="#lambda-code-awscli-v1.AwsCliAsset.property.s3BucketName">s3BucketName</a></code> | <code>string</code> | Attribute that represents the name of the bucket this asset exists in. |
+| <code><a href="#lambda-code-awscli-v1.AwsCliAsset.property.s3ObjectKey">s3ObjectKey</a></code> | <code>string</code> | Attribute which represents the S3 object key of this asset. |
+| <code><a href="#lambda-code-awscli-v1.AwsCliAsset.property.s3ObjectUrl">s3ObjectUrl</a></code> | <code>string</code> | Attribute which represents the S3 URL of this asset. |
 
 ---
 
-##### `isInline`<sup>Required</sup> <a name="isInline" id="lambda-code-awscli-v1.AwsCliLambdaCode.property.isInline"></a>
+##### `node`<sup>Required</sup> <a name="node" id="lambda-code-awscli-v1.AwsCliAsset.property.node"></a>
 
 ```typescript
-public readonly isInline: boolean;
+public readonly node: Node;
 ```
 
-- *Type:* boolean
+- *Type:* constructs.Node
 
-Determines whether this Code is inline code or not.
+The tree node.
 
 ---
 
-##### `path`<sup>Required</sup> <a name="path" id="lambda-code-awscli-v1.AwsCliLambdaCode.property.path"></a>
+##### `assetHash`<sup>Required</sup> <a name="assetHash" id="lambda-code-awscli-v1.AwsCliAsset.property.assetHash"></a>
 
 ```typescript
-public readonly path: string;
+public readonly assetHash: string;
 ```
 
 - *Type:* string
 
-The path to the asset file or directory.
+A hash of this asset, which is available at construction time.
+
+As this is a plain string, it
+can be used in construct IDs in order to enforce creation of a new resource when the content
+hash has changed.
 
 ---
+
+##### `assetPath`<sup>Required</sup> <a name="assetPath" id="lambda-code-awscli-v1.AwsCliAsset.property.assetPath"></a>
+
+```typescript
+public readonly assetPath: string;
+```
+
+- *Type:* string
+
+The path to the asset, relative to the current Cloud Assembly.
+
+If asset staging is disabled, this will just be the original path.
+If asset staging is enabled it will be the staged path.
+
+---
+
+##### `bucket`<sup>Required</sup> <a name="bucket" id="lambda-code-awscli-v1.AwsCliAsset.property.bucket"></a>
+
+```typescript
+public readonly bucket: IBucket;
+```
+
+- *Type:* aws-cdk-lib.aws_s3.IBucket
+
+The S3 bucket in which this asset resides.
+
+---
+
+##### `httpUrl`<sup>Required</sup> <a name="httpUrl" id="lambda-code-awscli-v1.AwsCliAsset.property.httpUrl"></a>
+
+```typescript
+public readonly httpUrl: string;
+```
+
+- *Type:* string
+
+Attribute which represents the S3 HTTP URL of this asset.
+
+---
+
+*Example*
+
+```typescript
+https://s3.us-west-1.amazonaws.com/bucket/key
+```
+
+
+##### `isFile`<sup>Required</sup> <a name="isFile" id="lambda-code-awscli-v1.AwsCliAsset.property.isFile"></a>
+
+```typescript
+public readonly isFile: boolean;
+```
+
+- *Type:* boolean
+
+Indicates if this asset is a single file.
+
+Allows constructs to ensure that the
+correct file type was used.
+
+---
+
+##### `isZipArchive`<sup>Required</sup> <a name="isZipArchive" id="lambda-code-awscli-v1.AwsCliAsset.property.isZipArchive"></a>
+
+```typescript
+public readonly isZipArchive: boolean;
+```
+
+- *Type:* boolean
+
+Indicates if this asset is a zip archive.
+
+Allows constructs to ensure that the
+correct file type was used.
+
+---
+
+##### `s3BucketName`<sup>Required</sup> <a name="s3BucketName" id="lambda-code-awscli-v1.AwsCliAsset.property.s3BucketName"></a>
+
+```typescript
+public readonly s3BucketName: string;
+```
+
+- *Type:* string
+
+Attribute that represents the name of the bucket this asset exists in.
+
+---
+
+##### `s3ObjectKey`<sup>Required</sup> <a name="s3ObjectKey" id="lambda-code-awscli-v1.AwsCliAsset.property.s3ObjectKey"></a>
+
+```typescript
+public readonly s3ObjectKey: string;
+```
+
+- *Type:* string
+
+Attribute which represents the S3 object key of this asset.
+
+---
+
+##### `s3ObjectUrl`<sup>Required</sup> <a name="s3ObjectUrl" id="lambda-code-awscli-v1.AwsCliAsset.property.s3ObjectUrl"></a>
+
+```typescript
+public readonly s3ObjectUrl: string;
+```
+
+- *Type:* string
+
+Attribute which represents the S3 URL of this asset.
+
+---
+
+*Example*
+
+```typescript
+s3://bucket/key
+```
+
+
+
 
 
 

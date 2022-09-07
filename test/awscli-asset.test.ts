@@ -1,15 +1,17 @@
 import { Stack } from 'aws-cdk-lib';
 import { Template } from 'aws-cdk-lib/assertions';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
-import { AwsCliLambdaCode } from '../lib';
+import { AwsCliAsset } from '../lib';
+import { AssetConstructCode } from './utils/lambda-code-utils';
 
 test('synthesized to a layer version', () => {
   //GIVEN
   const stack = new Stack();
+  const asset = new AwsCliAsset(stack, 'layer-asset');
 
   // WHEN
   new lambda.LayerVersion(stack, 'MyLayer', {
-    code: new AwsCliLambdaCode(),
+    code: new AssetConstructCode(asset),
     description: '/opt/awscli/aws',
   });
 
