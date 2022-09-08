@@ -14,7 +14,7 @@
 
 This module exports a single class called `AwsCliAsset` which is an `s3_assets.Asset` that bundles the AWS CLI v1.
 
-Any Lambda Function or Lambda Layer that uses this Asset as its code must use a Python 3.x runtime.
+Any Lambda Function that uses a LayerVersion created from this Asset must use a Python 3.x runtime.
 
 Usage:
 
@@ -23,8 +23,9 @@ Usage:
 import { AwsCliAsset } from '@aws-cdk/asset-awscli-v1';
 
 declare const fn: lambda.Function;
+const awscli = new AwsCliAsset(this, 'AwsCliCode');
 fn.addLayers(new lambda.LayerVersion(this, 'AwsCliLayer', {
-  code: lambda.Code.fromAssetConstruct(new AwsCliAsset(this, 'AwsCliCode')),
+  code: lambda.Code.fromBucket(awscli.bucket, awscli.s3ObjectKey),
 }));
 ```
 
