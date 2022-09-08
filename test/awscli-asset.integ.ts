@@ -2,9 +2,7 @@ import * as path from 'path';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import * as cdk from 'aws-cdk-lib/core';
 import * as cr from 'aws-cdk-lib/custom-resources';
-
 import { AwsCliAsset } from '../lib';
-import { AssetConstructCode } from './utils/lambda-code-utils';
 
 /**
  * Test verifies that AWS CLI is invoked successfully inside Lambda runtime.
@@ -15,7 +13,7 @@ const app = new cdk.App();
 const stack = new cdk.Stack(app, 'lambda-layer-awscli-integ-stack');
 const asset = new AwsCliAsset(stack, 'layer-asset');
 const layer = new lambda.LayerVersion(stack, 'AwsCliLayer', {
-  code: new AssetConstructCode(asset),
+  code: lambda.Code.fromBucket(asset.bucket, asset.s3ObjectKey),
   description: '/opt/awscli/aws',
 });
 
