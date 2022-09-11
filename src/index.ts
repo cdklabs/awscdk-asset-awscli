@@ -1,1 +1,1 @@
-export * from './awscli-layer';
+export * from './awscli-asset';

@@ -1,27 +1,32 @@
-# AWS Lambda Layer with AWS CLI v1
+# Asset with AWS CLI v1
 <!--BEGIN STABILITY BANNER-->
 
 ---
 
-![cdk-constructs: Stable](https://img.shields.io/badge/cdk--constructs-stable-success.svg?style=for-the-badge)
+![cdk-constructs: Experimental](https://img.shields.io/badge/cdk--constructs-experimental-important.svg?style=for-the-badge)
 
 ---
+
+> This library is currently under development. Do not use!
 
 <!--END STABILITY BANNER-->
 
 
-This module exports a single class called `AwsCliLayer` which is a `lambda.Layer` that bundles the AWS CLI v1.
+This module exports a single class called `AwsCliAsset` which is an `s3_assets.Asset` that bundles the AWS CLI v1.
 
-Any Lambda Function that uses this layer must use a Python 3.x runtime.
+Any Lambda Function that uses a LayerVersion created from this Asset must use a Python 3.x runtime.
 
 Usage:
 
 ```ts
 // AwsCliLayer bundles the AWS CLI in a lambda layer
-import { AwsCliLayer } from '@aws-cdk/lambda-layer-awscli-v1';
+import { AwsCliAsset } from '@aws-cdk/asset-awscli-v1';
 
 declare const fn: lambda.Function;
-fn.addLayers(new AwsCliLayer(this, 'AwsCliLayer'));
+const awscli = new AwsCliAsset(this, 'AwsCliCode');
+fn.addLayers(new lambda.LayerVersion(this, 'AwsCliLayer', {
+  code: lambda.Code.fromBucket(awscli.bucket, awscli.s3ObjectKey),
+}));
 ```
 
 The CLI will be installed under `/opt/awscli/aws`.

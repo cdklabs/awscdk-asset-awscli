@@ -22,4 +22,4 @@ tsconfig.tsbuildinfo
 /.eslintrc.json
 !.jsii
 test/.tmp
-test/awscli-layer.integ.snapshot
+test/awscli-asset.integ.snapshot
