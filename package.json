@@ -1,5 +1,5 @@
 {
-  "name": "awscdk-asset-awscli-v1",
+  "name": "@aws-cdk/awscdk-asset-awscli-v1",
   "description": "An Asset construct that contains the AWS CLI, for use in Lambda Layers",
   "repository": {
     "type": "git",
