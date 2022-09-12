@@ -3,8 +3,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   author: 'Amazon Web Services, Inc.',
   cdkVersion: '2.0.0',
   defaultReleaseBranch: 'main',
-  // TODO: add the @aws-cdk namespace
-  name: 'awscdk-asset-awscli-v1',
+  name: '@aws-cdk/awscdk-asset-awscli-v1',
   description: 'An Asset construct that contains the AWS CLI, for use in Lambda Layers',
   repositoryUrl: 'git@github.com:cdklabs/awscdk-asset-awscli.git',
   homepage: 'https://github.com/cdklabs/awscdk-asset-awscli#readme',
