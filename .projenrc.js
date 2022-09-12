@@ -21,6 +21,20 @@ const project = new awscdk.AwsCdkConstructLibrary({
     },
   ],
   npmAccess: NpmAccess.PUBLIC,
+  publishToPypi: {
+    distName: 'aws-cdk.asset-awscli-v1',
+    module: 'aws_cdk.asset_awscli_v1',
+  },
+  publishToMaven: {
+    javaPackage: 'software.amazon.awscdk.asset.awscli.v1',
+    mavenGroupId: 'software.amazon.awscdk',
+    mavenArtifactId: 'asset-awscli-v1',
+    mavenEndpoint: 'https://s01.oss.sonatype.org',
+  },
+  publishToNuget: {
+    dotNetNamespace: 'Amazon.CDK.AssetAwsCliV1',
+    packageId: 'Amazon.CDK.AssetAwsCliV1',
+  },
 });
 
 // These patches are required to enable sudo commands in the workflows under `workflowBootstrapSteps`,
