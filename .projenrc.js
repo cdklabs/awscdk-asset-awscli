@@ -22,10 +22,14 @@ const project = new awscdk.AwsCdkConstructLibrary({
   ],
 });
 
-// This patch is required to enable sudo commands in the build workflow, see
-// `workflowBootstrapSteps` above for why a sudo command is needed.
+// These patches are required to enable sudo commands in the workflows under `workflowBootstrapSteps`,
+// see `workflowBootstrapSteps` above for why a sudo command is needed.
 const buildWorkflow = project.tryFindObjectFile('.github/workflows/build.yml');
 buildWorkflow.patch(JsonPatch.add('/jobs/build/container/options', '--group-add sudo'));
+const releaseWorkflow = project.tryFindObjectFile('.github/workflows/release.yml');
+releaseWorkflow.patch(JsonPatch.add('/jobs/release/container/options', '--group-add sudo'));
+const upgradeWorkflow = project.tryFindObjectFile('.github/workflows/upgrade-main.yml');
+upgradeWorkflow.patch(JsonPatch.add('/jobs/upgrade/container/options', '--group-add sudo'));
 
 project.preCompileTask.exec('layer/build.sh');
 
