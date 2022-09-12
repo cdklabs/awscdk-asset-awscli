@@ -76,6 +76,9 @@
   "main": "lib/index.js",
   "license": "Apache-2.0",
   "homepage": "https://github.com/cdklabs/awscdk-asset-awscli#readme",
+  "publishConfig": {
+    "access": "public"
+  },
   "version": "0.0.0",
   "jest": {
     "testMatch": [

@@ -1,4 +1,5 @@
 const { awscdk, JsonPatch, DependencyType } = require('projen');
+const { NpmAccess } = require('projen/lib/javascript');
 const project = new awscdk.AwsCdkConstructLibrary({
   author: 'Amazon Web Services, Inc.',
   cdkVersion: '2.0.0',
@@ -19,6 +20,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
       run: 'sudo chown superchain /var/run/docker.sock',
     },
   ],
+  npmAccess: NpmAccess.PUBLIC,
 });
 
 // These patches are required to enable sudo commands in the workflows under `workflowBootstrapSteps`,
