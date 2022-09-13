@@ -35,6 +35,9 @@ const project = new awscdk.AwsCdkConstructLibrary({
     dotNetNamespace: 'Amazon.CDK.Asset.AwsCliV1',
     packageId: 'Amazon.CDK.Asset.AwsCliV1',
   },
+  publishToGo: {
+    moduleName: 'github.com/cdklabs/awscdk-asset-awscli-go',
+  },
 });
 
 // These patches are required to enable sudo commands in the workflows under `workflowBootstrapSteps`,
