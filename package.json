@@ -129,7 +129,7 @@
     "outdir": "dist",
     "targets": {
       "java": {
-        "package": "software.amazon.awscdk.cdk-asset-awscli-v1",
+        "package": "software.amazon.awscdk.cdk.asset.awscli.v1",
         "maven": {
           "groupId": "software.amazon.awscdk",
           "artifactId": "cdk-asset-awscli-v1"

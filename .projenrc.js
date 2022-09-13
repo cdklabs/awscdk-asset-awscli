@@ -26,7 +26,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
     module: 'aws_cdk.asset_awscli_v1',
   },
   publishToMaven: {
-    javaPackage: 'software.amazon.awscdk.cdk-asset-awscli-v1',
+    javaPackage: 'software.amazon.awscdk.cdk.asset.awscli.v1',
     mavenGroupId: 'software.amazon.awscdk',
     mavenArtifactId: 'cdk-asset-awscli-v1',
     mavenEndpoint: 'https://s01.oss.sonatype.org',
