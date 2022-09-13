@@ -145,7 +145,8 @@
         "packageId": "Amazon.CDK.Asset.AwsCliV1"
       },
       "go": {
-        "moduleName": "github.com/cdklabs/awscdk-asset-awscli-go"
+        "moduleName": "github.com/cdklabs/awscdk-asset-awscli-go",
+        "packageName": "v1"
       }
     },
     "tsc": {
