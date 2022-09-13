@@ -37,7 +37,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   },
   publishToGo: {
     moduleName: 'github.com/cdklabs/awscdk-asset-awscli-go',
-    packageName: 'v1',
+    packageName: 'awscdkv1',
   },
 });
 
