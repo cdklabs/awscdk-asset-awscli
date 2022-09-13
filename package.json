@@ -146,7 +146,7 @@
       },
       "go": {
         "moduleName": "github.com/cdklabs/awscdk-asset-awscli-go",
-        "packageName": "awscdkv1"
+        "packageName": "awscliv1"
       }
     },
     "tsc": {
