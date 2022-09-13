@@ -6,7 +6,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   defaultReleaseBranch: 'main',
   name: '@aws-cdk/asset-awscli-v1',
   description: 'An Asset construct that contains the AWS CLI, for use in Lambda Layers',
-  repositoryUrl: 'git@github.com:cdklabs/awscdk-asset-awscli.git',
+  repositoryUrl: 'https://github.com/cdklabs/aws-asset-awscli.git',
   homepage: 'https://github.com/cdklabs/awscdk-asset-awscli#readme',
   autoApproveOptions: {
     allowedUsernames: ['cdklabs-automation'],
@@ -29,7 +29,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
     javaPackage: 'software.amazon.awscdk.cdk.asset.awscli.v1',
     mavenGroupId: 'software.amazon.awscdk',
     mavenArtifactId: 'cdk-asset-awscli-v1',
-    mavenEndpoint: 'https://s01.oss.sonatype.org',
+    mavenEndpoint: 'https://aws.oss.sonatype.org',
   },
   publishToNuget: {
     dotNetNamespace: 'Amazon.CDK.Asset.AwsCliV1',
