@@ -23,7 +23,10 @@
     "integ:snapshot-all": "npx projen integ:snapshot-all",
     "package": "npx projen package",
     "package-all": "npx projen package-all",
+    "package:dotnet": "npx projen package:dotnet",
+    "package:java": "npx projen package:java",
     "package:js": "npx projen package:js",
+    "package:python": "npx projen package:python",
     "post-compile": "npx projen post-compile",
     "post-upgrade": "npx projen post-upgrade",
     "pre-compile": "npx projen pre-compile",
@@ -124,7 +127,23 @@
   "stability": "stable",
   "jsii": {
     "outdir": "dist",
-    "targets": {},
+    "targets": {
+      "java": {
+        "package": "software.amazon.awscdk.cdk.asset.awscli.v1",
+        "maven": {
+          "groupId": "software.amazon.awscdk",
+          "artifactId": "cdk-asset-awscli-v1"
+        }
+      },
+      "python": {
+        "distName": "aws-cdk.asset-awscli-v1",
+        "module": "aws_cdk.asset_awscli_v1"
+      },
+      "dotnet": {
+        "namespace": "Amazon.CDK.Asset.AwsCliV1",
+        "packageId": "Amazon.CDK.Asset.AwsCliV1"
+      }
+    },
     "tsc": {
       "outDir": "lib",
       "rootDir": "src"
