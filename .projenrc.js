@@ -38,7 +38,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   publishToGo: {
     moduleName: 'github.com/cdklabs/awscdk-asset-awscli-go',
     packageName: 'awscliv1',
-    gitUserName: 'aws-cdk-automation',
+    gitUserName: 'AWS CDK Team',
     gitUserEmail: 'aws-cdk-dev@amazon.com',
   },
 });
