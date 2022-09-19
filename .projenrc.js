@@ -40,6 +40,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
     packageName: 'awscliv1',
     gitUserName: 'AWS CDK Team',
     gitUserEmail: 'aws-cdk@amazon.com',
+    githubTokenSecret: 'PROJEN_GITHUB_TOKEN',
   },
 });
 
