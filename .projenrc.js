@@ -1,10 +1,15 @@
-const { awscdk, JsonPatch, DependencyType } = require('projen');
+const { awscdk, JsonPatch } = require('projen');
 const { NpmAccess } = require('projen/lib/javascript');
+
+const MAJOR_VERSION = 1;
+const releaseWorkflowName = `release-awscli-v${MAJOR_VERSION}`;
+const defaultReleaseBranchName = `awscli-v${MAJOR_VERSION}/main`;
+
 const project = new awscdk.AwsCdkConstructLibrary({
   author: 'Amazon Web Services, Inc.',
   cdkVersion: '2.0.0',
   defaultReleaseBranch: 'main',
-  name: '@aws-cdk/asset-awscli-v1',
+  name: `@aws-cdk/asset-awscli-v${MAJOR_VERSION}`,
   description: 'An Asset construct that contains the AWS CLI, for use in Lambda Layers',
   repositoryUrl: 'https://github.com/cdklabs/awscdk-asset-awscli.git',
   homepage: 'https://github.com/cdklabs/awscdk-asset-awscli#readme',
@@ -21,23 +26,27 @@ const project = new awscdk.AwsCdkConstructLibrary({
     },
   ],
   npmAccess: NpmAccess.PUBLIC,
+  releaseTagPrefix: `awscli-v${MAJOR_VERSION}`,
+  releaseWorkflowName: releaseWorkflowName,
+  defaultReleaseBranch: defaultReleaseBranchName,
   publishToPypi: {
-    distName: 'aws-cdk.asset-awscli-v1',
-    module: 'aws_cdk.asset_awscli_v1',
+    distName: `aws-cdk.asset-awscli-v${MAJOR_VERSION}`,
+    module: `aws_cdk.asset_awscli_v${MAJOR_VERSION}`,
   },
   publishToMaven: {
-    javaPackage: 'software.amazon.awscdk.cdk.asset.awscli.v1',
+    javaPackage: `software.amazon.awscdk.cdk.asset.awscli.v${MAJOR_VERSION}`,
     mavenGroupId: 'software.amazon.awscdk',
-    mavenArtifactId: 'cdk-asset-awscli-v1',
+    mavenArtifactId: `cdk-asset-awscli-v${MAJOR_VERSION}`,
     mavenEndpoint: 'https://aws.oss.sonatype.org',
   },
   publishToNuget: {
-    dotNetNamespace: 'Amazon.CDK.Asset.AwsCliV1',
-    packageId: 'Amazon.CDK.Asset.AwsCliV1',
+    dotNetNamespace: `Amazon.CDK.Asset.AwsCliV${MAJOR_VERSION}`,
+    packageId: `Amazon.CDK.Asset.AwsCliV${MAJOR_VERSION}`,
   },
   publishToGo: {
     moduleName: 'github.com/cdklabs/awscdk-asset-awscli-go',
-    packageName: 'awscliv1',
+    packageName: `awscliv${MAJOR_VERSION}`,
+    gitBranch: `awscli.${MAJOR_VERSION}`,
     gitUserName: 'AWS CDK Team',
     gitUserEmail: 'aws-cdk@amazon.com',
     githubTokenSecret: 'PROJEN_GITHUB_TOKEN',
@@ -48,9 +57,9 @@ const project = new awscdk.AwsCdkConstructLibrary({
 // see `workflowBootstrapSteps` above for why a sudo command is needed.
 const buildWorkflow = project.tryFindObjectFile('.github/workflows/build.yml');
 buildWorkflow.patch(JsonPatch.add('/jobs/build/container/options', '--group-add sudo'));
-const releaseWorkflow = project.tryFindObjectFile('.github/workflows/release.yml');
+const releaseWorkflow = project.tryFindObjectFile(`.github/workflows/${releaseWorkflowName}.yml`);
 releaseWorkflow.patch(JsonPatch.add('/jobs/release/container/options', '--group-add sudo'));
-const upgradeWorkflow = project.tryFindObjectFile('.github/workflows/upgrade-main.yml');
+const upgradeWorkflow = project.tryFindObjectFile(`.github/workflows/upgrade-awscli-v${MAJOR_VERSION}-main.yml`);
 upgradeWorkflow.patch(JsonPatch.add('/jobs/upgrade/container/options', '--group-add sudo'));
 
 project.preCompileTask.exec('layer/build.sh');
