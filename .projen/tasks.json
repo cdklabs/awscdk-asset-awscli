@@ -138,7 +138,7 @@
           "exec": "[ -d \"test/awscli-asset.integ.snapshot\" ] || (echo \"No snapshot available for integration test 'awscli-asset'. Run 'projen integ:awscli-asset:deploy' to capture.\" && exit 1)"
         },
         {
-          "exec": "cdk synth --app \"ts-node -P tsconfig.dev.json test/awscli-asset.integ.ts\" --no-notices --no-version-reporting --no-asset-metadata --no-path-metadata -o test/.tmp/awscli-asset.integ/assert.cdk.out > /dev/null"
+          "exec": "cdk synth --app \"ts-node -P tsconfig.dev.json test/awscli-asset.integ.ts\" --no-version-reporting --no-asset-metadata --no-path-metadata -o test/.tmp/awscli-asset.integ/assert.cdk.out > /dev/null"
         },
         {
           "exec": "diff -r -x asset.* -x cdk.out -x manifest.json -x tree.json test/awscli-asset.integ.snapshot/ test/.tmp/awscli-asset.integ/assert.cdk.out/"
@@ -153,7 +153,7 @@
           "exec": "rm -fr test/.tmp/awscli-asset.integ/deploy.cdk.out"
         },
         {
-          "exec": "cdk deploy --app \"ts-node -P tsconfig.dev.json test/awscli-asset.integ.ts\" --no-notices --no-version-reporting --no-asset-metadata --no-path-metadata '**' --require-approval=never -o test/.tmp/awscli-asset.integ/deploy.cdk.out"
+          "exec": "cdk deploy --app \"ts-node -P tsconfig.dev.json test/awscli-asset.integ.ts\" --no-version-reporting --no-asset-metadata --no-path-metadata '**' --require-approval=never -o test/.tmp/awscli-asset.integ/deploy.cdk.out"
         },
         {
           "exec": "rm -fr test/awscli-asset.integ.snapshot"
@@ -180,7 +180,7 @@
       "description": "update snapshot for integration test \"awscli-asset\"",
       "steps": [
         {
-          "exec": "cdk synth --app \"ts-node -P tsconfig.dev.json test/awscli-asset.integ.ts\" --no-notices --no-version-reporting --no-asset-metadata --no-path-metadata -o test/awscli-asset.integ.snapshot > /dev/null"
+          "exec": "cdk synth --app \"ts-node -P tsconfig.dev.json test/awscli-asset.integ.ts\" --no-version-reporting --no-asset-metadata --no-path-metadata -o test/awscli-asset.integ.snapshot > /dev/null"
         }
       ]
     },
@@ -189,7 +189,7 @@
       "description": "watch integration test 'awscli-asset' (without updating snapshots)",
       "steps": [
         {
-          "exec": "cdk watch --app \"ts-node -P tsconfig.dev.json test/awscli-asset.integ.ts\" --no-notices --no-version-reporting --no-asset-metadata --no-path-metadata '**' -o test/.tmp/awscli-asset.integ/deploy.cdk.out"
+          "exec": "cdk watch --app \"ts-node -P tsconfig.dev.json test/awscli-asset.integ.ts\" --no-version-reporting --no-asset-metadata --no-path-metadata '**' -o test/.tmp/awscli-asset.integ/deploy.cdk.out"
         }
       ]
     },
@@ -304,6 +304,7 @@
       "description": "Prepare a release from \"awscli-v1/main\" branch",
       "env": {
         "RELEASE": "true",
+        "MAJOR": "2",
         "RELEASE_TAG_PREFIX": "awscli-v1"
       },
       "steps": [
