@@ -1,4 +1,4 @@
-# Asset with AWS CLI v1
+# Asset with AWS CLI v2
 <!--BEGIN STABILITY BANNER-->
 
 ---
@@ -12,15 +12,13 @@
 <!--END STABILITY BANNER-->
 
 
-This module exports a single class called `AwsCliAsset` which is an `s3_assets.Asset` that bundles the AWS CLI v1.
-
-Any Lambda Function that uses a LayerVersion created from this Asset must use a Python 3.x runtime.
+This module exports a single class called `AwsCliAsset` which is an `s3_assets.Asset` that bundles the AWS CLI v2.
 
 Usage:
 
 ```ts
 // AwsCliLayer bundles the AWS CLI in a lambda layer
-import { AwsCliAsset } from '@aws-cdk/asset-awscli-v1';
+import { AwsCliAsset } from '@aws-cdk/asset-awscli-v2';
 
 declare const fn: lambda.Function;
 const awscli = new AwsCliAsset(this, 'AwsCliCode');

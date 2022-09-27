@@ -1,4 +1,4 @@
-FROM public.ecr.aws/sam/build-python3.7
+FROM public.ecr.aws/lambda/provided:latest
 
 RUN mkdir -p /opt
 WORKDIR /tmp
@@ -14,24 +14,15 @@ RUN yum update -y \
 # aws cli
 #
 
-COPY requirements.txt ./
-RUN python -m pip install -r requirements.txt -t /opt/awscli
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+RUN unzip awscliv2.zip
+RUN ./aws/install -i /opt/awscli -b /opt/awscli/bin
 
 #
 # organize for self-contained usage
 #
 
 RUN mv /opt/awscli/bin/aws /opt/awscli
-
-#
-# cleanup
-#
-
-RUN rm -rf \
-    /opt/awscli/pip* \
-    /opt/awscli/setuptools* \
-    && cd /opt/awscli/awscli/examples \
-    && rm -rf $(ls -d /opt/awscli/awscli/examples | grep -v global_options.rst)
 
 #
 # Test that the CLI works

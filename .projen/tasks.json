@@ -32,7 +32,7 @@
         "CHANGELOG": "dist/changelog.md",
         "BUMPFILE": "dist/version.txt",
         "RELEASETAG": "dist/releasetag.txt",
-        "RELEASE_TAG_PREFIX": "awscli-v1"
+        "RELEASE_TAG_PREFIX": "awscli-v2"
       },
       "steps": [
         {
@@ -299,12 +299,12 @@
         }
       ]
     },
-    "release:awscli-v1/main": {
-      "name": "release:awscli-v1/main",
-      "description": "Prepare a release from \"awscli-v1/main\" branch",
+    "release:awscli-v2/main": {
+      "name": "release:awscli-v2/main",
+      "description": "Prepare a release from \"awscli-v2/main\" branch",
       "env": {
         "RELEASE": "true",
-        "RELEASE_TAG_PREFIX": "awscli-v1"
+        "RELEASE_TAG_PREFIX": "awscli-v2"
       },
       "steps": [
         {
@@ -365,7 +365,7 @@
         "CHANGELOG": "dist/changelog.md",
         "BUMPFILE": "dist/version.txt",
         "RELEASETAG": "dist/releasetag.txt",
-        "RELEASE_TAG_PREFIX": "awscli-v1"
+        "RELEASE_TAG_PREFIX": "awscli-v2"
       },
       "steps": [
         {
