@@ -25,6 +25,13 @@ RUN ./aws/install -i /opt/awscli -b /opt/awscli/bin
 RUN mv /opt/awscli/bin/aws /opt/awscli
 
 #
+# cleanup
+#
+
+RUN cd /opt/awscli/v2/2.7.35/dist/awscli/examples \
+    && ls | grep -v "global_options.rst" | xargs rm -rf
+
+#
 # Test that the CLI works
 #
 
