@@ -1,4 +1,6 @@
-FROM public.ecr.aws/lambda/provided:latest
+# Download the official aws cli Docker image
+# see https://hub.docker.com/r/amazon/aws-cli
+FROM amazon/aws-cli:2.7.35
 
 RUN mkdir -p /opt
 WORKDIR /tmp
@@ -11,31 +13,23 @@ RUN yum update -y \
     && yum install -y zip unzip wget tar gzip
 
 #
-# aws cli
-#
-
-RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-RUN unzip awscliv2.zip
-RUN ./aws/install -i /opt/awscli -b /opt/awscli/bin
-
-#
 # organize for self-contained usage
 #
 
-RUN mv /opt/awscli/bin/aws /opt/awscli
+RUN mv /usr/local/aws-cli /opt/awscli
+RUN ln -s /opt/awscli/v2/2.*/bin/aws /opt/awscli
 
 #
 # cleanup
 #
 
-RUN cd /opt/awscli/v2/2.7.35/dist/awscli/examples \
+RUN cd /opt/awscli/v2/2.*/dist/awscli/examples \
     && ls | grep -v "global_options.rst" | xargs rm -rf
 
 #
 # Test that the CLI works
 #
 
-RUN yum install -y groff
 RUN /opt/awscli/aws help
 
 #
