@@ -31,7 +31,7 @@ RUN rm -rf \
     /opt/awscli/pip* \
     /opt/awscli/setuptools* \
     && cd /opt/awscli/awscli/examples \
-    && rm -rf $(ls -d /opt/awscli/awscli/examples | grep -v global_options.rst)
+    && ls | grep -v "global_options.rst" | xargs rm -rf
 
 #
 # Test that the CLI works
