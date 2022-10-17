@@ -10,7 +10,7 @@ import { AwsCliAsset } from '../lib';
 
 const app = new cdk.App();
 
-const stack = new cdk.Stack(app, 'lambda-layer-awscli-integ-stack');
+const stack = new cdk.Stack(app, 'lambda-layer-awscliv2-integ-stack');
 const asset = new AwsCliAsset(stack, 'layer-asset');
 const layer = new lambda.LayerVersion(stack, 'AwsCliLayer', {
   code: lambda.Code.fromBucket(asset.bucket, asset.s3ObjectKey),
@@ -20,6 +20,7 @@ const layer = new lambda.LayerVersion(stack, 'AwsCliLayer', {
 const runtimes = [
   lambda.Runtime.PYTHON_3_7,
   lambda.Runtime.PYTHON_3_9,
+  lambda.Runtime.NODEJS_14_X,
 ];
 
 for (const runtime of runtimes) {

@@ -1,4 +1,6 @@
-FROM public.ecr.aws/sam/build-python3.7
+# Download the official aws cli Docker image
+# see https://hub.docker.com/r/amazon/aws-cli
+FROM amazon/aws-cli:2.7.35
 
 RUN mkdir -p /opt
 WORKDIR /tmp
@@ -11,33 +13,23 @@ RUN yum update -y \
     && yum install -y zip unzip wget tar gzip
 
 #
-# aws cli
-#
-
-COPY requirements.txt ./
-RUN python -m pip install -r requirements.txt -t /opt/awscli
-
-#
 # organize for self-contained usage
 #
 
-RUN mv /opt/awscli/bin/aws /opt/awscli
+RUN mv /usr/local/aws-cli /opt/awscli
+RUN ln -s /opt/awscli/v2/2.*/bin/aws /opt/awscli
 
 #
 # cleanup
 #
 
-RUN rm -rf \
-    /opt/awscli/pip* \
-    /opt/awscli/setuptools* \
-    && cd /opt/awscli/awscli/examples \
-    && rm -rf $(ls -d /opt/awscli/awscli/examples | grep -v global_options.rst)
+RUN cd /opt/awscli/v2/2.*/dist/awscli/examples \
+    && ls | grep -v "global_options.rst" | xargs rm -rf
 
 #
 # Test that the CLI works
 #
 
-RUN yum install -y groff
 RUN /opt/awscli/aws help
 
 #

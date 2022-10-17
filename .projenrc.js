@@ -1,14 +1,13 @@
 const { awscdk, JsonPatch } = require('projen');
 const { NpmAccess } = require('projen/lib/javascript');
 
-const MAJOR_VERSION = 1;
+const MAJOR_VERSION = 2;
 const releaseWorkflowName = `release-awscli-v${MAJOR_VERSION}`;
 const defaultReleaseBranchName = `awscli-v${MAJOR_VERSION}/main`;
 
 const project = new awscdk.AwsCdkConstructLibrary({
   author: 'Amazon Web Services, Inc.',
   cdkVersion: '2.0.0',
-  defaultReleaseBranch: 'main',
   name: `@aws-cdk/asset-awscli-v${MAJOR_VERSION}`,
   description: 'An Asset construct that contains the AWS CLI, for use in Lambda Layers',
   repositoryUrl: 'https://github.com/cdklabs/awscdk-asset-awscli.git',

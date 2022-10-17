@@ -7,7 +7,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "6fc337101ba8eab7d20f61b2b9082713acbd41839bf586eb6f6dd42686f004b1.zip"
+          "S3Key": "18126144dcfa8f8372df3dc8da6da9997f87222beb8f0a2b68efa54cd37c4ad7.zip"
         },
         "Description": "/opt/awscli/aws"
       }
@@ -50,7 +50,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "5dff6208ccd5fb196bb0354fd6e47faa8431a789e6125d20386586fef761ed48.zip"
+          "S3Key": "f442f58640c57d2704e2f4a027d893e94dabaa91c6a49ae36a8f88b0ba82849e.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -144,7 +144,7 @@
             "Arn"
           ]
         },
-        "Description": "AWS CDK resource provider framework - onEvent (lambda-layer-awscli-integ-stack/Providerpython3.7)",
+        "Description": "AWS CDK resource provider framework - onEvent (lambda-layer-awscliv2-integ-stack/Providerpython3.7)",
         "Environment": {
           "Variables": {
             "USER_ON_EVENT_FUNCTION_ARN": {
@@ -215,7 +215,7 @@
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
           },
-          "S3Key": "5dff6208ccd5fb196bb0354fd6e47faa8431a789e6125d20386586fef761ed48.zip"
+          "S3Key": "f442f58640c57d2704e2f4a027d893e94dabaa91c6a49ae36a8f88b0ba82849e.zip"
         },
         "Role": {
           "Fn::GetAtt": [
@@ -309,7 +309,7 @@
             "Arn"
           ]
         },
-        "Description": "AWS CDK resource provider framework - onEvent (lambda-layer-awscli-integ-stack/Providerpython3.9)",
+        "Description": "AWS CDK resource provider framework - onEvent (lambda-layer-awscliv2-integ-stack/Providerpython3.9)",
         "Environment": {
           "Variables": {
             "USER_ON_EVENT_FUNCTION_ARN": {
@@ -335,6 +335,171 @@
         "ServiceToken": {
           "Fn::GetAtt": [
             "Providerpython39frameworkonEvent00AFA742",
+            "Arn"
+          ]
+        }
+      },
+      "UpdateReplacePolicy": "Delete",
+      "DeletionPolicy": "Delete"
+    },
+    "Lambdanodejs14xServiceRoleE1A67AC0": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "Lambdanodejs14xF649A856": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+          },
+          "S3Key": "f442f58640c57d2704e2f4a027d893e94dabaa91c6a49ae36a8f88b0ba82849e.zip"
+        },
+        "Role": {
+          "Fn::GetAtt": [
+            "Lambdanodejs14xServiceRoleE1A67AC0",
+            "Arn"
+          ]
+        },
+        "Handler": "index.handler",
+        "Layers": [
+          {
+            "Ref": "AwsCliLayerF44AAF94"
+          }
+        ],
+        "MemorySize": 512,
+        "Runtime": "nodejs14.x",
+        "Timeout": 30
+      },
+      "DependsOn": [
+        "Lambdanodejs14xServiceRoleE1A67AC0"
+      ]
+    },
+    "Providernodejs14xframeworkonEventServiceRole8862340D": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "Providernodejs14xframeworkonEventServiceRoleDefaultPolicy8249CE85": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": "lambda:InvokeFunction",
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "Lambdanodejs14xF649A856",
+                  "Arn"
+                ]
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "Providernodejs14xframeworkonEventServiceRoleDefaultPolicy8249CE85",
+        "Roles": [
+          {
+            "Ref": "Providernodejs14xframeworkonEventServiceRole8862340D"
+          }
+        ]
+      }
+    },
+    "Providernodejs14xframeworkonEvent062D000C": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+          },
+          "S3Key": "c691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49c.zip"
+        },
+        "Role": {
+          "Fn::GetAtt": [
+            "Providernodejs14xframeworkonEventServiceRole8862340D",
+            "Arn"
+          ]
+        },
+        "Description": "AWS CDK resource provider framework - onEvent (lambda-layer-awscliv2-integ-stack/Providernodejs14.x)",
+        "Environment": {
+          "Variables": {
+            "USER_ON_EVENT_FUNCTION_ARN": {
+              "Fn::GetAtt": [
+                "Lambdanodejs14xF649A856",
+                "Arn"
+              ]
+            }
+          }
+        },
+        "Handler": "framework.onEvent",
+        "Runtime": "nodejs12.x",
+        "Timeout": 900
+      },
+      "DependsOn": [
+        "Providernodejs14xframeworkonEventServiceRoleDefaultPolicy8249CE85",
+        "Providernodejs14xframeworkonEventServiceRole8862340D"
+      ]
+    },
+    "CustomResourcenodejs14x": {
+      "Type": "AWS::CloudFormation::CustomResource",
+      "Properties": {
+        "ServiceToken": {
+          "Fn::GetAtt": [
+            "Providernodejs14xframeworkonEvent062D000C",
             "Arn"
           ]
         }
