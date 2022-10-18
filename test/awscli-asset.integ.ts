@@ -1,5 +1,5 @@
 import * as path from 'path';
-import { App, CustomResource, Duration, Stack } from 'aws-cdk-lib';
+import { App, CustomResource, Duration, FileSystem, Stack } from 'aws-cdk-lib';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import * as cr from 'aws-cdk-lib/custom-resources';
 import { AwsCliAsset } from '../lib';
@@ -13,7 +13,7 @@ const app = new App();
 const stack = new Stack(app, 'lambda-layer-awscli-integ-stack');
 const asset = new AwsCliAsset();
 const layer = new lambda.LayerVersion(stack, 'AwsCliLayer', {
-  code: lambda.Code.fromAsset(asset.path, { assetHash: asset.pathToGenerateAssetHash }),
+  code: lambda.Code.fromAsset(asset.path, { assetHash: FileSystem.fingerprint(asset.pathToGenerateAssetHash) }),
   description: '/opt/awscli/aws',
 });
 

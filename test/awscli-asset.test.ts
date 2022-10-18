@@ -1,4 +1,4 @@
-import { Stack } from 'aws-cdk-lib';
+import { FileSystem, Stack } from 'aws-cdk-lib';
 import { Template } from 'aws-cdk-lib/assertions';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import { AwsCliAsset } from '../lib';
@@ -10,7 +10,7 @@ test('synthesized to a layer version', () => {
 
   // WHEN
   new lambda.LayerVersion(stack, 'MyLayer', {
-    code: lambda.Code.fromAsset(asset.path, { assetHash: asset.pathToGenerateAssetHash }),
+    code: lambda.Code.fromAsset(asset.path, { assetHash: FileSystem.fingerprint(asset.pathToGenerateAssetHash) }),
     description: '/opt/awscli/aws',
   });
 

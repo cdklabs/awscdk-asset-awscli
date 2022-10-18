@@ -1,5 +1,4 @@
 import * as path from 'path';
-import { FileSystem } from 'aws-cdk-lib';
 
 /**
  * A CDK Asset construct that contains the AWS CLI.
@@ -8,7 +7,7 @@ export class AwsCliAsset implements AssetSource {
   public readonly path: string = path.join(__dirname, 'layer.zip');
 
   // we hash the layer directory (it contains the tools versions and Dockerfile) because hashing the zip is non-deterministic
-  public readonly pathToGenerateAssetHash: string = FileSystem.fingerprint(path.join(__dirname, '../layer'));
+  public readonly pathToGenerateAssetHash: string = path.join(__dirname, '../layer');
 }
 
 /**
