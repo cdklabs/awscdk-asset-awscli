@@ -1,6 +1,6 @@
 import * as path from 'path';
+import { App, CustomResource, Duration, Stack } from 'aws-cdk-lib';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
-import * as cdk from 'aws-cdk-lib/core';
 import * as cr from 'aws-cdk-lib/custom-resources';
 import { AwsCliAsset } from '../lib';
 
@@ -8,12 +8,12 @@ import { AwsCliAsset } from '../lib';
  * Test verifies that AWS CLI is invoked successfully inside Lambda runtime.
  */
 
-const app = new cdk.App();
+const app = new App();
 
-const stack = new cdk.Stack(app, 'lambda-layer-awscli-integ-stack');
-const asset = new AwsCliAsset(stack, 'layer-asset');
+const stack = new Stack(app, 'lambda-layer-awscli-integ-stack');
+const asset = new AwsCliAsset();
 const layer = new lambda.LayerVersion(stack, 'AwsCliLayer', {
-  code: lambda.Code.fromBucket(asset.bucket, asset.s3ObjectKey),
+  code: lambda.Code.fromAsset(asset.path, { assetHash: asset.pathToGenerateAssetHash }),
   description: '/opt/awscli/aws',
 });
 
@@ -30,11 +30,11 @@ for (const runtime of runtimes) {
       runtime: runtime,
       layers: [layer],
       memorySize: 512,
-      timeout: cdk.Duration.seconds(30),
+      timeout: Duration.seconds(30),
     }),
   });
 
-  new cdk.CustomResource(stack, `CustomResource${runtime.name}`, {
+  new CustomResource(stack, `CustomResource${runtime.name}`, {
     serviceToken: provider.serviceToken,
   });
 }

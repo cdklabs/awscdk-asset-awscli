@@ -6,11 +6,11 @@ import { AwsCliAsset } from '../lib';
 test('synthesized to a layer version', () => {
   //GIVEN
   const stack = new Stack();
-  const asset = new AwsCliAsset(stack, 'layer-asset');
+  const asset = new AwsCliAsset();
 
   // WHEN
   new lambda.LayerVersion(stack, 'MyLayer', {
-    code: lambda.Code.fromBucket(asset.bucket, asset.s3ObjectKey),
+    code: lambda.Code.fromAsset(asset.path, { assetHash: asset.pathToGenerateAssetHash }),
     description: '/opt/awscli/aws',
   });
 

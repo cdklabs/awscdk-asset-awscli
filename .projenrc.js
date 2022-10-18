@@ -1,4 +1,4 @@
-const { awscdk, JsonPatch } = require('projen');
+const { awscdk, JsonPatch, DependencyType } = require('projen');
 const { NpmAccess } = require('projen/lib/javascript');
 
 const MAJOR_VERSION = 1;
@@ -9,7 +9,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   author: 'Amazon Web Services, Inc.',
   cdkVersion: '2.0.0',
   name: `@aws-cdk/asset-awscli-v${MAJOR_VERSION}`,
-  description: 'An Asset construct that contains the AWS CLI, for use in Lambda Layers',
+  description: 'A library that contains the AWS CLI, as an AssetSource, for use in Lambda Layers',
   repositoryUrl: 'https://github.com/cdklabs/awscdk-asset-awscli.git',
   homepage: 'https://github.com/cdklabs/awscdk-asset-awscli#readme',
   autoApproveOptions: {
@@ -29,7 +29,6 @@ const project = new awscdk.AwsCdkConstructLibrary({
   releaseTagPrefix: `awscli-v${MAJOR_VERSION}`,
   releaseWorkflowName: releaseWorkflowName,
   defaultReleaseBranch: defaultReleaseBranchName,
-  deps: ['@aws-cdk/interfaces'],
   publishToPypi: {
     distName: `aws-cdk.asset-awscli-v${MAJOR_VERSION}`,
     module: `aws_cdk.asset_awscli_v${MAJOR_VERSION}`,
@@ -53,6 +52,13 @@ const project = new awscdk.AwsCdkConstructLibrary({
     githubTokenSecret: 'PROJEN_GITHUB_TOKEN',
   },
 });
+
+// We only need aws-cdk-lib and constructs for testing. Neither library is used
+// in the public API.
+//project.deps.removeDependency('constructs', DependencyType.PEER);
+//project.deps.addDependency('constructs', DependencyType.DEVENV);
+//project.deps.removeDependency('aws-cdk-lib', DependencyType.PEER);
+//project.deps.addDependency('aws-cdk-lib', DependencyType.DEVENV);
 
 // These patches are required to enable sudo commands in the workflows under `workflowBootstrapSteps`,
 // see `workflowBootstrapSteps` above for why a sudo command is needed.
