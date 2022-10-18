@@ -29,6 +29,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   releaseTagPrefix: `awscli-v${MAJOR_VERSION}`,
   releaseWorkflowName: releaseWorkflowName,
   defaultReleaseBranch: defaultReleaseBranchName,
+  deps: ['@aws-cdk/interfaces'],
   publishToPypi: {
     distName: `aws-cdk.asset-awscli-v${MAJOR_VERSION}`,
     module: `aws_cdk.asset_awscli_v${MAJOR_VERSION}`,
