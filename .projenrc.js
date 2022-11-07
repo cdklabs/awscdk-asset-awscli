@@ -9,7 +9,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   author: 'Amazon Web Services, Inc.',
   cdkVersion: '2.0.0',
   name: `@aws-cdk/asset-awscli-v${MAJOR_VERSION}`,
-  description: 'A library that contains the AWS CLI, as an AssetSource, for use in Lambda Layers',
+  description: 'A library that contains the AWS CLI for use in Lambda Layers',
   repositoryUrl: 'https://github.com/cdklabs/awscdk-asset-awscli.git',
   homepage: 'https://github.com/cdklabs/awscdk-asset-awscli#readme',
   autoApproveOptions: {
