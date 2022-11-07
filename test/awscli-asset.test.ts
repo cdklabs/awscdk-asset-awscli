@@ -1,12 +1,17 @@
-import { Stack } from 'aws-cdk-lib';
+import { Stack, FileSystem } from 'aws-cdk-lib';
 import { Template } from 'aws-cdk-lib/assertions';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
-import { AwsCliAsset } from '../lib';
+import * as s3_assets from 'aws-cdk-lib/aws-s3-assets';
+
+import { ASSET_FILE, LAYER_SOURCE_DIR } from '../lib';
 
 test('synthesized to a layer version', () => {
   //GIVEN
   const stack = new Stack();
-  const asset = new AwsCliAsset(stack, 'layer-asset');
+  const asset = new s3_assets.Asset(stack, 'layer-asset', {
+    path: ASSET_FILE,
+    assetHash: FileSystem.fingerprint(LAYER_SOURCE_DIR),
+  });
 
   // WHEN
   new lambda.LayerVersion(stack, 'MyLayer', {

@@ -1,17 +1,22 @@
 import * as path from 'path';
+import * as cdk from 'aws-cdk-lib';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
-import * as cdk from 'aws-cdk-lib/core';
+import * as s3_assets from 'aws-cdk-lib/aws-s3-assets';
 import * as cr from 'aws-cdk-lib/custom-resources';
-import { AwsCliAsset } from '../lib';
+
+import { ASSET_FILE, LAYER_SOURCE_DIR } from '../lib';
 
 /**
  * Test verifies that AWS CLI is invoked successfully inside Lambda runtime.
  */
-
 const app = new cdk.App();
 
 const stack = new cdk.Stack(app, 'lambda-layer-awscli-integ-stack');
-const asset = new AwsCliAsset(stack, 'layer-asset');
+const asset = new s3_assets.Asset(stack, 'layer-asset', {
+  path: ASSET_FILE,
+  assetHash: cdk.FileSystem.fingerprint(LAYER_SOURCE_DIR),
+});
+
 const layer = new lambda.LayerVersion(stack, 'AwsCliLayer', {
   code: lambda.Code.fromBucket(asset.bucket, asset.s3ObjectKey),
   description: '/opt/awscli/aws',

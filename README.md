@@ -9,21 +9,29 @@
 
 <!--END STABILITY BANNER-->
 
+This module bundles the AWS CLI v1 as a local asset. It exposes
+constants `ASSET_FILE` and `LAYER_SOURCE_DIR` that can be consumed
+via the CDK `Asset` construct.
 
-This module exports a single class called `AwsCliAsset` which is an `s3_assets.Asset` that bundles the AWS CLI v1.
-
-Any Lambda Function that uses a LayerVersion created from this Asset must use a Python 3.x runtime.
+Any Lambda Function that uses uses this asset must use a Python 3.x
+runtime.
 
 Usage:
 
 ```ts
 // AwsCliLayer bundles the AWS CLI in a lambda layer
-import { AwsCliAsset } from '@aws-cdk/asset-awscli-v1';
+import { ASSET_FILE, LAYER_SOURCE_DIR } from '@aws-cdk/asset-awscli-v1';
+import * as lambda from 'aws-cdk-lib/aws-lambda';
+import * as s3_assets from 'aws-cdk-lib/aws-s3-assets';
+import { FileSystem } from 'aws-cdk-lib';
 
 declare const fn: lambda.Function;
-const awscli = new AwsCliAsset(this, 'AwsCliCode');
+const asset = new s3_assets.Asset(this, 'layer-asset', {
+  path: ASSET_FILE,
+  assetHash: FileSystem.fingerprint(LAYER_SOURCE_DIR),
+});
 fn.addLayers(new lambda.LayerVersion(this, 'AwsCliLayer', {
-  code: lambda.Code.fromBucket(awscli.bucket, awscli.s3ObjectKey),
+  code: lambda.Code.fromBucket(asset.bucket, asset.s3ObjectKey),
 }));
 ```
 
