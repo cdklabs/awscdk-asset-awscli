@@ -1,5 +1,6 @@
-import { awscdk, JsonPatch, DependencyType } from 'projen';
+import { awscdk, DependencyType } from 'projen';
 import { NpmAccess } from 'projen/lib/javascript';
+import { WorkflowNoDockerPatch } from './projenrc/workflow-no-docker-patch';
 
 const MAJOR_VERSION = 1;
 const releaseWorkflowName = `release-awscli-v${MAJOR_VERSION}`;
@@ -19,13 +20,6 @@ const project = new awscdk.AwsCdkConstructLibrary({
     secret: 'GITHUB_TOKEN',
   },
   autoApproveUpgrades: true,
-  workflowBootstrapSteps: [
-    {
-      // This step is required to allow the build workflow to build docker images.
-      name: 'Change permissions on /var/run/docker.sock',
-      run: 'sudo chown superchain /var/run/docker.sock',
-    },
-  ],
   majorVersion: 2,
   npmAccess: NpmAccess.PUBLIC,
   releaseTagPrefix: `awscli-v${MAJOR_VERSION}`,
@@ -62,14 +56,9 @@ project.deps.addDependency('constructs@^10.0.5', DependencyType.DEVENV);
 project.deps.removeDependency('aws-cdk-lib', DependencyType.PEER);
 project.deps.addDependency('aws-cdk-lib@^2.0.0', DependencyType.DEVENV);
 
-// These patches are required to enable sudo commands in the workflows under `workflowBootstrapSteps`,
-// see `workflowBootstrapSteps` above for why a sudo command is needed.
-const buildWorkflow = project.tryFindObjectFile('.github/workflows/build.yml');
-buildWorkflow!.patch(JsonPatch.add('/jobs/build/container/options', '--group-add sudo'));
-const releaseWorkflow = project.tryFindObjectFile(`.github/workflows/${releaseWorkflowName}.yml`);
-releaseWorkflow!.patch(JsonPatch.add('/jobs/release/container/options', '--group-add sudo'));
-const upgradeWorkflow = project.tryFindObjectFile(`.github/workflows/upgrade-awscli-v${MAJOR_VERSION}-main.yml`);
-upgradeWorkflow!.patch(JsonPatch.add('/jobs/upgrade/container/options', '--group-add sudo'));
+// Fix Docker on GitHub
+new WorkflowNoDockerPatch(project, { workflow: 'build' });
+new WorkflowNoDockerPatch(project, { workflow: 'release', workflowName: 'release-awscli-v1' });
 
 project.preCompileTask.exec('layer/build.sh');
 
