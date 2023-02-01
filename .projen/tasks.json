@@ -130,11 +130,12 @@
         }
       ]
     },
-    "integ:awscli-asset:assert": {
-      "name": "integ:awscli-asset:assert",
-      "description": "assert the snapshot of integration test 'awscli-asset'",
+    "integ": {
+      "name": "integ",
+      "description": "Run integration snapshot tests",
       "steps": [
         {
+<<<<<<< HEAD
           "exec": "[ -d \"test/awscli-asset.integ.snapshot\" ] || (echo \"No snapshot available for integration test 'awscli-asset'. Run 'projen integ:awscli-asset:deploy' to capture.\" && exit 1)"
         },
         {
@@ -142,14 +143,18 @@
         },
         {
           "exec": "diff -r -x asset.* -x cdk.out -x manifest.json -x tree.json test/awscli-asset.integ.snapshot/ test/.tmp/awscli-asset.integ/assert.cdk.out/"
+=======
+          "exec": "yarn integ-runner --language typescript"
+>>>>>>> f068af9 (chore: switch to using `integ-runner` (#122))
         }
       ]
     },
-    "integ:awscli-asset:deploy": {
-      "name": "integ:awscli-asset:deploy",
-      "description": "deploy integration test 'awscli-asset' and capture snapshot",
+    "integ:update": {
+      "name": "integ:update",
+      "description": "Run and update integration snapshot tests",
       "steps": [
         {
+<<<<<<< HEAD
           "exec": "rm -fr test/.tmp/awscli-asset.integ/deploy.cdk.out"
         },
         {
@@ -199,6 +204,10 @@
       "steps": [
         {
           "spawn": "integ:awscli-asset:snapshot"
+=======
+          "exec": "yarn integ-runner --language typescript --update-on-failed",
+          "receiveArgs": true
+>>>>>>> f068af9 (chore: switch to using `integ-runner` (#122))
         }
       ]
     },
@@ -283,6 +292,9 @@
       "steps": [
         {
           "spawn": "docgen"
+        },
+        {
+          "spawn": "rosetta:extract"
         }
       ]
     },
@@ -324,6 +336,15 @@
         }
       ]
     },
+    "rosetta:extract": {
+      "name": "rosetta:extract",
+      "description": "Test rosetta extract",
+      "steps": [
+        {
+          "exec": "yarn --silent jsii-rosetta extract"
+        }
+      ]
+    },
     "test": {
       "name": "test",
       "description": "Run tests",
@@ -335,7 +356,7 @@
           "spawn": "eslint"
         },
         {
-          "spawn": "integ:awscli-asset:assert"
+          "spawn": "integ"
         }
       ]
     },

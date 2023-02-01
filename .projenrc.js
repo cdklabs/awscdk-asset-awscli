@@ -52,6 +52,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   },
 });
 
+<<<<<<< HEAD:.projenrc.js
 // These patches are required to enable sudo commands in the workflows under `workflowBootstrapSteps`,
 // see `workflowBootstrapSteps` above for why a sudo command is needed.
 const buildWorkflow = project.tryFindObjectFile('.github/workflows/build.yml');
@@ -60,7 +61,40 @@ const releaseWorkflow = project.tryFindObjectFile(`.github/workflows/${releaseWo
 releaseWorkflow.patch(JsonPatch.add('/jobs/release/container/options', '--group-add sudo'));
 const upgradeWorkflow = project.tryFindObjectFile(`.github/workflows/upgrade-awscli-v${MAJOR_VERSION}-main.yml`);
 upgradeWorkflow.patch(JsonPatch.add('/jobs/upgrade/container/options', '--group-add sudo'));
+=======
+// We only need aws-cdk-lib and constructs for testing. Neither library is used
+// in the public API.
+project.deps.removeDependency('constructs', DependencyType.PEER);
+project.deps.addDependency('constructs@^10.0.5', DependencyType.DEVENV);
+project.deps.removeDependency('aws-cdk-lib', DependencyType.PEER);
+project.deps.addDependency('aws-cdk-lib@^2.0.0', DependencyType.DEVENV);
+project.deps.addDependency('@aws-cdk/integ-runner@^2.45.0', DependencyType.DEVENV);
+project.deps.addDependency('@aws-cdk/integ-tests-alpha@^2.45.0-alpha.0', DependencyType.DEVENV);
+
+// Fix Docker on GitHub
+new WorkflowNoDockerPatch(project, { workflow: 'build' });
+new WorkflowNoDockerPatch(project, { workflow: 'release', workflowName: 'release-awscli-v1' });
+>>>>>>> f068af9 (chore: switch to using `integ-runner` (#122)):.projenrc.ts
 
 project.preCompileTask.exec('layer/build.sh');
 
+const integSnapshotTask = project.addTask('integ', {
+  description: 'Run integration snapshot tests',
+  exec: 'yarn integ-runner --language typescript',
+});
+
+project.addTask('integ:update', {
+  description: 'Run and update integration snapshot tests',
+  exec: 'yarn integ-runner --language typescript --update-on-failed',
+  receiveArgs: true,
+});
+
+const rosettaTask = project.addTask('rosetta:extract', {
+  description: 'Test rosetta extract',
+  exec: 'yarn --silent jsii-rosetta extract',
+});
+
+project.testTask.spawn(integSnapshotTask);
+project.postCompileTask.spawn(rosettaTask);
+project.addGitIgnore('.jsii.tabl.json');
 project.synth();

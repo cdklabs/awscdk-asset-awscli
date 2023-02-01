@@ -21,5 +21,3 @@ dist
 tsconfig.tsbuildinfo
 /.eslintrc.json
 !.jsii
-test/.tmp
-test/awscli-asset.integ.snapshot

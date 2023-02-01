@@ -1,4 +1,9 @@
 import * as path from 'path';
+<<<<<<< HEAD:test/awscli-asset.integ.ts
+=======
+import { IntegTest } from '@aws-cdk/integ-tests-alpha';
+import * as cdk from 'aws-cdk-lib';
+>>>>>>> f068af9 (chore: switch to using `integ-runner` (#122)):test/integ.awscli-asset.ts
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import * as cdk from 'aws-cdk-lib/core';
 import * as cr from 'aws-cdk-lib/custom-resources';
@@ -40,4 +45,7 @@ for (const runtime of runtimes) {
   });
 }
 
-app.synth();
+new IntegTest(app, 'integ-test', {
+  testCases: [stack],
+  stackUpdateWorkflow: false, // don't think it's necessary to test the update workflow for this test
+});
