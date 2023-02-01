@@ -21,11 +21,6 @@
       "type": "build"
     },
     {
-      "name": "aws-cdk",
-      "version": "^2",
-      "type": "build"
-    },
-    {
       "name": "eslint-import-resolver-node",
       "type": "build"
     },
@@ -98,6 +93,16 @@
     {
       "name": "typescript",
       "type": "build"
+    },
+    {
+      "name": "@aws-cdk/integ-runner",
+      "version": "^2.45.0",
+      "type": "devenv"
+    },
+    {
+      "name": "@aws-cdk/integ-tests-alpha",
+      "version": "^2.45.0-alpha.0",
+      "type": "devenv"
     },
     {
       "name": "aws-cdk-lib",
