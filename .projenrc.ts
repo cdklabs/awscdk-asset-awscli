@@ -55,6 +55,8 @@ project.deps.removeDependency('constructs', DependencyType.PEER);
 project.deps.addDependency('constructs@^10.0.5', DependencyType.DEVENV);
 project.deps.removeDependency('aws-cdk-lib', DependencyType.PEER);
 project.deps.addDependency('aws-cdk-lib@^2.0.0', DependencyType.DEVENV);
+project.deps.addDependency('@aws-cdk/integ-runner@^2.45.0', DependencyType.DEVENV);
+project.deps.addDependency('@aws-cdk/integ-tests-alpha@^2.45.0-alpha.0', DependencyType.DEVENV);
 
 // Fix Docker on GitHub
 new WorkflowNoDockerPatch(project, { workflow: 'build' });
@@ -62,4 +64,23 @@ new WorkflowNoDockerPatch(project, { workflow: 'release', workflowName: 'release
 
 project.preCompileTask.exec('layer/build.sh');
 
+const integSnapshotTask = project.addTask('integ', {
+  description: 'Run integration snapshot tests',
+  exec: 'yarn integ-runner --language typescript',
+});
+
+project.addTask('integ:update', {
+  description: 'Run and update integration snapshot tests',
+  exec: 'yarn integ-runner --language typescript --update-on-failed',
+  receiveArgs: true,
+});
+
+const rosettaTask = project.addTask('rosetta:extract', {
+  description: 'Test rosetta extract',
+  exec: 'yarn --silent jsii-rosetta extract',
+});
+
+project.testTask.spawn(integSnapshotTask);
+project.postCompileTask.spawn(rosettaTask);
+project.addGitIgnore('.jsii.tabl.json');
 project.synth();
