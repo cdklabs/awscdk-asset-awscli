@@ -96,7 +96,7 @@
       "description": "Synthesize project files",
       "steps": [
         {
-          "exec": "node .projenrc.js"
+          "exec": "ts-node --project tsconfig.dev.json .projenrc.ts"
         }
       ]
     },
@@ -126,79 +126,26 @@
       "description": "Runs eslint against the codebase",
       "steps": [
         {
-          "exec": "eslint --ext .ts,.tsx --fix --no-error-on-unmatched-pattern src test build-tools .projenrc.js"
+          "exec": "eslint --ext .ts,.tsx --fix --no-error-on-unmatched-pattern src test build-tools projenrc .projenrc.ts"
         }
       ]
     },
-    "integ:awscli-asset:assert": {
-      "name": "integ:awscli-asset:assert",
-      "description": "assert the snapshot of integration test 'awscli-asset'",
+    "integ": {
+      "name": "integ",
+      "description": "Run integration snapshot tests",
       "steps": [
         {
-          "exec": "[ -d \"test/awscli-asset.integ.snapshot\" ] || (echo \"No snapshot available for integration test 'awscli-asset'. Run 'projen integ:awscli-asset:deploy' to capture.\" && exit 1)"
-        },
-        {
-          "exec": "cdk synth --app \"ts-node -P tsconfig.dev.json test/awscli-asset.integ.ts\" --no-notices --no-version-reporting --no-asset-metadata --no-path-metadata -o test/.tmp/awscli-asset.integ/assert.cdk.out > /dev/null"
-        },
-        {
-          "exec": "diff -r -x asset.* -x cdk.out -x manifest.json -x tree.json test/awscli-asset.integ.snapshot/ test/.tmp/awscli-asset.integ/assert.cdk.out/"
+          "exec": "yarn integ-runner --language typescript"
         }
       ]
     },
-    "integ:awscli-asset:deploy": {
-      "name": "integ:awscli-asset:deploy",
-      "description": "deploy integration test 'awscli-asset' and capture snapshot",
+    "integ:update": {
+      "name": "integ:update",
+      "description": "Run and update integration snapshot tests",
       "steps": [
         {
-          "exec": "rm -fr test/.tmp/awscli-asset.integ/deploy.cdk.out"
-        },
-        {
-          "exec": "cdk deploy --app \"ts-node -P tsconfig.dev.json test/awscli-asset.integ.ts\" --no-notices --no-version-reporting --no-asset-metadata --no-path-metadata '**' --require-approval=never -o test/.tmp/awscli-asset.integ/deploy.cdk.out"
-        },
-        {
-          "exec": "rm -fr test/awscli-asset.integ.snapshot"
-        },
-        {
-          "exec": "mv test/.tmp/awscli-asset.integ/deploy.cdk.out test/awscli-asset.integ.snapshot"
-        },
-        {
-          "spawn": "integ:awscli-asset:destroy"
-        }
-      ]
-    },
-    "integ:awscli-asset:destroy": {
-      "name": "integ:awscli-asset:destroy",
-      "description": "destroy integration test 'awscli-asset'",
-      "steps": [
-        {
-          "exec": "cdk destroy --app test/awscli-asset.integ.snapshot '**' --no-version-reporting"
-        }
-      ]
-    },
-    "integ:awscli-asset:snapshot": {
-      "name": "integ:awscli-asset:snapshot",
-      "description": "update snapshot for integration test \"awscli-asset\"",
-      "steps": [
-        {
-          "exec": "cdk synth --app \"ts-node -P tsconfig.dev.json test/awscli-asset.integ.ts\" --no-notices --no-version-reporting --no-asset-metadata --no-path-metadata -o test/awscli-asset.integ.snapshot > /dev/null"
-        }
-      ]
-    },
-    "integ:awscli-asset:watch": {
-      "name": "integ:awscli-asset:watch",
-      "description": "watch integration test 'awscli-asset' (without updating snapshots)",
-      "steps": [
-        {
-          "exec": "cdk watch --app \"ts-node -P tsconfig.dev.json test/awscli-asset.integ.ts\" --no-notices --no-version-reporting --no-asset-metadata --no-path-metadata '**' -o test/.tmp/awscli-asset.integ/deploy.cdk.out"
-        }
-      ]
-    },
-    "integ:snapshot-all": {
-      "name": "integ:snapshot-all",
-      "description": "update snapshot for all integration tests",
-      "steps": [
-        {
-          "spawn": "integ:awscli-asset:snapshot"
+          "exec": "yarn integ-runner --language typescript --update-on-failed",
+          "receiveArgs": true
         }
       ]
     },
@@ -283,6 +230,9 @@
       "steps": [
         {
           "spawn": "docgen"
+        },
+        {
+          "spawn": "rosetta:extract"
         }
       ]
     },
@@ -325,6 +275,15 @@
         }
       ]
     },
+    "rosetta:extract": {
+      "name": "rosetta:extract",
+      "description": "Test rosetta extract",
+      "steps": [
+        {
+          "exec": "yarn --silent jsii-rosetta extract"
+        }
+      ]
+    },
     "test": {
       "name": "test",
       "description": "Run tests",
@@ -337,7 +296,7 @@
           "spawn": "eslint"
         },
         {
-          "spawn": "integ:awscli-asset:assert"
+          "spawn": "integ"
         }
       ]
     },
