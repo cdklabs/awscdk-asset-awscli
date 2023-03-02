@@ -16,7 +16,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   repositoryUrl: 'https://github.com/cdklabs/awscdk-asset-awscli.git',
   homepage: 'https://github.com/cdklabs/awscdk-asset-awscli#readme',
   autoApproveOptions: {
-    allowedUsernames: ['aws-cdk-automation', 'dependabot[bot]'],
+    allowedUsernames: ['aws-cdk-automation', 'dependabot[bot]', 'mergify[bot]'],
     secret: 'GITHUB_TOKEN',
   },
   autoApproveUpgrades: true,
