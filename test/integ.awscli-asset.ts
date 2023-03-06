@@ -1,16 +1,17 @@
 import * as path from 'path';
+import { IntegTest } from '@aws-cdk/integ-tests-alpha';
+import * as cdk from 'aws-cdk-lib';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
-import * as cdk from 'aws-cdk-lib/core';
 import * as cr from 'aws-cdk-lib/custom-resources';
+
 import { AwsCliAsset } from '../lib';
 
 /**
  * Test verifies that AWS CLI is invoked successfully inside Lambda runtime.
  */
-
 const app = new cdk.App();
 
-const stack = new cdk.Stack(app, 'lambda-layer-awscliv2-integ-stack');
+const stack = new cdk.Stack(app, 'lambda-layer-awscli-integ-stack');
 const asset = new AwsCliAsset(stack, 'layer-asset');
 const layer = new lambda.LayerVersion(stack, 'AwsCliLayer', {
   code: lambda.Code.fromBucket(asset.bucket, asset.s3ObjectKey),
@@ -40,4 +41,7 @@ for (const runtime of runtimes) {
   });
 }
 
-app.synth();
+new IntegTest(app, 'integ-test', {
+  testCases: [stack],
+  stackUpdateWorkflow: false, // don't think it's necessary to test the update workflow for this test
+});

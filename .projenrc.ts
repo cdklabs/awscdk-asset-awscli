@@ -1,29 +1,28 @@
-const { awscdk, JsonPatch } = require('projen');
-const { NpmAccess } = require('projen/lib/javascript');
+import { awscdk, DependencyType } from 'projen';
+import { NpmAccess } from 'projen/lib/javascript';
+import { WorkflowNoDockerPatch } from './projenrc/workflow-no-docker-patch';
 
 const MAJOR_VERSION = 2;
 const releaseWorkflowName = `release-awscli-v${MAJOR_VERSION}`;
 const defaultReleaseBranchName = `awscli-v${MAJOR_VERSION}/main`;
 
 const project = new awscdk.AwsCdkConstructLibrary({
+  projenrcTs: true,
   author: 'Amazon Web Services, Inc.',
+  authorAddress: 'aws-cdk-dev@amazon.com',
   cdkVersion: '2.0.0',
+  peerDependencyOptions: {
+    pinnedDevDependency: false,
+  },
   name: `@aws-cdk/asset-awscli-v${MAJOR_VERSION}`,
   description: 'An Asset construct that contains the AWS CLI, for use in Lambda Layers',
   repositoryUrl: 'https://github.com/cdklabs/awscdk-asset-awscli.git',
   homepage: 'https://github.com/cdklabs/awscdk-asset-awscli#readme',
   autoApproveOptions: {
-    allowedUsernames: ['aws-cdk-automation'],
+    allowedUsernames: ['aws-cdk-automation', 'dependabot[bot]', 'mergify[bot]'],
     secret: 'GITHUB_TOKEN',
   },
   autoApproveUpgrades: true,
-  workflowBootstrapSteps: [
-    {
-      // This step is required to allow the build workflow to build docker images.
-      name: 'Change permissions on /var/run/docker.sock',
-      run: 'sudo chown superchain /var/run/docker.sock',
-    },
-  ],
   npmAccess: NpmAccess.PUBLIC,
   releaseTagPrefix: `awscli-v${MAJOR_VERSION}`,
   releaseWorkflowName: releaseWorkflowName,
@@ -52,15 +51,38 @@ const project = new awscdk.AwsCdkConstructLibrary({
   },
 });
 
-// These patches are required to enable sudo commands in the workflows under `workflowBootstrapSteps`,
-// see `workflowBootstrapSteps` above for why a sudo command is needed.
-const buildWorkflow = project.tryFindObjectFile('.github/workflows/build.yml');
-buildWorkflow.patch(JsonPatch.add('/jobs/build/container/options', '--group-add sudo'));
-const releaseWorkflow = project.tryFindObjectFile(`.github/workflows/${releaseWorkflowName}.yml`);
-releaseWorkflow.patch(JsonPatch.add('/jobs/release/container/options', '--group-add sudo'));
-const upgradeWorkflow = project.tryFindObjectFile(`.github/workflows/upgrade-awscli-v${MAJOR_VERSION}-main.yml`);
-upgradeWorkflow.patch(JsonPatch.add('/jobs/upgrade/container/options', '--group-add sudo'));
+// We need a newer version of aws-cdk-lib testing.
+project.deps.addDependency('constructs@^10.0.5', DependencyType.DEVENV);
+project.deps.addDependency('aws-cdk-lib@^2.40.0', DependencyType.DEVENV);
+
+// Fix Docker on GitHub
+new WorkflowNoDockerPatch(project, { workflow: 'build' });
+new WorkflowNoDockerPatch(project, { workflow: 'release', workflowName: 'release-awscli-v1' });
+new WorkflowNoDockerPatch(project, { workflow: 'release', workflowName: 'release-awscli-v2' });
 
 project.preCompileTask.exec('layer/build.sh');
 
+// Integ Runner
+project.deps.addDependency('@aws-cdk/integ-runner@^2.45.0', DependencyType.DEVENV);
+project.deps.addDependency('@aws-cdk/integ-tests-alpha@latest', DependencyType.DEVENV);
+
+const integSnapshotTask = project.addTask('integ', {
+  description: 'Run integration snapshot tests',
+  exec: 'yarn integ-runner --language typescript',
+});
+
+project.addTask('integ:update', {
+  description: 'Run and update integration snapshot tests',
+  exec: 'yarn integ-runner --language typescript --update-on-failed',
+  receiveArgs: true,
+});
+
+const rosettaTask = project.addTask('rosetta:extract', {
+  description: 'Test rosetta extract',
+  exec: 'yarn --silent jsii-rosetta extract',
+});
+
+project.testTask.spawn(integSnapshotTask);
+project.postCompileTask.spawn(rosettaTask);
+project.addGitIgnore('.jsii.tabl.json');
 project.synth();
