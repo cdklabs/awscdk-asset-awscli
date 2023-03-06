@@ -40,6 +40,10 @@ junit.xml
 /dist/version.txt
 !/.github/workflows/release-awscli-v2.yml
 !/.mergify.yml
+<<<<<<< HEAD
+=======
+!/.github/workflows/upgrade-awscli-v1-main.yml
+>>>>>>> c95a8ef (chore: add awscli-v2 upgrade to default branch (#174))
 !/.github/workflows/upgrade-awscli-v2-main.yml
 !/.github/pull_request_template.md
 !/test/
