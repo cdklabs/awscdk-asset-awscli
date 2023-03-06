@@ -23,8 +23,6 @@ const project = new awscdk.AwsCdkConstructLibrary({
     secret: 'GITHUB_TOKEN',
   },
   autoApproveUpgrades: true,
-<<<<<<< HEAD
-=======
   depsUpgradeOptions: {
     workflowOptions: {
       branches: [
@@ -35,7 +33,6 @@ const project = new awscdk.AwsCdkConstructLibrary({
     },
   },
   majorVersion: 2,
->>>>>>> c95a8ef (chore: add awscli-v2 upgrade to default branch (#174))
   npmAccess: NpmAccess.PUBLIC,
   releaseTagPrefix: `awscli-v${MAJOR_VERSION}`,
   releaseWorkflowName: releaseWorkflowName,
