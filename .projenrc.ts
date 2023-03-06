@@ -23,6 +23,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
     secret: 'GITHUB_TOKEN',
   },
   autoApproveUpgrades: true,
+  majorVersion: 2,
   npmAccess: NpmAccess.PUBLIC,
   releaseTagPrefix: `awscli-v${MAJOR_VERSION}`,
   releaseWorkflowName: releaseWorkflowName,
