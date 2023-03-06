@@ -1,12 +1,14 @@
-const { awscdk, JsonPatch } = require('projen');
-const { NpmAccess } = require('projen/lib/javascript');
+import { awscdk, JsonPatch } from 'projen';
+import { NpmAccess } from 'projen/lib/javascript';
 
 const MAJOR_VERSION = 2;
 const releaseWorkflowName = `release-awscli-v${MAJOR_VERSION}`;
 const defaultReleaseBranchName = `awscli-v${MAJOR_VERSION}/main`;
 
 const project = new awscdk.AwsCdkConstructLibrary({
+  projenrcTs: true,
   author: 'Amazon Web Services, Inc.',
+  authorAddress: 'aws-cdk-dev@amazon.com',
   cdkVersion: '2.0.0',
   name: `@aws-cdk/asset-awscli-v${MAJOR_VERSION}`,
   description: 'An Asset construct that contains the AWS CLI, for use in Lambda Layers',
@@ -54,11 +56,11 @@ const project = new awscdk.AwsCdkConstructLibrary({
 
 // These patches are required to enable sudo commands in the workflows under `workflowBootstrapSteps`,
 // see `workflowBootstrapSteps` above for why a sudo command is needed.
-const buildWorkflow = project.tryFindObjectFile('.github/workflows/build.yml');
+const buildWorkflow = project.tryFindObjectFile('.github/workflows/build.yml')!;
 buildWorkflow.patch(JsonPatch.add('/jobs/build/container/options', '--group-add sudo'));
-const releaseWorkflow = project.tryFindObjectFile(`.github/workflows/${releaseWorkflowName}.yml`);
+const releaseWorkflow = project.tryFindObjectFile(`.github/workflows/${releaseWorkflowName}.yml`)!;
 releaseWorkflow.patch(JsonPatch.add('/jobs/release/container/options', '--group-add sudo'));
-const upgradeWorkflow = project.tryFindObjectFile(`.github/workflows/upgrade-awscli-v${MAJOR_VERSION}-main.yml`);
+const upgradeWorkflow = project.tryFindObjectFile(`.github/workflows/upgrade-awscli-v${MAJOR_VERSION}-main.yml`)!;
 upgradeWorkflow.patch(JsonPatch.add('/jobs/upgrade/container/options', '--group-add sudo'));
 
 project.preCompileTask.exec('layer/build.sh');
