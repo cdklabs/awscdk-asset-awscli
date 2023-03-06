@@ -11,7 +11,6 @@
 
 <!--END STABILITY BANNER-->
 
-
 This module exports a single class called `AwsCliAsset` which is an `s3_assets.Asset` that bundles the AWS CLI v2.
 
 Usage:
@@ -19,6 +18,9 @@ Usage:
 ```ts
 // AwsCliLayer bundles the AWS CLI in a lambda layer
 import { AwsCliAsset } from '@aws-cdk/asset-awscli-v2';
+import * as lambda from 'aws-cdk-lib/aws-lambda';
+import * as s3_assets from 'aws-cdk-lib/aws-s3-assets';
+import { FileSystem } from 'aws-cdk-lib';
 
 declare const fn: lambda.Function;
 const awscli = new AwsCliAsset(this, 'AwsCliCode');

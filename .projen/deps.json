@@ -21,21 +21,6 @@
       "type": "build"
     },
     {
-      "name": "aws-cdk-lib",
-      "version": "2.0.0",
-      "type": "build"
-    },
-    {
-      "name": "aws-cdk",
-      "version": "^2",
-      "type": "build"
-    },
-    {
-      "name": "constructs",
-      "version": "10.0.5",
-      "type": "build"
-    },
-    {
       "name": "eslint-import-resolver-node",
       "type": "build"
     },
@@ -104,6 +89,26 @@
     {
       "name": "typescript",
       "type": "build"
+    },
+    {
+      "name": "@aws-cdk/integ-runner",
+      "version": "^2.45.0",
+      "type": "devenv"
+    },
+    {
+      "name": "@aws-cdk/integ-tests-alpha",
+      "version": "latest",
+      "type": "devenv"
+    },
+    {
+      "name": "aws-cdk-lib",
+      "version": "^2.40.0",
+      "type": "devenv"
+    },
+    {
+      "name": "constructs",
+      "version": "^10.0.5",
+      "type": "devenv"
     },
     {
       "name": "@types/babel__traverse",
