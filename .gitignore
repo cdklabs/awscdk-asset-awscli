@@ -43,6 +43,7 @@ junit.xml
 !/.github/workflows/upgrade-awscli-v1-main.yml
 !/.github/workflows/upgrade-awscli-v2-main.yml
 !/.github/pull_request_template.md
+!/.npmrc
 !/test/
 !/tsconfig.dev.json
 !/src/
