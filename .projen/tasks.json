@@ -153,7 +153,8 @@
       "description": "Run integration snapshot tests",
       "steps": [
         {
-          "exec": "yarn integ-runner --language typescript"
+          "exec": "yarn integ-runner --language typescript",
+          "receiveArgs": true
         }
       ]
     },
@@ -298,7 +299,7 @@
       "description": "Test rosetta extract",
       "steps": [
         {
-          "exec": "yarn --silent jsii-rosetta extract"
+          "exec": "yarn --silent jsii-rosetta extract --strict"
         }
       ]
     },
@@ -307,7 +308,7 @@
       "description": "Run tests",
       "steps": [
         {
-          "exec": "jest --passWithNoTests --updateSnapshot",
+          "exec": "jest --passWithNoTests --coverageProvider=v8 --ci",
           "receiveArgs": true
         },
         {
@@ -315,6 +316,16 @@
         },
         {
           "spawn": "integ"
+        }
+      ]
+    },
+    "test:update": {
+      "name": "test:update",
+      "description": "Update jest snapshots",
+      "steps": [
+        {
+          "exec": "jest --updateSnapshot --passWithNoTests --coverageProvider=v8 --ci",
+          "receiveArgs": true
         }
       ]
     },

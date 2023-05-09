@@ -1,4 +1,5 @@
-import { awscdk, DependencyType } from 'projen';
+import { DependencyType } from 'projen';
+import { CdklabsConstructLibrary } from 'cdklabs-projen-project-types';
 import { NpmAccess } from 'projen/lib/javascript';
 import { WorkflowNoDockerPatch } from './projenrc/workflow-no-docker-patch';
 
@@ -6,11 +7,16 @@ const MAJOR_VERSION = 1;
 const releaseWorkflowName = `release-awscli-v${MAJOR_VERSION}`;
 const defaultReleaseBranchName = `awscli-v${MAJOR_VERSION}/main`;
 
-const project = new awscdk.AwsCdkConstructLibrary({
+const project = new CdklabsConstructLibrary({
   projenrcTs: true,
+  enablePRAutoMerge: true,
+  setNodeEngineVersion: false,
+  workflowNodeVersion: '16.x',
+  minNodeVersion: '16.14.0',
   author: 'Amazon Web Services, Inc.',
   authorAddress: 'aws-cdk-dev@amazon.com',
   cdkVersion: '2.0.0',
+  private: false,
   name: `@aws-cdk/asset-awscli-v${MAJOR_VERSION}`,
   description: 'A library that contains the AWS CLI for use in Lambda Layers',
   repositoryUrl: 'https://github.com/cdklabs/awscdk-asset-awscli.git',
@@ -19,6 +25,9 @@ const project = new awscdk.AwsCdkConstructLibrary({
     allowedUsernames: ['aws-cdk-automation', 'dependabot[bot]', 'mergify[bot]'],
     secret: 'GITHUB_TOKEN',
   },
+  devDeps: [
+    'cdklabs-projen-project-types',
+  ],
   autoApproveUpgrades: true,
   depsUpgradeOptions: {
     workflowOptions: {
@@ -73,23 +82,4 @@ new WorkflowNoDockerPatch(project, { workflow: 'release', workflowName: 'release
 
 project.preCompileTask.exec('layer/build.sh');
 
-const integSnapshotTask = project.addTask('integ', {
-  description: 'Run integration snapshot tests',
-  exec: 'yarn integ-runner --language typescript',
-});
-
-project.addTask('integ:update', {
-  description: 'Run and update integration snapshot tests',
-  exec: 'yarn integ-runner --language typescript --update-on-failed',
-  receiveArgs: true,
-});
-
-const rosettaTask = project.addTask('rosetta:extract', {
-  description: 'Test rosetta extract',
-  exec: 'yarn --silent jsii-rosetta extract',
-});
-
-project.testTask.spawn(integSnapshotTask);
-project.postCompileTask.spawn(rosettaTask);
-project.addGitIgnore('.jsii.tabl.json');
 project.synth();
