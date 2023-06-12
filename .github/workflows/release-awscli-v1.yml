@@ -16,10 +16,6 @@ jobs:
     env:
       CI: "true"
     steps:
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 14.x
       - name: Checkout
         uses: actions/checkout@v3
         with:
@@ -31,7 +27,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 14.18.0
       - name: Install dependencies
         run: yarn install --check-files --frozen-lockfile
       - name: release:awscli-v1/main
@@ -59,7 +55,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 14.18.0
       - name: Download build artifacts
         uses: actions/download-artifact@v3
         with:
@@ -88,7 +84,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 14.18.0
       - name: Download build artifacts
         uses: actions/download-artifact@v3
         with:
@@ -125,7 +121,7 @@ jobs:
           java-version: 11.x
       - uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 14.18.0
       - name: Download build artifacts
         uses: actions/download-artifact@v3
         with:
@@ -161,7 +157,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 14.18.0
       - uses: actions/setup-python@v4
         with:
           python-version: 3.x
@@ -196,7 +192,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 14.18.0
       - uses: actions/setup-dotnet@v3
         with:
           dotnet-version: 3.x
@@ -230,7 +226,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 14.18.0
       - uses: actions/setup-go@v3
         with:
           go-version: ^1.16.0
