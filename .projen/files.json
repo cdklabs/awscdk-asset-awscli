@@ -9,6 +9,7 @@
     ".github/workflows/release-awscli-v2.yml",
     ".github/workflows/upgrade-awscli-v1-main.yml",
     ".github/workflows/upgrade-awscli-v2-main.yml",
+    ".github/workflows/upgrade-cdklabs-projen-project-types-awscli-v2-main.yml",
     ".gitignore",
     ".mergify.yml",
     ".npmrc",

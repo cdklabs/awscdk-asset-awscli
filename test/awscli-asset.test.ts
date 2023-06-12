@@ -1,7 +1,7 @@
 import { Stack } from 'aws-cdk-lib';
 import { Template } from 'aws-cdk-lib/assertions';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
-import { AwsCliAsset } from '../lib';
+import { AwsCliAsset } from '../src';
 
 test('synthesized to a layer version', () => {
   //GIVEN
