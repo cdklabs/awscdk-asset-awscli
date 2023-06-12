@@ -33,13 +33,14 @@
     "test:watch": "npx projen test:watch",
     "unbump": "npx projen unbump",
     "upgrade": "npx projen upgrade",
+    "upgrade-cdklabs-projen-project-types": "npx projen upgrade-cdklabs-projen-project-types",
     "watch": "npx projen watch",
     "projen": "npx projen"
   },
   "author": {
-    "name": "Amazon Web Services, Inc.",
+    "name": "Amazon Web Services",
     "email": "aws-cdk-dev@amazon.com",
-    "organization": false
+    "organization": true
   },
   "devDependencies": {
     "@aws-cdk/integ-runner": "^2.45.0",
@@ -49,6 +50,7 @@
     "@typescript-eslint/eslint-plugin": "^5",
     "@typescript-eslint/parser": "^5",
     "aws-cdk-lib": "^2.0.0",
+    "cdklabs-projen-project-types": "^0.1.135",
     "constructs": "^10.0.5",
     "eslint": "^8",
     "eslint-import-resolver-node": "^0.3.7",
@@ -61,7 +63,7 @@
     "jsii-docgen": "^7.2.9",
     "jsii-pacmak": "^1.82.0",
     "npm-check-updates": "^16",
-    "projen": "^0.71.68",
+    "projen": "^0.71.90",
     "standard-version": "^9",
     "ts-jest": "^27",
     "ts-node": "^10.9.1",
