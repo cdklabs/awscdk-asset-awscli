@@ -4,7 +4,7 @@ import * as cdk from 'aws-cdk-lib';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import * as cr from 'aws-cdk-lib/custom-resources';
 
-import { AwsCliAsset } from '../lib';
+import { AwsCliAsset } from '../src';
 
 /**
  * Test verifies that AWS CLI is invoked successfully inside Lambda runtime.

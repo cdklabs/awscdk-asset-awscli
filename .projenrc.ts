@@ -1,12 +1,14 @@
-import { awscdk, DependencyType } from 'projen';
-import { NpmAccess } from 'projen/lib/javascript';
-import { WorkflowNoDockerPatch } from './projenrc/workflow-no-docker-patch';
+import { CdklabsConstructLibrary } from 'cdklabs-projen-project-types';
+import { DependencyType } from 'projen';
 
 const MAJOR_VERSION = 2;
 const releaseWorkflowName = `release-awscli-v${MAJOR_VERSION}`;
 const defaultReleaseBranchName = `awscli-v${MAJOR_VERSION}/main`;
 
-const project = new awscdk.AwsCdkConstructLibrary({
+const project = new CdklabsConstructLibrary({
+  setNodeEngineVersion: false,
+  stability: 'stable',
+  private: false,
   projenrcTs: true,
   author: 'Amazon Web Services, Inc.',
   authorAddress: 'aws-cdk-dev@amazon.com',
@@ -33,10 +35,12 @@ const project = new awscdk.AwsCdkConstructLibrary({
     },
   },
   majorVersion: 2,
-  npmAccess: NpmAccess.PUBLIC,
   releaseTagPrefix: `awscli-v${MAJOR_VERSION}`,
   releaseWorkflowName: releaseWorkflowName,
   defaultReleaseBranch: defaultReleaseBranchName,
+  workflowNodeVersion: '16.x',
+  minNodeVersion: '16.0.0',
+  jsiiVersion: '^5',
   publishToPypi: {
     distName: `aws-cdk.asset-awscli-v${MAJOR_VERSION}`,
     module: `aws_cdk.asset_awscli_v${MAJOR_VERSION}`,
@@ -64,35 +68,8 @@ const project = new awscdk.AwsCdkConstructLibrary({
 // We need a newer version of aws-cdk-lib testing.
 project.deps.addDependency('constructs@^10.0.5', DependencyType.DEVENV);
 project.deps.addDependency('aws-cdk-lib@^2.40.0', DependencyType.DEVENV);
-
-// Fix Docker on GitHub
-new WorkflowNoDockerPatch(project, { workflow: 'build' });
-new WorkflowNoDockerPatch(project, { workflow: 'release', workflowName: 'release-awscli-v1' });
-new WorkflowNoDockerPatch(project, { workflow: 'release', workflowName: 'release-awscli-v2' });
+project.deps.addDependency('jsii-rosetta@^5', DependencyType.DEVENV);
 
 project.preCompileTask.exec('layer/build.sh');
 
-// Integ Runner
-project.deps.addDependency('@aws-cdk/integ-runner@^2.45.0', DependencyType.DEVENV);
-project.deps.addDependency('@aws-cdk/integ-tests-alpha@latest', DependencyType.DEVENV);
-
-const integSnapshotTask = project.addTask('integ', {
-  description: 'Run integration snapshot tests',
-  exec: 'yarn integ-runner --language typescript',
-});
-
-project.addTask('integ:update', {
-  description: 'Run and update integration snapshot tests',
-  exec: 'yarn integ-runner --language typescript --update-on-failed',
-  receiveArgs: true,
-});
-
-const rosettaTask = project.addTask('rosetta:extract', {
-  description: 'Test rosetta extract',
-  exec: 'yarn --silent jsii-rosetta extract',
-});
-
-project.testTask.spawn(integSnapshotTask);
-project.postCompileTask.spawn(rosettaTask);
-project.addGitIgnore('.jsii.tabl.json');
 project.synth();

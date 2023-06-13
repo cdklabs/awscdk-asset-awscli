@@ -2,7 +2,6 @@
   "dependencies": [
     {
       "name": "@types/jest",
-      "version": "^27",
       "type": "build"
     },
     {
@@ -18,6 +17,10 @@
     {
       "name": "@typescript-eslint/parser",
       "version": "^5",
+      "type": "build"
+    },
+    {
+      "name": "cdklabs-projen-project-types",
       "type": "build"
     },
     {
@@ -38,13 +41,12 @@
       "type": "build"
     },
     {
-      "name": "jest-junit",
-      "version": "^15",
+      "name": "jest",
       "type": "build"
     },
     {
-      "name": "jest",
-      "version": "^27",
+      "name": "jest-junit",
+      "version": "^15",
       "type": "build"
     },
     {
@@ -61,7 +63,7 @@
     },
     {
       "name": "jsii",
-      "version": "1.x",
+      "version": "^5",
       "type": "build"
     },
     {
@@ -80,7 +82,6 @@
     },
     {
       "name": "ts-jest",
-      "version": "^27",
       "type": "build"
     },
     {
@@ -93,7 +94,7 @@
     },
     {
       "name": "@aws-cdk/integ-runner",
-      "version": "^2.45.0",
+      "version": "latest",
       "type": "devenv"
     },
     {
@@ -112,14 +113,9 @@
       "type": "devenv"
     },
     {
-      "name": "@types/babel__traverse",
-      "version": "7.18.2",
-      "type": "override"
-    },
-    {
-      "name": "@types/prettier",
-      "version": "2.6.0",
-      "type": "override"
+      "name": "jsii-rosetta",
+      "version": "^5",
+      "type": "devenv"
     },
     {
       "name": "aws-cdk-lib",
