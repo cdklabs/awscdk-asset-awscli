@@ -6,8 +6,10 @@ const releaseWorkflowName = `release-awscli-v${MAJOR_VERSION}`;
 const defaultReleaseBranchName = `awscli-v${MAJOR_VERSION}/main`;
 
 const project = new CdklabsConstructLibrary({
-  projenrcTs: true,
+  setNodeEngineVersion: false,
+  stability: 'stable',
   private: false,
+  projenrcTs: true,
   author: 'Amazon Web Services, Inc.',
   authorAddress: 'aws-cdk-dev@amazon.com',
   cdkVersion: '2.0.0',
@@ -35,8 +37,7 @@ const project = new CdklabsConstructLibrary({
   defaultReleaseBranch: defaultReleaseBranchName,
   workflowNodeVersion: '16.x',
   minNodeVersion: '16.0.0',
-  stability: 'stable',
-  setNodeEngineVersion: false,
+  jsiiVersion: '^5',
   publishToPypi: {
     distName: `aws-cdk.asset-awscli-v${MAJOR_VERSION}`,
     module: `aws_cdk.asset_awscli_v${MAJOR_VERSION}`,
@@ -67,8 +68,15 @@ project.deps.removeDependency('constructs', DependencyType.PEER);
 project.deps.addDependency('constructs@^10.0.5', DependencyType.DEVENV);
 project.deps.removeDependency('aws-cdk-lib', DependencyType.PEER);
 project.deps.addDependency('aws-cdk-lib@^2.0.0', DependencyType.DEVENV);
-project.deps.addDependency('@aws-cdk/integ-runner@^2.45.0', DependencyType.DEVENV);
-project.deps.addDependency('@aws-cdk/integ-tests-alpha@^2.45.0-alpha.0', DependencyType.DEVENV);
+
+// Rosetta
+project.deps.addDependency('jsii-rosetta@^5', DependencyType.DEVENV);
+project.package.addField('jsiiRosetta', {
+  exampleDependencies: {
+    'aws-cdk-lib': '^2.0.0',
+    'constructs': '^10.0.5',
+  },
+});
 
 project.preCompileTask.exec('layer/build.sh');
 
