@@ -40,6 +40,7 @@ const project = new CdklabsConstructLibrary({
   defaultReleaseBranch: defaultReleaseBranchName,
   workflowNodeVersion: '16.x',
   minNodeVersion: '16.0.0',
+  jsiiVersion: '^5',
   publishToPypi: {
     distName: `aws-cdk.asset-awscli-v${MAJOR_VERSION}`,
     module: `aws_cdk.asset_awscli_v${MAJOR_VERSION}`,
@@ -67,6 +68,7 @@ const project = new CdklabsConstructLibrary({
 // We need a newer version of aws-cdk-lib testing.
 project.deps.addDependency('constructs@^10.0.5', DependencyType.DEVENV);
 project.deps.addDependency('aws-cdk-lib@^2.40.0', DependencyType.DEVENV);
+project.deps.addDependency('jsii-rosetta@^5', DependencyType.DEVENV);
 
 project.preCompileTask.exec('layer/build.sh');
 
