@@ -7,7 +7,7 @@
      "S3Bucket": {
       "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
      },
-     "S3Key": "1807c34a8a05aace76960b8b3bc39ef8eb1d559f4e210a5044af8cf48c95d3b9.zip"
+     "S3Key": "f6e7a48103c975a7fc7167d1b6972c23e0e2a467841e5cca49dd9f911febe6f7.zip"
     },
     "Description": "/opt/awscli/aws"
    }
@@ -152,7 +152,7 @@
      "S3Bucket": {
       "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
      },
-     "S3Key": "53c95d71cfd280747d971a38505aea07f812fdba75874a090358a2fc4f58f79b.zip"
+     "S3Key": "8e3d635893ea17fa3158623489cd42c680fad925b38de1ef51cb10d84f6e245e.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -172,7 +172,15 @@
      }
     },
     "Handler": "framework.onEvent",
-    "Runtime": "nodejs14.x",
+    "Runtime": {
+     "Fn::FindInMap": [
+      "DefaultCrNodeVersionMap",
+      {
+       "Ref": "AWS::Region"
+      },
+      "value"
+     ]
+    },
     "Timeout": 900
    },
    "DependsOn": [
@@ -333,7 +341,7 @@
      "S3Bucket": {
       "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
      },
-     "S3Key": "53c95d71cfd280747d971a38505aea07f812fdba75874a090358a2fc4f58f79b.zip"
+     "S3Key": "8e3d635893ea17fa3158623489cd42c680fad925b38de1ef51cb10d84f6e245e.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -353,7 +361,15 @@
      }
     },
     "Handler": "framework.onEvent",
-    "Runtime": "nodejs14.x",
+    "Runtime": {
+     "Fn::FindInMap": [
+      "DefaultCrNodeVersionMap",
+      {
+       "Ref": "AWS::Region"
+      },
+      "value"
+     ]
+    },
     "Timeout": 900
    },
    "DependsOn": [
@@ -514,7 +530,7 @@
      "S3Bucket": {
       "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
      },
-     "S3Key": "53c95d71cfd280747d971a38505aea07f812fdba75874a090358a2fc4f58f79b.zip"
+     "S3Key": "8e3d635893ea17fa3158623489cd42c680fad925b38de1ef51cb10d84f6e245e.zip"
     },
     "Role": {
      "Fn::GetAtt": [
@@ -534,7 +550,15 @@
      }
     },
     "Handler": "framework.onEvent",
-    "Runtime": "nodejs14.x",
+    "Runtime": {
+     "Fn::FindInMap": [
+      "DefaultCrNodeVersionMap",
+      {
+       "Ref": "AWS::Region"
+      },
+      "value"
+     ]
+    },
     "Timeout": 900
    },
    "DependsOn": [
@@ -554,6 +578,109 @@
    },
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete"
+  }
+ },
+ "Mappings": {
+  "DefaultCrNodeVersionMap": {
+   "af-south-1": {
+    "value": "nodejs16.x"
+   },
+   "ap-east-1": {
+    "value": "nodejs16.x"
+   },
+   "ap-northeast-1": {
+    "value": "nodejs16.x"
+   },
+   "ap-northeast-2": {
+    "value": "nodejs16.x"
+   },
+   "ap-northeast-3": {
+    "value": "nodejs16.x"
+   },
+   "ap-south-1": {
+    "value": "nodejs16.x"
+   },
+   "ap-south-2": {
+    "value": "nodejs16.x"
+   },
+   "ap-southeast-1": {
+    "value": "nodejs16.x"
+   },
+   "ap-southeast-2": {
+    "value": "nodejs16.x"
+   },
+   "ap-southeast-3": {
+    "value": "nodejs16.x"
+   },
+   "ca-central-1": {
+    "value": "nodejs16.x"
+   },
+   "cn-north-1": {
+    "value": "nodejs16.x"
+   },
+   "cn-northwest-1": {
+    "value": "nodejs16.x"
+   },
+   "eu-central-1": {
+    "value": "nodejs16.x"
+   },
+   "eu-central-2": {
+    "value": "nodejs16.x"
+   },
+   "eu-north-1": {
+    "value": "nodejs16.x"
+   },
+   "eu-south-1": {
+    "value": "nodejs16.x"
+   },
+   "eu-south-2": {
+    "value": "nodejs16.x"
+   },
+   "eu-west-1": {
+    "value": "nodejs16.x"
+   },
+   "eu-west-2": {
+    "value": "nodejs16.x"
+   },
+   "eu-west-3": {
+    "value": "nodejs16.x"
+   },
+   "me-central-1": {
+    "value": "nodejs16.x"
+   },
+   "me-south-1": {
+    "value": "nodejs16.x"
+   },
+   "sa-east-1": {
+    "value": "nodejs16.x"
+   },
+   "us-east-1": {
+    "value": "nodejs16.x"
+   },
+   "us-east-2": {
+    "value": "nodejs16.x"
+   },
+   "us-gov-east-1": {
+    "value": "nodejs16.x"
+   },
+   "us-gov-west-1": {
+    "value": "nodejs16.x"
+   },
+   "us-iso-east-1": {
+    "value": "nodejs14.x"
+   },
+   "us-iso-west-1": {
+    "value": "nodejs14.x"
+   },
+   "us-isob-east-1": {
+    "value": "nodejs14.x"
+   },
+   "us-west-1": {
+    "value": "nodejs16.x"
+   },
+   "us-west-2": {
+    "value": "nodejs16.x"
+   }
   }
  },
  "Parameters": {

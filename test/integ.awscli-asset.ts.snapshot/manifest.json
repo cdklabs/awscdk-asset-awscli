@@ -1,5 +1,5 @@
 {
-  "version": "30.1.0",
+  "version": "32.0.0",
   "artifacts": {
     "lambda-layer-awscli-integ-stack.assets": {
       "type": "cdk:asset-manifest",
@@ -17,7 +17,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/f67092319b2e693eee589e5233581a50a17f91a97ce46de820112b0d1ff72517.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/da5af3226c0206bd884c17cabde9a61d84921db733abead4fea85e3cf8c50caa.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -67,6 +67,12 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "Providerpython37frameworkonEvent3AA4F69E"
+          }
+        ],
+        "/lambda-layer-awscli-integ-stack/DefaultCrNodeVersionMap": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DefaultCrNodeVersionMap"
           }
         ],
         "/lambda-layer-awscli-integ-stack/CustomResourcepython3.7/Default": [
