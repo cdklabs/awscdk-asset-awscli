@@ -1,5 +1,5 @@
 import { CdklabsConstructLibrary } from 'cdklabs-projen-project-types';
-import { DependencyType } from 'projen';
+import { DependencyType, ReleasableCommits } from 'projen';
 
 const MAJOR_VERSION = 2;
 const releaseWorkflowName = `release-awscli-v${MAJOR_VERSION}`;
@@ -38,6 +38,9 @@ const project = new CdklabsConstructLibrary({
   releaseTagPrefix: `awscli-v${MAJOR_VERSION}`,
   releaseWorkflowName: releaseWorkflowName,
   defaultReleaseBranch: defaultReleaseBranchName,
+  // If we don't do this we release the devDependency updates that happen every day, which blows out
+  // our PyPI storage budget even though there aren't any functional changes.
+  releasableCommits: ReleasableCommits.featuresAndFixes(),
   workflowNodeVersion: '16.x',
   minNodeVersion: '16.0.0',
   jsiiVersion: '^5',
