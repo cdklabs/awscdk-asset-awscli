@@ -25,6 +25,7 @@ jobs:
           sudo apt update
           sudo apt install -y jq
           pipx install semver
+          pipx ensurepath
       - name: Check for awscli version upgrades
         run: python3 .github/scripts/upgrade-awscli-version.py
       - id: create_patch
