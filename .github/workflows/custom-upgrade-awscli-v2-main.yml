@@ -24,7 +24,7 @@ jobs:
         run: |
           sudo apt update
           sudo apt install -y jq
-          pip install semver
+          pipx install semver
       - name: Check for awscli version upgrades
         run: python3 .github/scripts/upgrade-awscli-version.py
       - id: create_patch
