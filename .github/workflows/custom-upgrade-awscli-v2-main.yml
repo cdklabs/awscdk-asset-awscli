@@ -24,9 +24,13 @@ jobs:
         run: |
           sudo apt update
           sudo apt install -y jq
-          pip install semver
       - name: Check for awscli version upgrades
-        run: python3 .github/scripts/upgrade-awscli-version.py
+        run: | 
+          cd .github/scripts
+          python3 -m venv .venv
+          source .venv/bin/activate
+          pip install -r requirements.txt
+          python3 upgrade-awscli-version.py
       - id: create_patch
         name: Find mutations
         run: |-
