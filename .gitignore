@@ -40,8 +40,6 @@ junit.xml
 /dist/version.txt
 !/.github/workflows/release-awscli-v2.yml
 !/.mergify.yml
-!/.github/workflows/upgrade-awscli-v1-main.yml
-!/.github/workflows/upgrade-awscli-v2-main.yml
 !/.github/pull_request_template.md
 !/test/
 !/tsconfig.dev.json
@@ -55,3 +53,5 @@ tsconfig.json
 .jsii.tabl.json
 !/rosetta/default.ts-fixture
 !/.github/workflows/upgrade-cdklabs-projen-project-types-awscli-v2-main.yml
+!/.github/workflows/upgrade-awscli-v2-main.yml
+!/.github/workflows/upgrade-dev-deps-awscli-v2-main.yml
