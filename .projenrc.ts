@@ -38,7 +38,6 @@ const project = new CdklabsConstructLibrary({
   // If we don't do this we release the devDependency updates that happen every day, which blows out
   // our PyPI storage budget even though there aren't any functional changes.
   releasableCommits: ReleasableCommits.featuresAndFixes(),
-  workflowNodeVersion: '16.x',
   minNodeVersion: '16.0.0',
   jsiiVersion: '^5',
   publishToPypi: {
