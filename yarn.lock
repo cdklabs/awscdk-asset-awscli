@@ -1403,7 +1403,7 @@ case@1.6.3, case@^1.6.3:
   resolved "https://registry.yarnpkg.com/case/-/case-1.6.3.tgz#0a4386e3e9825351ca2e6216c60467ff5f1ea1c9"
   integrity sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==
 
-cdklabs-projen-project-types@^0.1.186:
+cdklabs-projen-project-types@^0.1.188:
   version "0.1.188"
   resolved "https://registry.yarnpkg.com/cdklabs-projen-project-types/-/cdklabs-projen-project-types-0.1.188.tgz#12538d1055f2faa1f00dbc93a31eca0e73558431"
   integrity sha512-tnsjh0VLH575vJJUOCgx9893kN1iZ/8fO8KZqVmQKCmDPUFkjhB3lJDP1uD9FGOZfyUSn8r2thFmBQiLn71u5g==
@@ -3386,7 +3386,7 @@ jsesc@^2.5.1:
   resolved "https://registry.yarnpkg.com/jsesc/-/jsesc-2.5.2.tgz#80564d2e483dacf6e8ef209650a67df3f0c283a4"
   integrity sha512-OYu7XEzjkCQ3C5Ps3QIZsQfNpqoJyZZA99wd9aWd05NCtC5pWOkShK2mkL6HXQR6/Cy2lbNdPlZBpuQHXE63gA==
 
-jsii-diff@^1.93.0:
+jsii-diff@^1.94.0:
   version "1.94.0"
   resolved "https://registry.yarnpkg.com/jsii-diff/-/jsii-diff-1.94.0.tgz#fb1535f90b3fff45f0caa9e97bd907260f0cac4f"
   integrity sha512-jbiMsbzi0wrBl8tuXB+HvYiIHDQfj0Ktrc7bshhzung+POnT5QCU3M0/MwNr2V+u4F0DDCvO3PFML26eXABA5w==
@@ -3413,7 +3413,7 @@ jsii-docgen@^7.2.9:
     semver "^7.5.0"
     yargs "^16.2.0"
 
-jsii-pacmak@^1.93.0:
+jsii-pacmak@^1.94.0:
   version "1.94.0"
   resolved "https://registry.yarnpkg.com/jsii-pacmak/-/jsii-pacmak-1.94.0.tgz#42f824dabaea95d4b5371b492bf069af758f91f8"
   integrity sha512-L5s3RZ0AOx1XfAhXsEjyeCteVrw6nwJLynL+t93eXVDcw7NFT7S0fCFXzQ4lpYQ23P/yVpSIy32J3zpUOf4uDQ==
@@ -4155,10 +4155,10 @@ process-nextick-args@~2.0.0:
   resolved "https://registry.yarnpkg.com/process-nextick-args/-/process-nextick-args-2.0.1.tgz#7820d9b16120cc55ca9ae7792680ae7dba6d7fe2"
   integrity sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==
 
-projen@^0.77.6:
-  version "0.77.6"
-  resolved "https://registry.yarnpkg.com/projen/-/projen-0.77.6.tgz#480c1af4246bba55e8d0732ff7a9d1804ce414be"
-  integrity sha512-nXbbDr81UjfLjCfVfHGfGPIjiN7INSyMUa52FYupX0TmybMq+CnvX8o0O45feOLLhsifNq7EHXtF+hgBtpBb8A==
+projen@^0.79.21:
+  version "0.79.21"
+  resolved "https://registry.yarnpkg.com/projen/-/projen-0.79.21.tgz#8c0f769d2f8052f9dce95ddf9209ec5d7bccda2e"
+  integrity sha512-q1tdKuFMW9dIuPU27PqHs5iVAWWQ+9BCbLjihfnEkaCaPMl7F8k//+d7DpJcZhghMiYLcmBdr3N8jKVtw8iDeQ==
   dependencies:
     "@iarna/toml" "^2.2.5"
     case "^1.6.3"
@@ -4169,7 +4169,7 @@ projen@^0.77.6:
     fast-json-patch "^3.1.1"
     glob "^8"
     ini "^2.0.0"
-    semver "^7.5.4"
+    semver "^7.6.0"
     shx "^0.3.4"
     xmlbuilder2 "^3.1.1"
     yaml "^2.2.2"
