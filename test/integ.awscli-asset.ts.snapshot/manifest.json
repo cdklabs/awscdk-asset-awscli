@@ -1,5 +1,5 @@
 {
-  "version": "32.0.0",
+  "version": "36.0.0",
   "artifacts": {
     "lambda-layer-awscli-integ-stack.assets": {
       "type": "cdk:asset-manifest",
@@ -14,10 +14,11 @@
       "environment": "aws://unknown-account/unknown-region",
       "properties": {
         "templateFile": "lambda-layer-awscli-integ-stack.template.json",
+        "terminationProtection": false,
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/f7228597a8fa5bcb8715152b22534836ace23350ffc29dd3f55093fb0da50462.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/19de14e6f817370295133c62e18327d3f524b36f1c2e75413f290865a4f8c875.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -37,42 +38,6 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "AwsCliLayerF44AAF94"
-          }
-        ],
-        "/lambda-layer-awscli-integ-stack/Lambda$python3.7/ServiceRole/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "Lambdapython37ServiceRoleB5A704D4"
-          }
-        ],
-        "/lambda-layer-awscli-integ-stack/Lambda$python3.7/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "Lambdapython3780349E0A"
-          }
-        ],
-        "/lambda-layer-awscli-integ-stack/Providerpython3.7/framework-onEvent/ServiceRole/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "Providerpython37frameworkonEventServiceRole9EA6B2B0"
-          }
-        ],
-        "/lambda-layer-awscli-integ-stack/Providerpython3.7/framework-onEvent/ServiceRole/DefaultPolicy/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "Providerpython37frameworkonEventServiceRoleDefaultPolicyA9099DC2"
-          }
-        ],
-        "/lambda-layer-awscli-integ-stack/Providerpython3.7/framework-onEvent/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "Providerpython37frameworkonEvent3AA4F69E"
-          }
-        ],
-        "/lambda-layer-awscli-integ-stack/CustomResourcepython3.7/Default": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "CustomResourcepython37"
           }
         ],
         "/lambda-layer-awscli-integ-stack/Lambda$python3.9/ServiceRole/Resource": [
@@ -105,10 +70,124 @@
             "data": "Providerpython39frameworkonEvent00AFA742"
           }
         ],
+        "/lambda-layer-awscli-integ-stack/LatestNodeRuntimeMap": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LatestNodeRuntimeMap"
+          }
+        ],
         "/lambda-layer-awscli-integ-stack/CustomResourcepython3.9/Default": [
           {
             "type": "aws:cdk:logicalId",
             "data": "CustomResourcepython39"
+          }
+        ],
+        "/lambda-layer-awscli-integ-stack/Lambda$python3.10/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Lambdapython310ServiceRoleD185E0B6"
+          }
+        ],
+        "/lambda-layer-awscli-integ-stack/Lambda$python3.10/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Lambdapython310815BD7E9"
+          }
+        ],
+        "/lambda-layer-awscli-integ-stack/Providerpython3.10/framework-onEvent/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Providerpython310frameworkonEventServiceRoleB6DF2879"
+          }
+        ],
+        "/lambda-layer-awscli-integ-stack/Providerpython3.10/framework-onEvent/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Providerpython310frameworkonEventServiceRoleDefaultPolicyC0E8697B"
+          }
+        ],
+        "/lambda-layer-awscli-integ-stack/Providerpython3.10/framework-onEvent/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Providerpython310frameworkonEvent7294D715"
+          }
+        ],
+        "/lambda-layer-awscli-integ-stack/CustomResourcepython3.10/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomResourcepython310"
+          }
+        ],
+        "/lambda-layer-awscli-integ-stack/Lambda$python3.11/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Lambdapython311ServiceRoleB063EF97"
+          }
+        ],
+        "/lambda-layer-awscli-integ-stack/Lambda$python3.11/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Lambdapython311020B8AC7"
+          }
+        ],
+        "/lambda-layer-awscli-integ-stack/Providerpython3.11/framework-onEvent/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Providerpython311frameworkonEventServiceRoleAEC610C5"
+          }
+        ],
+        "/lambda-layer-awscli-integ-stack/Providerpython3.11/framework-onEvent/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Providerpython311frameworkonEventServiceRoleDefaultPolicyF13D93DB"
+          }
+        ],
+        "/lambda-layer-awscli-integ-stack/Providerpython3.11/framework-onEvent/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Providerpython311frameworkonEvent29915103"
+          }
+        ],
+        "/lambda-layer-awscli-integ-stack/CustomResourcepython3.11/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomResourcepython311"
+          }
+        ],
+        "/lambda-layer-awscli-integ-stack/Lambda$python3.12/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Lambdapython312ServiceRoleAEE8F417"
+          }
+        ],
+        "/lambda-layer-awscli-integ-stack/Lambda$python3.12/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Lambdapython312DDA13323"
+          }
+        ],
+        "/lambda-layer-awscli-integ-stack/Providerpython3.12/framework-onEvent/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Providerpython312frameworkonEventServiceRoleA5AFFB7F"
+          }
+        ],
+        "/lambda-layer-awscli-integ-stack/Providerpython3.12/framework-onEvent/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Providerpython312frameworkonEventServiceRoleDefaultPolicy8FBA03B4"
+          }
+        ],
+        "/lambda-layer-awscli-integ-stack/Providerpython3.12/framework-onEvent/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Providerpython312frameworkonEvent9712A9EB"
+          }
+        ],
+        "/lambda-layer-awscli-integ-stack/CustomResourcepython3.12/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomResourcepython312"
           }
         ],
         "/lambda-layer-awscli-integ-stack/BootstrapVersion": [
@@ -121,6 +200,60 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "CheckBootstrapVersion"
+          }
+        ],
+        "Lambdapython37ServiceRoleB5A704D4": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Lambdapython37ServiceRoleB5A704D4",
+            "trace": [
+              "!!DESTRUCTIVE_CHANGES: WILL_DESTROY"
+            ]
+          }
+        ],
+        "Lambdapython3780349E0A": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Lambdapython3780349E0A",
+            "trace": [
+              "!!DESTRUCTIVE_CHANGES: WILL_DESTROY"
+            ]
+          }
+        ],
+        "Providerpython37frameworkonEventServiceRole9EA6B2B0": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Providerpython37frameworkonEventServiceRole9EA6B2B0",
+            "trace": [
+              "!!DESTRUCTIVE_CHANGES: WILL_DESTROY"
+            ]
+          }
+        ],
+        "Providerpython37frameworkonEventServiceRoleDefaultPolicyA9099DC2": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Providerpython37frameworkonEventServiceRoleDefaultPolicyA9099DC2",
+            "trace": [
+              "!!DESTRUCTIVE_CHANGES: WILL_DESTROY"
+            ]
+          }
+        ],
+        "Providerpython37frameworkonEvent3AA4F69E": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Providerpython37frameworkonEvent3AA4F69E",
+            "trace": [
+              "!!DESTRUCTIVE_CHANGES: WILL_DESTROY"
+            ]
+          }
+        ],
+        "CustomResourcepython37": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomResourcepython37",
+            "trace": [
+              "!!DESTRUCTIVE_CHANGES: WILL_DESTROY"
+            ]
           }
         ]
       },
@@ -139,6 +272,7 @@
       "environment": "aws://unknown-account/unknown-region",
       "properties": {
         "templateFile": "integtestDefaultTestDeployAssert24D5C536.template.json",
+        "terminationProtection": false,
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
