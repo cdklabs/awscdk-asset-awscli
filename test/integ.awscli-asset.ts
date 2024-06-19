@@ -24,8 +24,10 @@ const layer = new lambda.LayerVersion(stack, 'AwsCliLayer', {
 });
 
 const runtimes = [
-  lambda.Runtime.PYTHON_3_7,
   lambda.Runtime.PYTHON_3_9,
+  lambda.Runtime.PYTHON_3_10,
+  lambda.Runtime.PYTHON_3_11,
+  lambda.Runtime.PYTHON_3_12,
 ];
 
 for (const runtime of runtimes) {
