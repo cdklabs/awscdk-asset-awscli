@@ -354,22 +354,7 @@
       },
       "steps": [
         {
-          "exec": "yarn upgrade npm-check-updates"
-        },
-        {
-          "exec": "npm-check-updates --upgrade --target=minor --peer --dep=prod,peer --filter=aws-cdk-lib,constructs"
-        },
-        {
-          "exec": "yarn install --check-files"
-        },
-        {
-          "exec": "yarn upgrade aws-cdk-lib constructs"
-        },
-        {
-          "exec": "npx projen"
-        },
-        {
-          "spawn": "post-upgrade"
+          "exec": "echo No dependencies to upgrade."
         }
       ]
     },
@@ -411,13 +396,13 @@
           "exec": "yarn upgrade npm-check-updates"
         },
         {
-          "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev --filter=@types/jest,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,cdklabs-projen-project-types,eslint-import-resolver-node,eslint-import-resolver-typescript,eslint-plugin-import,eslint,jest,jest-junit,jsii-diff,jsii-docgen,jsii-pacmak,jsii-rosetta,jsii,npm-check-updates,projen,standard-version,ts-jest,ts-node,typescript,aws-cdk-lib,constructs"
+          "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev --filter=@types/jest,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,eslint-import-resolver-typescript,eslint-plugin-import,eslint,jest,jest-junit,jsii-diff,jsii-docgen,jsii-pacmak,jsii-rosetta,jsii,npm-check-updates,standard-version,ts-jest,ts-node,typescript,aws-cdk-lib,constructs"
         },
         {
           "exec": "yarn install --check-files"
         },
         {
-          "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser cdklabs-projen-project-types eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit jsii-diff jsii-docgen jsii-pacmak jsii-rosetta jsii npm-check-updates projen standard-version ts-jest ts-node typescript aws-cdk-lib constructs"
+          "exec": "yarn upgrade @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit jsii-diff jsii-docgen jsii-pacmak jsii-rosetta jsii npm-check-updates standard-version ts-jest ts-node typescript aws-cdk-lib constructs"
         },
         {
           "exec": "npx projen"
