@@ -22,4 +22,4 @@ for tag in tags:
 
 # sed Dockerfile with new version
 # if its the same version, then no changes should happen
-subprocess.Popen(('sed', '-i', '', '-e', "/amazon\\/aws-cli:/s/:.*/:%s/"%(latest_version), 'layer/Dockerfile'), stdout=subprocess.PIPE)
+subprocess.check_call(('sed', '-i', '', '-e', "/amazon\\/aws-cli:/s/:.*/:%s/"%(latest_version), '../../layer/Dockerfile'), stdout=subprocess.PIPE)
