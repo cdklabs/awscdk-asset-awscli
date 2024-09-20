@@ -12,3 +12,6 @@ updates:
     labels:
       - "auto-approve"
     open-pull-requests-limit: 5
+    commit_message:
+      prefix: "fix"
+      include_scope: true
