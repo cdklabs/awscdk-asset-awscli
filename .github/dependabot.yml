@@ -12,3 +12,7 @@ updates:
     labels:
       - "auto-approve"
     open-pull-requests-limit: 5
+    commit-message:
+      prefix: "fix"
+      prefix-development: "chore"
+      include: "scope"
