@@ -1,5 +1,6 @@
-import subprocess
+import re
 import semver
+import subprocess
 
 # pull the data from dockerhub
 data = subprocess.Popen(('curl', '-L', '-s', 'https://registry.hub.docker.com/v2/repositories/amazon/aws-cli/tags?page_size=100'), stdout=subprocess.PIPE)
@@ -20,6 +21,10 @@ for tag in tags:
   except ValueError:
     continue
 
-# sed Dockerfile with new version
-# if its the same version, then no changes should happen
-subprocess.check_call(('sed', '-i', '', '-e', "/amazon\\/aws-cli:/s/:.*/:%s/"%(latest_version), '../../layer/Dockerfile'), stdout=subprocess.PIPE)
+dockerfile_path = '../../layer/Dockerfile'
+pattern_compiled = re.compile(r"^(FROM amazon/aws-cli:).*")
+with open(dockerfile_path, "r") as dockerfile:
+  lines = dockerfile.readlines()
+with open(dockerfile_path, "w") as sources:
+  for line in lines:
+    sources.write(re.sub(pattern_compiled, r'\g<1>'+latest_version, line))
