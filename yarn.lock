@@ -886,9 +886,9 @@
   integrity sha512-hov8bUuiLiyFPGyFPE1lwWhmzYbirOXQNNo40+y3zow8aFVTeyn3VWL0VFFfdNddA8S4Vf0Tc062rzyNr7Paag==
 
 "@types/node@*":
-  version "22.13.5"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.13.5.tgz#23add1d71acddab2c6a4d31db89c0f98d330b511"
-  integrity sha512-+lTU0PxZXn0Dr1NBtC7Y8cR21AJr87dLLU953CWA6pMxxv/UDc7jYAY90upcrie1nRcD6XNG5HOYEDtgW5TxAg==
+  version "22.13.7"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.13.7.tgz#63ae4418a4d2607cf4ccb1ff5f000fa40d73712a"
+  integrity sha512-oU2q+BsQldB9lYxHNp/5aZO+/Bs0Usa74Abo9mAKulz4ahQyXRHK6UVKYIN8KSC8HXwhWSi7b49JnX+txuac0w==
   dependencies:
     undici-types "~6.20.0"
 
@@ -3670,7 +3670,7 @@ jsesc@^3.0.2:
   resolved "https://registry.yarnpkg.com/jsesc/-/jsesc-3.1.0.tgz#74d335a234f67ed19907fdadfac7ccf9d409825d"
   integrity sha512-/sM3dO2FOzXjKQhJuo0Q173wf2KOo8t4I8vHy6lF9poUp7bKT0/NHE8fPX23PwfhnykfqnC2xRxOnVw5XuGIaA==
 
-jsii-diff@^1.107.0:
+jsii-diff@^1.108.0:
   version "1.108.0"
   resolved "https://registry.yarnpkg.com/jsii-diff/-/jsii-diff-1.108.0.tgz#28735c2ecfcb4a51283eaafd14fa0c59821abf7e"
   integrity sha512-OFUCrYBIsHf1uFPN0J55s2ihmj1dlUuf4TKrCJ5DP2FILHSyQmjqgfKgMTgOPbrHXMmaR5+0jKQ9AilF4OTcCw==
@@ -3696,7 +3696,7 @@ jsii-docgen@^10.5.0:
     semver "^7.7.1"
     yargs "^16.2.0"
 
-jsii-pacmak@^1.107.0:
+jsii-pacmak@^1.108.0:
   version "1.108.0"
   resolved "https://registry.yarnpkg.com/jsii-pacmak/-/jsii-pacmak-1.108.0.tgz#4755a2b2bff2ab57eefa1f2cc4b092ef4421b6ee"
   integrity sha512-qj/dGQkALH/YTMGUIyg+EgFD9+WXyrJPug8cwQureNyRK90gHLrTMo7oFQhhTlW2OVH6WAGlQO5FPLtkbujgmQ==
