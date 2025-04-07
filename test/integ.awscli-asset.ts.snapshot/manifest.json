@@ -1,5 +1,5 @@
 {
-  "version": "32.0.0",
+  "version": "43.0.0",
   "artifacts": {
     "lambda-layer-awscli-integ-stack.assets": {
       "type": "cdk:asset-manifest",
@@ -14,10 +14,11 @@
       "environment": "aws://unknown-account/unknown-region",
       "properties": {
         "templateFile": "lambda-layer-awscli-integ-stack.template.json",
+        "terminationProtection": false,
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/7c5445bae3936c258adbeaab620866c891bd8efaeeeb44f5fd6810400a05678c.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/f61619ef1871b17d144a62620c0f3c7a0c8919a45b0cd1d525d37d03dcb05f17.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -33,46 +34,65 @@
         "lambda-layer-awscli-integ-stack.assets"
       ],
       "metadata": {
+        "/lambda-layer-awscli-integ-stack/AwsCliLayer": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": {
+              "code": "*",
+              "description": "*"
+            }
+          }
+        ],
         "/lambda-layer-awscli-integ-stack/AwsCliLayer/Resource": [
           {
             "type": "aws:cdk:logicalId",
             "data": "AwsCliLayerF44AAF94"
           }
         ],
-        "/lambda-layer-awscli-integ-stack/Lambda$python3.7/ServiceRole/Resource": [
+        "/lambda-layer-awscli-integ-stack/Lambda$python3.9": [
           {
-            "type": "aws:cdk:logicalId",
-            "data": "Lambdapython37ServiceRoleB5A704D4"
+            "type": "aws:cdk:analytics:construct",
+            "data": {
+              "code": "*",
+              "handler": "*",
+              "runtime": "*",
+              "architecture": "*",
+              "layers": [
+                "*"
+              ],
+              "memorySize": "*",
+              "timeout": "*"
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "addLayers": [
+                "*"
+              ]
+            }
           }
         ],
-        "/lambda-layer-awscli-integ-stack/Lambda$python3.7/Resource": [
+        "/lambda-layer-awscli-integ-stack/Lambda$python3.9/ServiceRole": [
           {
-            "type": "aws:cdk:logicalId",
-            "data": "Lambdapython3780349E0A"
+            "type": "aws:cdk:analytics:construct",
+            "data": {
+              "assumedBy": {
+                "principalAccount": "*",
+                "assumeRoleAction": "*"
+              },
+              "managedPolicies": [
+                {
+                  "managedPolicyArn": "*"
+                }
+              ]
+            }
           }
         ],
-        "/lambda-layer-awscli-integ-stack/Providerpython3.7/framework-onEvent/ServiceRole/Resource": [
+        "/lambda-layer-awscli-integ-stack/Lambda$python3.9/ServiceRole/ImportServiceRole": [
           {
-            "type": "aws:cdk:logicalId",
-            "data": "Providerpython37frameworkonEventServiceRole9EA6B2B0"
-          }
-        ],
-        "/lambda-layer-awscli-integ-stack/Providerpython3.7/framework-onEvent/ServiceRole/DefaultPolicy/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "Providerpython37frameworkonEventServiceRoleDefaultPolicyA9099DC2"
-          }
-        ],
-        "/lambda-layer-awscli-integ-stack/Providerpython3.7/framework-onEvent/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "Providerpython37frameworkonEvent3AA4F69E"
-          }
-        ],
-        "/lambda-layer-awscli-integ-stack/CustomResourcepython3.7/Default": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "CustomResourcepython37"
+            "type": "aws:cdk:analytics:construct",
+            "data": "*"
           }
         ],
         "/lambda-layer-awscli-integ-stack/Lambda$python3.9/ServiceRole/Resource": [
@@ -87,10 +107,130 @@
             "data": "Lambdapython39426A0480"
           }
         ],
+        "/lambda-layer-awscli-integ-stack/Providerpython3.9/framework-onEvent": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": {
+              "code": "*",
+              "description": "*",
+              "runtime": "*",
+              "handler": "*",
+              "timeout": "*",
+              "logGroup": "*",
+              "vpc": "*",
+              "vpcSubnets": "*",
+              "securityGroups": "*",
+              "role": "*",
+              "functionName": "*",
+              "environmentEncryption": "*"
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "addEnvironment": [
+                "*",
+                "*"
+              ]
+            }
+          }
+        ],
+        "/lambda-layer-awscli-integ-stack/Providerpython3.9/framework-onEvent/ServiceRole": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": {
+              "assumedBy": {
+                "principalAccount": "*",
+                "assumeRoleAction": "*"
+              },
+              "managedPolicies": [
+                {
+                  "managedPolicyArn": "*"
+                }
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "addToPrincipalPolicy": [
+                {}
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "attachInlinePolicy": [
+                "*"
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "attachInlinePolicy": [
+                "*"
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "attachInlinePolicy": [
+                "*"
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "attachInlinePolicy": [
+                "*"
+              ]
+            }
+          }
+        ],
+        "/lambda-layer-awscli-integ-stack/Providerpython3.9/framework-onEvent/ServiceRole/ImportServiceRole": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": "*"
+          }
+        ],
         "/lambda-layer-awscli-integ-stack/Providerpython3.9/framework-onEvent/ServiceRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
             "data": "Providerpython39frameworkonEventServiceRoleA299F5C1"
+          }
+        ],
+        "/lambda-layer-awscli-integ-stack/Providerpython3.9/framework-onEvent/ServiceRole/DefaultPolicy": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": "*"
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "attachToRole": [
+                "*"
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "attachToRole": [
+                "*"
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "addStatements": [
+                {}
+              ]
+            }
           }
         ],
         "/lambda-layer-awscli-integ-stack/Providerpython3.9/framework-onEvent/ServiceRole/DefaultPolicy/Resource": [
@@ -105,46 +245,552 @@
             "data": "Providerpython39frameworkonEvent00AFA742"
           }
         ],
+        "/lambda-layer-awscli-integ-stack/Providerpython3.9/framework-onEvent/inlinePolicyAddedToExecutionRole-0": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": {
+              "statements": "*"
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "addStatements": [
+                {}
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "attachToRole": [
+                "*"
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "attachToRole": [
+                "*"
+              ]
+            }
+          }
+        ],
+        "/lambda-layer-awscli-integ-stack/Providerpython3.9/framework-onEvent/inlinePolicyAddedToExecutionRole-0/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Providerpython39frameworkonEventinlinePolicyAddedToExecutionRole0012C4340"
+          }
+        ],
+        "/lambda-layer-awscli-integ-stack/LatestNodeRuntimeMap": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "LatestNodeRuntimeMap"
+          }
+        ],
+        "/lambda-layer-awscli-integ-stack/CustomResourcepython3.9": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": "*"
+          }
+        ],
         "/lambda-layer-awscli-integ-stack/CustomResourcepython3.9/Default": [
           {
             "type": "aws:cdk:logicalId",
             "data": "CustomResourcepython39"
           }
         ],
-        "/lambda-layer-awscli-integ-stack/Lambda$nodejs14.x/ServiceRole/Resource": [
+        "/lambda-layer-awscli-integ-stack/Lambda$python3.12": [
           {
-            "type": "aws:cdk:logicalId",
-            "data": "Lambdanodejs14xServiceRoleE1A67AC0"
+            "type": "aws:cdk:analytics:construct",
+            "data": {
+              "code": "*",
+              "handler": "*",
+              "runtime": "*",
+              "architecture": "*",
+              "layers": [
+                "*"
+              ],
+              "memorySize": "*",
+              "timeout": "*"
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "addLayers": [
+                "*"
+              ]
+            }
           }
         ],
-        "/lambda-layer-awscli-integ-stack/Lambda$nodejs14.x/Resource": [
+        "/lambda-layer-awscli-integ-stack/Lambda$python3.12/ServiceRole": [
           {
-            "type": "aws:cdk:logicalId",
-            "data": "Lambdanodejs14xF649A856"
+            "type": "aws:cdk:analytics:construct",
+            "data": {
+              "assumedBy": {
+                "principalAccount": "*",
+                "assumeRoleAction": "*"
+              },
+              "managedPolicies": [
+                {
+                  "managedPolicyArn": "*"
+                }
+              ]
+            }
           }
         ],
-        "/lambda-layer-awscli-integ-stack/Providernodejs14.x/framework-onEvent/ServiceRole/Resource": [
+        "/lambda-layer-awscli-integ-stack/Lambda$python3.12/ServiceRole/ImportServiceRole": [
           {
-            "type": "aws:cdk:logicalId",
-            "data": "Providernodejs14xframeworkonEventServiceRole8862340D"
+            "type": "aws:cdk:analytics:construct",
+            "data": "*"
           }
         ],
-        "/lambda-layer-awscli-integ-stack/Providernodejs14.x/framework-onEvent/ServiceRole/DefaultPolicy/Resource": [
+        "/lambda-layer-awscli-integ-stack/Lambda$python3.12/ServiceRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "Providernodejs14xframeworkonEventServiceRoleDefaultPolicy8249CE85"
+            "data": "Lambdapython312ServiceRoleAEE8F417"
           }
         ],
-        "/lambda-layer-awscli-integ-stack/Providernodejs14.x/framework-onEvent/Resource": [
+        "/lambda-layer-awscli-integ-stack/Lambda$python3.12/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "Providernodejs14xframeworkonEvent062D000C"
+            "data": "Lambdapython312DDA13323"
           }
         ],
-        "/lambda-layer-awscli-integ-stack/CustomResourcenodejs14.x/Default": [
+        "/lambda-layer-awscli-integ-stack/Providerpython3.12/framework-onEvent": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": {
+              "code": "*",
+              "description": "*",
+              "runtime": "*",
+              "handler": "*",
+              "timeout": "*",
+              "logGroup": "*",
+              "vpc": "*",
+              "vpcSubnets": "*",
+              "securityGroups": "*",
+              "role": "*",
+              "functionName": "*",
+              "environmentEncryption": "*"
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "addEnvironment": [
+                "*",
+                "*"
+              ]
+            }
+          }
+        ],
+        "/lambda-layer-awscli-integ-stack/Providerpython3.12/framework-onEvent/ServiceRole": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": {
+              "assumedBy": {
+                "principalAccount": "*",
+                "assumeRoleAction": "*"
+              },
+              "managedPolicies": [
+                {
+                  "managedPolicyArn": "*"
+                }
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "addToPrincipalPolicy": [
+                {}
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "attachInlinePolicy": [
+                "*"
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "attachInlinePolicy": [
+                "*"
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "attachInlinePolicy": [
+                "*"
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "attachInlinePolicy": [
+                "*"
+              ]
+            }
+          }
+        ],
+        "/lambda-layer-awscli-integ-stack/Providerpython3.12/framework-onEvent/ServiceRole/ImportServiceRole": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": "*"
+          }
+        ],
+        "/lambda-layer-awscli-integ-stack/Providerpython3.12/framework-onEvent/ServiceRole/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "CustomResourcenodejs14x"
+            "data": "Providerpython312frameworkonEventServiceRoleA5AFFB7F"
+          }
+        ],
+        "/lambda-layer-awscli-integ-stack/Providerpython3.12/framework-onEvent/ServiceRole/DefaultPolicy": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": "*"
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "attachToRole": [
+                "*"
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "attachToRole": [
+                "*"
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "addStatements": [
+                {}
+              ]
+            }
+          }
+        ],
+        "/lambda-layer-awscli-integ-stack/Providerpython3.12/framework-onEvent/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Providerpython312frameworkonEventServiceRoleDefaultPolicy8FBA03B4"
+          }
+        ],
+        "/lambda-layer-awscli-integ-stack/Providerpython3.12/framework-onEvent/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Providerpython312frameworkonEvent9712A9EB"
+          }
+        ],
+        "/lambda-layer-awscli-integ-stack/Providerpython3.12/framework-onEvent/inlinePolicyAddedToExecutionRole-0": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": {
+              "statements": "*"
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "addStatements": [
+                {}
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "attachToRole": [
+                "*"
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "attachToRole": [
+                "*"
+              ]
+            }
+          }
+        ],
+        "/lambda-layer-awscli-integ-stack/Providerpython3.12/framework-onEvent/inlinePolicyAddedToExecutionRole-0/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Providerpython312frameworkonEventinlinePolicyAddedToExecutionRole0FEB7DD3F"
+          }
+        ],
+        "/lambda-layer-awscli-integ-stack/CustomResourcepython3.12": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": "*"
+          }
+        ],
+        "/lambda-layer-awscli-integ-stack/CustomResourcepython3.12/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomResourcepython312"
+          }
+        ],
+        "/lambda-layer-awscli-integ-stack/Lambda$nodejs18.x": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": {
+              "code": "*",
+              "handler": "*",
+              "runtime": "*",
+              "architecture": "*",
+              "layers": [
+                "*"
+              ],
+              "memorySize": "*",
+              "timeout": "*"
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "addLayers": [
+                "*"
+              ]
+            }
+          }
+        ],
+        "/lambda-layer-awscli-integ-stack/Lambda$nodejs18.x/ServiceRole": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": {
+              "assumedBy": {
+                "principalAccount": "*",
+                "assumeRoleAction": "*"
+              },
+              "managedPolicies": [
+                {
+                  "managedPolicyArn": "*"
+                }
+              ]
+            }
+          }
+        ],
+        "/lambda-layer-awscli-integ-stack/Lambda$nodejs18.x/ServiceRole/ImportServiceRole": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": "*"
+          }
+        ],
+        "/lambda-layer-awscli-integ-stack/Lambda$nodejs18.x/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Lambdanodejs18xServiceRole26F31A94"
+          }
+        ],
+        "/lambda-layer-awscli-integ-stack/Lambda$nodejs18.x/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Lambdanodejs18x4E8CC6F6"
+          }
+        ],
+        "/lambda-layer-awscli-integ-stack/Providernodejs18.x/framework-onEvent": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": {
+              "code": "*",
+              "description": "*",
+              "runtime": "*",
+              "handler": "*",
+              "timeout": "*",
+              "logGroup": "*",
+              "vpc": "*",
+              "vpcSubnets": "*",
+              "securityGroups": "*",
+              "role": "*",
+              "functionName": "*",
+              "environmentEncryption": "*"
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "addEnvironment": [
+                "*",
+                "*"
+              ]
+            }
+          }
+        ],
+        "/lambda-layer-awscli-integ-stack/Providernodejs18.x/framework-onEvent/ServiceRole": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": {
+              "assumedBy": {
+                "principalAccount": "*",
+                "assumeRoleAction": "*"
+              },
+              "managedPolicies": [
+                {
+                  "managedPolicyArn": "*"
+                }
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "addToPrincipalPolicy": [
+                {}
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "attachInlinePolicy": [
+                "*"
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "attachInlinePolicy": [
+                "*"
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "attachInlinePolicy": [
+                "*"
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "attachInlinePolicy": [
+                "*"
+              ]
+            }
+          }
+        ],
+        "/lambda-layer-awscli-integ-stack/Providernodejs18.x/framework-onEvent/ServiceRole/ImportServiceRole": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": "*"
+          }
+        ],
+        "/lambda-layer-awscli-integ-stack/Providernodejs18.x/framework-onEvent/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Providernodejs18xframeworkonEventServiceRole3FB751A6"
+          }
+        ],
+        "/lambda-layer-awscli-integ-stack/Providernodejs18.x/framework-onEvent/ServiceRole/DefaultPolicy": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": "*"
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "attachToRole": [
+                "*"
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "attachToRole": [
+                "*"
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "addStatements": [
+                {}
+              ]
+            }
+          }
+        ],
+        "/lambda-layer-awscli-integ-stack/Providernodejs18.x/framework-onEvent/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Providernodejs18xframeworkonEventServiceRoleDefaultPolicyD361C3B1"
+          }
+        ],
+        "/lambda-layer-awscli-integ-stack/Providernodejs18.x/framework-onEvent/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Providernodejs18xframeworkonEvent9EDE2A0C"
+          }
+        ],
+        "/lambda-layer-awscli-integ-stack/Providernodejs18.x/framework-onEvent/inlinePolicyAddedToExecutionRole-0": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": {
+              "statements": "*"
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "addStatements": [
+                {}
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "attachToRole": [
+                "*"
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "attachToRole": [
+                "*"
+              ]
+            }
+          }
+        ],
+        "/lambda-layer-awscli-integ-stack/Providernodejs18.x/framework-onEvent/inlinePolicyAddedToExecutionRole-0/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Providernodejs18xframeworkonEventinlinePolicyAddedToExecutionRole02B494B20"
+          }
+        ],
+        "/lambda-layer-awscli-integ-stack/CustomResourcenodejs18.x": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": "*"
+          }
+        ],
+        "/lambda-layer-awscli-integ-stack/CustomResourcenodejs18.x/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomResourcenodejs18x"
           }
         ],
         "/lambda-layer-awscli-integ-stack/BootstrapVersion": [
@@ -175,6 +821,7 @@
       "environment": "aws://unknown-account/unknown-region",
       "properties": {
         "templateFile": "integtestDefaultTestDeployAssert24D5C536.template.json",
+        "terminationProtection": false,
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
@@ -215,5 +862,6 @@
         "file": "tree.json"
       }
     }
-  }
+  },
+  "minimumCliVersion": "2.1007.0"
 }

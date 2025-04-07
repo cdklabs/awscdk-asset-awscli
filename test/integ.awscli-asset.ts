@@ -19,9 +19,9 @@ const layer = new lambda.LayerVersion(stack, 'AwsCliLayer', {
 });
 
 const runtimes = [
-  lambda.Runtime.PYTHON_3_7,
   lambda.Runtime.PYTHON_3_9,
-  lambda.Runtime.NODEJS_14_X,
+  lambda.Runtime.PYTHON_3_12,
+  lambda.Runtime.NODEJS_LATEST,
 ];
 
 for (const runtime of runtimes) {
@@ -30,6 +30,7 @@ for (const runtime of runtimes) {
       code: lambda.Code.fromAsset(path.join(__dirname, 'lambda-handler')),
       handler: 'index.handler',
       runtime: runtime,
+      architecture: lambda.Architecture.ARM_64,
       layers: [layer],
       memorySize: 512,
       timeout: cdk.Duration.seconds(30),
