@@ -18,7 +18,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/f61619ef1871b17d144a62620c0f3c7a0c8919a45b0cd1d525d37d03dcb05f17.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/2b053f7dde86735a6693dcc31d1aee17c98fbff9198d4d925d49c531c96e37e0.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -280,7 +280,10 @@
         "/lambda-layer-awscli-integ-stack/Providerpython3.9/framework-onEvent/inlinePolicyAddedToExecutionRole-0/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "Providerpython39frameworkonEventinlinePolicyAddedToExecutionRole0012C4340"
+            "data": "Providerpython39frameworkonEventinlinePolicyAddedToExecutionRole0012C4340",
+            "trace": [
+              "!!DESTRUCTIVE_CHANGES: WILL_DESTROY"
+            ]
           }
         ],
         "/lambda-layer-awscli-integ-stack/LatestNodeRuntimeMap": [
@@ -532,7 +535,10 @@
         "/lambda-layer-awscli-integ-stack/Providerpython3.12/framework-onEvent/inlinePolicyAddedToExecutionRole-0/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "Providerpython312frameworkonEventinlinePolicyAddedToExecutionRole0FEB7DD3F"
+            "data": "Providerpython312frameworkonEventinlinePolicyAddedToExecutionRole0FEB7DD3F",
+            "trace": [
+              "!!DESTRUCTIVE_CHANGES: WILL_DESTROY"
+            ]
           }
         ],
         "/lambda-layer-awscli-integ-stack/CustomResourcepython3.12": [
@@ -778,7 +784,10 @@
         "/lambda-layer-awscli-integ-stack/Providernodejs18.x/framework-onEvent/inlinePolicyAddedToExecutionRole-0/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "Providernodejs18xframeworkonEventinlinePolicyAddedToExecutionRole02B494B20"
+            "data": "Providernodejs18xframeworkonEventinlinePolicyAddedToExecutionRole02B494B20",
+            "trace": [
+              "!!DESTRUCTIVE_CHANGES: WILL_DESTROY"
+            ]
           }
         ],
         "/lambda-layer-awscli-integ-stack/CustomResourcenodejs18.x": [
@@ -863,5 +872,5 @@
       }
     }
   },
-  "minimumCliVersion": "2.1007.0"
+  "minimumCliVersion": "2.1011.0"
 }
