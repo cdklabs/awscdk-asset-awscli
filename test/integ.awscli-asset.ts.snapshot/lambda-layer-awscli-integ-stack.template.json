@@ -136,6 +136,16 @@
          ]
         }
        ]
+      },
+      {
+       "Action": "lambda:GetFunction",
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::GetAtt": [
+         "Lambdapython39426A0480",
+         "Arn"
+        ]
+       }
       }
      ],
      "Version": "2012-10-17"
@@ -190,32 +200,6 @@
     "Providerpython39frameworkonEventServiceRoleDefaultPolicy16A4767C",
     "Providerpython39frameworkonEventServiceRoleA299F5C1"
    ]
-  },
-  "Providerpython39frameworkonEventinlinePolicyAddedToExecutionRole0012C4340": {
-   "Type": "AWS::IAM::Policy",
-   "Properties": {
-    "PolicyDocument": {
-     "Statement": [
-      {
-       "Action": "lambda:GetFunction",
-       "Effect": "Allow",
-       "Resource": {
-        "Fn::GetAtt": [
-         "Lambdapython39426A0480",
-         "Arn"
-        ]
-       }
-      }
-     ],
-     "Version": "2012-10-17"
-    },
-    "PolicyName": "Providerpython39frameworkonEventinlinePolicyAddedToExecutionRole0012C4340",
-    "Roles": [
-     {
-      "Ref": "Providerpython39frameworkonEventServiceRoleA299F5C1"
-     }
-    ]
-   }
   },
   "CustomResourcepython39": {
    "Type": "AWS::CloudFormation::CustomResource",
@@ -354,6 +338,16 @@
          ]
         }
        ]
+      },
+      {
+       "Action": "lambda:GetFunction",
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::GetAtt": [
+         "Lambdapython312DDA13323",
+         "Arn"
+        ]
+       }
       }
      ],
      "Version": "2012-10-17"
@@ -408,32 +402,6 @@
     "Providerpython312frameworkonEventServiceRoleDefaultPolicy8FBA03B4",
     "Providerpython312frameworkonEventServiceRoleA5AFFB7F"
    ]
-  },
-  "Providerpython312frameworkonEventinlinePolicyAddedToExecutionRole0FEB7DD3F": {
-   "Type": "AWS::IAM::Policy",
-   "Properties": {
-    "PolicyDocument": {
-     "Statement": [
-      {
-       "Action": "lambda:GetFunction",
-       "Effect": "Allow",
-       "Resource": {
-        "Fn::GetAtt": [
-         "Lambdapython312DDA13323",
-         "Arn"
-        ]
-       }
-      }
-     ],
-     "Version": "2012-10-17"
-    },
-    "PolicyName": "Providerpython312frameworkonEventinlinePolicyAddedToExecutionRole0FEB7DD3F",
-    "Roles": [
-     {
-      "Ref": "Providerpython312frameworkonEventServiceRoleA5AFFB7F"
-     }
-    ]
-   }
   },
   "CustomResourcepython312": {
    "Type": "AWS::CloudFormation::CustomResource",
@@ -572,6 +540,16 @@
          ]
         }
        ]
+      },
+      {
+       "Action": "lambda:GetFunction",
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::GetAtt": [
+         "Lambdanodejs18x4E8CC6F6",
+         "Arn"
+        ]
+       }
       }
      ],
      "Version": "2012-10-17"
@@ -626,32 +604,6 @@
     "Providernodejs18xframeworkonEventServiceRoleDefaultPolicyD361C3B1",
     "Providernodejs18xframeworkonEventServiceRole3FB751A6"
    ]
-  },
-  "Providernodejs18xframeworkonEventinlinePolicyAddedToExecutionRole02B494B20": {
-   "Type": "AWS::IAM::Policy",
-   "Properties": {
-    "PolicyDocument": {
-     "Statement": [
-      {
-       "Action": "lambda:GetFunction",
-       "Effect": "Allow",
-       "Resource": {
-        "Fn::GetAtt": [
-         "Lambdanodejs18x4E8CC6F6",
-         "Arn"
-        ]
-       }
-      }
-     ],
-     "Version": "2012-10-17"
-    },
-    "PolicyName": "Providernodejs18xframeworkonEventinlinePolicyAddedToExecutionRole02B494B20",
-    "Roles": [
-     {
-      "Ref": "Providernodejs18xframeworkonEventServiceRole3FB751A6"
-     }
-    ]
-   }
   },
   "CustomResourcenodejs18x": {
    "Type": "AWS::CloudFormation::CustomResource",
