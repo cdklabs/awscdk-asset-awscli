@@ -1,4 +1,4 @@
-FROM public.ecr.aws/sam/build-python3.8
+FROM public.ecr.aws/sam/build-python3.11
 
 RUN mkdir -p /opt
 WORKDIR /tmp
