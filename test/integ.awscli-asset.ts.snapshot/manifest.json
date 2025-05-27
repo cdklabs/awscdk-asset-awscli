@@ -18,7 +18,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/9ef07d8b8eb00f9072e5dca553555abf08908b4b04ee089eb2faa7c0c7dbb610.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/91b987a592757a143ac85b92560e7b5a5e40b4778bd42b3417a0a6789ffbe1a2.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -690,33 +690,6 @@
             "type": "aws:cdk:logicalId",
             "data": "CheckBootstrapVersion"
           }
-        ],
-        "Providerpython39frameworkonEventinlinePolicyAddedToExecutionRole0012C4340": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "Providerpython39frameworkonEventinlinePolicyAddedToExecutionRole0012C4340",
-            "trace": [
-              "!!DESTRUCTIVE_CHANGES: WILL_DESTROY"
-            ]
-          }
-        ],
-        "Providerpython312frameworkonEventinlinePolicyAddedToExecutionRole0FEB7DD3F": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "Providerpython312frameworkonEventinlinePolicyAddedToExecutionRole0FEB7DD3F",
-            "trace": [
-              "!!DESTRUCTIVE_CHANGES: WILL_DESTROY"
-            ]
-          }
-        ],
-        "Providernodejs18xframeworkonEventinlinePolicyAddedToExecutionRole02B494B20": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "Providernodejs18xframeworkonEventinlinePolicyAddedToExecutionRole02B494B20",
-            "trace": [
-              "!!DESTRUCTIVE_CHANGES: WILL_DESTROY"
-            ]
-          }
         ]
       },
       "displayName": "lambda-layer-awscli-integ-stack"
@@ -776,5 +749,5 @@
       }
     }
   },
-  "minimumCliVersion": "2.1011.0"
+  "minimumCliVersion": "2.1016.1"
 }
