@@ -48,7 +48,7 @@ const project = new CdklabsConstructLibrary({
     javaPackage: `software.amazon.awscdk.cdk.asset.awscli.v${MAJOR_VERSION}`,
     mavenGroupId: 'software.amazon.awscdk',
     mavenArtifactId: `cdk-asset-awscli-v${MAJOR_VERSION}`,
-    mavenEndpoint: 'https://aws.oss.sonatype.org',
+    mavenServerId: 'central-ossrh',
   },
   publishToNuget: {
     dotNetNamespace: `Amazon.CDK.Asset.AwsCliV${MAJOR_VERSION}`,
