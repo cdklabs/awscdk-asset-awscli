@@ -1,6 +1,6 @@
 # Download the official aws cli Docker image
 # see https://hub.docker.com/r/amazon/aws-cli
-FROM amazon/aws-cli:2.27.50
+FROM amazon/aws-cli:2.27.54
 
 RUN mkdir -p /opt
 WORKDIR /tmp
@@ -10,7 +10,7 @@ WORKDIR /tmp
 #
 
 RUN yum update -y \
-    && yum install -y zip unzip wget tar gzip
+    && yum install -y zip unzip wget tar gzip findutils
 
 #
 # organize for self-contained usage
