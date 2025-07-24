@@ -10,7 +10,7 @@ WORKDIR /tmp
 #
 
 RUN yum update -y \
-    && yum install -y zip unzip wget tar gzip
+    && yum install -y zip unzip wget tar gzip findutils
 
 #
 # organize for self-contained usage
