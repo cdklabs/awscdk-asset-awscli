@@ -7,7 +7,7 @@
      "S3Bucket": {
       "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
      },
-     "S3Key": "e9f8b8c15d8b382e5ba4ccbecaaf62d00c5e3251fd72ef6581b5cc20747c91ad.zip"
+     "S3Key": "a103262127a4c6c135c7e814266be419869dbd6d3c9ebaafc42d649767781ccf.zip"
     },
     "Description": "/opt/awscli/aws"
    }
@@ -1016,6 +1016,9 @@
     "value": "nodejs22.x"
    },
    "ap-southeast-5": {
+    "value": "nodejs22.x"
+   },
+   "ap-southeast-6": {
     "value": "nodejs22.x"
    },
    "ap-southeast-7": {
