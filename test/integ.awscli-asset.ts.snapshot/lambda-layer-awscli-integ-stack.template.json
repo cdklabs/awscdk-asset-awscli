@@ -7,7 +7,7 @@
      "S3Bucket": {
       "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
      },
-     "S3Key": "b6da727794b47ac0b1746a6484aac1f24d26d923a770cb054e0b69bb364b956a.zip"
+     "S3Key": "626bb8bfdf2cdb6f6135f9d8d5bc0f47d49ee8f0932ac69476b145e07e8d3cb1.zip"
     },
     "Description": "/opt/awscli/aws"
    }
@@ -74,6 +74,25 @@
    "DependsOn": [
     "Lambdapython39ServiceRoleE2CFED77"
    ]
+  },
+  "Lambdapython39LogGroupD9AD86C9": {
+   "Type": "AWS::Logs::LogGroup",
+   "Properties": {
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "Lambdapython39426A0480"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 731
+   },
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain"
   },
   "Providerpython39frameworkonEventServiceRoleA299F5C1": {
    "Type": "AWS::IAM::Role",
@@ -179,6 +198,10 @@
      }
     },
     "Handler": "framework.onEvent",
+    "LoggingConfig": {
+     "ApplicationLogLevel": "FATAL",
+     "LogFormat": "JSON"
+    },
     "Role": {
      "Fn::GetAtt": [
       "Providerpython39frameworkonEventServiceRoleA299F5C1",
@@ -200,6 +223,25 @@
     "Providerpython39frameworkonEventServiceRoleDefaultPolicy16A4767C",
     "Providerpython39frameworkonEventServiceRoleA299F5C1"
    ]
+  },
+  "Providerpython39frameworkonEventLogGroup7B3F2EB7": {
+   "Type": "AWS::Logs::LogGroup",
+   "Properties": {
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "Providerpython39frameworkonEvent00AFA742"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 731
+   },
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain"
   },
   "CustomResourcepython39": {
    "Type": "AWS::CloudFormation::CustomResource",
@@ -276,6 +318,25 @@
    "DependsOn": [
     "Lambdapython312ServiceRoleAEE8F417"
    ]
+  },
+  "Lambdapython312LogGroup6A87FCC5": {
+   "Type": "AWS::Logs::LogGroup",
+   "Properties": {
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "Lambdapython312DDA13323"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 731
+   },
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain"
   },
   "Providerpython312frameworkonEventServiceRoleA5AFFB7F": {
    "Type": "AWS::IAM::Role",
@@ -381,6 +442,10 @@
      }
     },
     "Handler": "framework.onEvent",
+    "LoggingConfig": {
+     "ApplicationLogLevel": "FATAL",
+     "LogFormat": "JSON"
+    },
     "Role": {
      "Fn::GetAtt": [
       "Providerpython312frameworkonEventServiceRoleA5AFFB7F",
@@ -402,6 +467,25 @@
     "Providerpython312frameworkonEventServiceRoleDefaultPolicy8FBA03B4",
     "Providerpython312frameworkonEventServiceRoleA5AFFB7F"
    ]
+  },
+  "Providerpython312frameworkonEventLogGroupFE0E018A": {
+   "Type": "AWS::Logs::LogGroup",
+   "Properties": {
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "Providerpython312frameworkonEvent9712A9EB"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 731
+   },
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain"
   },
   "CustomResourcepython312": {
    "Type": "AWS::CloudFormation::CustomResource",
@@ -478,6 +562,25 @@
    "DependsOn": [
     "Lambdanodejs18xServiceRole26F31A94"
    ]
+  },
+  "Lambdanodejs18xLogGroup698E07A2": {
+   "Type": "AWS::Logs::LogGroup",
+   "Properties": {
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "Lambdanodejs18x4E8CC6F6"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 731
+   },
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain"
   },
   "Providernodejs18xframeworkonEventServiceRole3FB751A6": {
    "Type": "AWS::IAM::Role",
@@ -583,6 +686,10 @@
      }
     },
     "Handler": "framework.onEvent",
+    "LoggingConfig": {
+     "ApplicationLogLevel": "FATAL",
+     "LogFormat": "JSON"
+    },
     "Role": {
      "Fn::GetAtt": [
       "Providernodejs18xframeworkonEventServiceRole3FB751A6",
@@ -604,6 +711,25 @@
     "Providernodejs18xframeworkonEventServiceRoleDefaultPolicyD361C3B1",
     "Providernodejs18xframeworkonEventServiceRole3FB751A6"
    ]
+  },
+  "Providernodejs18xframeworkonEventLogGroup9C749BB7": {
+   "Type": "AWS::Logs::LogGroup",
+   "Properties": {
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "Providernodejs18xframeworkonEvent9EDE2A0C"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 731
+   },
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain"
   },
   "CustomResourcenodejs18x": {
    "Type": "AWS::CloudFormation::CustomResource",
@@ -660,6 +786,9 @@
    "ap-southeast-5": {
     "value": "nodejs22.x"
    },
+   "ap-southeast-6": {
+    "value": "nodejs22.x"
+   },
    "ap-southeast-7": {
     "value": "nodejs22.x"
    },
@@ -700,6 +829,9 @@
     "value": "nodejs22.x"
    },
    "eu-west-3": {
+    "value": "nodejs22.x"
+   },
+   "eusc-de-east-1": {
     "value": "nodejs22.x"
    },
    "il-central-1": {
