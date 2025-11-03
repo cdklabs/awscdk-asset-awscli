@@ -2,11 +2,10 @@ import * as path from 'path';
 import { IntegTest } from '@aws-cdk/integ-tests-alpha';
 import * as cdk from 'aws-cdk-lib';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
-import * as s3_assets from 'aws-cdk-lib/aws-s3-assets';
 import * as cr from 'aws-cdk-lib/custom-resources';
 import { LAMBDA_CREATE_NEW_POLICIES_WITH_ADDTOROLEPOLICY } from 'aws-cdk-lib/cx-api';
 
-import { ASSET_FILE, LAYER_SOURCE_DIR } from '../lib';
+import { AwsCliAsset } from '../lib';
 
 /**
  * Test verifies that AWS CLI is invoked successfully inside Lambda runtime.
@@ -18,10 +17,7 @@ const app = new cdk.App({
 });
 
 const stack = new cdk.Stack(app, 'lambda-layer-awscli-integ-stack');
-const asset = new s3_assets.Asset(stack, 'layer-asset', {
-  path: ASSET_FILE,
-  assetHash: cdk.FileSystem.fingerprint(LAYER_SOURCE_DIR),
-});
+const asset = new AwsCliAsset(stack, 'layer-asset');
 
 const layer = new lambda.LayerVersion(stack, 'AwsCliLayer', {
   code: lambda.Code.fromBucket(asset.bucket, asset.s3ObjectKey),
