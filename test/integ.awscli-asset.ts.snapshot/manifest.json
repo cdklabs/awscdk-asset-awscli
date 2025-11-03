@@ -18,7 +18,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/16df7690cc61ce01d8673aed1ab5ec2f5fb1c311cd6fa09ce7886539f43adfab.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/2257305cc6afd9df1304beeabf601f07471b37fc59be29c10b7e574d208619ed.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -279,12 +279,6 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "Providerpython39frameworkonEventLogGroup7B3F2EB7"
-          }
-        ],
-        "/lambda-layer-awscli-integ-stack/LatestNodeRuntimeMap": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "LatestNodeRuntimeMap"
           }
         ],
         "/lambda-layer-awscli-integ-stack/CustomResourcepython3.9": [
@@ -785,78 +779,6 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "CheckBootstrapVersion"
-          }
-        ],
-        "Lambdanodejs18xServiceRole26F31A94": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "Lambdanodejs18xServiceRole26F31A94",
-            "trace": [
-              "!!DESTRUCTIVE_CHANGES: WILL_DESTROY"
-            ]
-          }
-        ],
-        "Lambdanodejs18x4E8CC6F6": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "Lambdanodejs18x4E8CC6F6",
-            "trace": [
-              "!!DESTRUCTIVE_CHANGES: WILL_DESTROY"
-            ]
-          }
-        ],
-        "Lambdanodejs18xLogGroup698E07A2": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "Lambdanodejs18xLogGroup698E07A2",
-            "trace": [
-              "!!DESTRUCTIVE_CHANGES: WILL_DESTROY"
-            ]
-          }
-        ],
-        "Providernodejs18xframeworkonEventServiceRole3FB751A6": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "Providernodejs18xframeworkonEventServiceRole3FB751A6",
-            "trace": [
-              "!!DESTRUCTIVE_CHANGES: WILL_DESTROY"
-            ]
-          }
-        ],
-        "Providernodejs18xframeworkonEventServiceRoleDefaultPolicyD361C3B1": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "Providernodejs18xframeworkonEventServiceRoleDefaultPolicyD361C3B1",
-            "trace": [
-              "!!DESTRUCTIVE_CHANGES: WILL_DESTROY"
-            ]
-          }
-        ],
-        "Providernodejs18xframeworkonEvent9EDE2A0C": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "Providernodejs18xframeworkonEvent9EDE2A0C",
-            "trace": [
-              "!!DESTRUCTIVE_CHANGES: WILL_DESTROY"
-            ]
-          }
-        ],
-        "Providernodejs18xframeworkonEventLogGroup9C749BB7": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "Providernodejs18xframeworkonEventLogGroup9C749BB7",
-            "trace": [
-              "!!DESTRUCTIVE_CHANGES: WILL_DESTROY"
-            ]
-          }
-        ],
-        "CustomResourcenodejs18x": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "CustomResourcenodejs18x",
-            "trace": [
-              "!!DESTRUCTIVE_CHANGES: WILL_DESTROY"
-            ]
           }
         ]
       },
@@ -1392,10 +1314,21 @@
             "userValue": true,
             "recommendedValue": true,
             "explanation": "When enabled, CDK creates and manages loggroup for the lambda function"
+          },
+          "@aws-cdk/aws-stepfunctions-tasks:httpInvokeDynamicJsonPathEndpoint": {
+            "recommendedValue": true,
+            "explanation": "When enabled, allows using a dynamic apiEndpoint with JSONPath format in HttpInvoke tasks.",
+            "unconfiguredBehavesLike": {
+              "v2": true
+            }
+          },
+          "@aws-cdk/aws-ecs-patterns:uniqueTargetGroupId": {
+            "recommendedValue": true,
+            "explanation": "When enabled, ECS patterns will generate unique target group IDs to prevent conflicts during load balancer replacement"
           }
         }
       }
     }
   },
-  "minimumCliVersion": "2.1029.3"
+  "minimumCliVersion": "2.1031.0"
 }
