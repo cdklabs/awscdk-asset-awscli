@@ -1601,10 +1601,10 @@ case@1.6.3, case@^1.6.3:
   resolved "https://registry.yarnpkg.com/case/-/case-1.6.3.tgz#0a4386e3e9825351ca2e6216c60467ff5f1ea1c9"
   integrity sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==
 
-cdklabs-projen-project-types@^0.3.11:
-  version "0.3.11"
-  resolved "https://registry.yarnpkg.com/cdklabs-projen-project-types/-/cdklabs-projen-project-types-0.3.11.tgz#3c625f557b853f2c5c4a7fc5a607c6b9f694f636"
-  integrity sha512-TeCXK0CKVKLcnRtoyeQaG6ydN8bTj3NkH9ctyy9y1fufYUPwOE7U7OmUoXchQXrlYfhMKWwgpTZ6aPJQ1PgL5w==
+cdklabs-projen-project-types@^0.3.12:
+  version "0.3.12"
+  resolved "https://registry.yarnpkg.com/cdklabs-projen-project-types/-/cdklabs-projen-project-types-0.3.12.tgz#fd0e944ccafb6a38907d871d9a87098aea97136f"
+  integrity sha512-HUvqxOtXf2egaZ7ZgAzcH6Ju3WjkauNyskkNpXm/f8wkMQx0BA5EOSIUJYD34fTdlUiNyERX13ZExnTQ1/92CQ==
   dependencies:
     yaml "^2.8.2"
 
