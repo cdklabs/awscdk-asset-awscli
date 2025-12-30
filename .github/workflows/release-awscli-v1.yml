@@ -218,7 +218,7 @@ jobs:
         run: mv .repo/dist dist
       - name: Release
         env:
-          PYPI_TRUSTED_PUBLISHER: 1
+          PYPI_TRUSTED_PUBLISHER: "true"
         run: npx -p publib@latest publib-pypi
   release_nuget:
     name: Publish to NuGet Gallery
@@ -260,7 +260,7 @@ jobs:
         run: mv .repo/dist dist
       - name: Release
         env:
-          NUGET_TRUSTED_PUBLISHER: 1
+          NUGET_TRUSTED_PUBLISHER: "true"
           NUGET_USERNAME: ${{ secrets.NUGET_USERNAME }}
         run: npx -p publib@latest publib-nuget
   release_golang:
