@@ -13,6 +13,7 @@
 /.github/workflows/upgrade-awscli-v1-main.yml linguist-generated
 /.github/workflows/upgrade-awscli-v2-main.yml linguist-generated
 /.github/workflows/upgrade-cdklabs-projen-project-types-awscli-v1-main.yml linguist-generated
+/.github/workflows/upgrade-cdklabs-projen-project-types-awscli-v2-main.yml linguist-generated
 /.github/workflows/upgrade-dev-deps-awscli-v1-main.yml linguist-generated
 /.github/workflows/upgrade-dev-deps-awscli-v2-main.yml linguist-generated
 /.gitignore linguist-generated
