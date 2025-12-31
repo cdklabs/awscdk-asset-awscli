@@ -52,7 +52,7 @@ const project = new CdklabsConstructLibrary({
   },
   publishToNuget: {
     // Trying to turn off trusted publishing default for NuGet package
-    trustedPublishing: "",
+    trustedPublishing: "false",
     dotNetNamespace: `Amazon.CDK.Asset.AwsCliV${MAJOR_VERSION}`,
     packageId: `Amazon.CDK.Asset.AwsCliV${MAJOR_VERSION}`,
   },
