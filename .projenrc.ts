@@ -54,6 +54,8 @@ const project = new CdklabsConstructLibrary({
     mavenServerId: 'central-ossrh',
   },
   publishToNuget: {
+    // Trying to turn off trusted publishing default for NuGet package
+    trustedPublishing: false,
     dotNetNamespace: `Amazon.CDK.Asset.AwsCliV${MAJOR_VERSION}`,
     packageId: `Amazon.CDK.Asset.AwsCliV${MAJOR_VERSION}`,
   },
