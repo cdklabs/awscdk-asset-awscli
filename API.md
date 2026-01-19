@@ -99,6 +99,8 @@ public grantRead(grantee: IGrantable): void
 
 Grants read permissions to the principal on the assets bucket.
 
+[disable-awslint:no-grants]
+
 ###### `grantee`<sup>Required</sup> <a name="grantee" id="@aws-cdk/asset-awscli-v2.AwsCliAsset.grantRead.parameter.grantee"></a>
 
 - *Type:* aws-cdk-lib.aws_iam.IGrantable
