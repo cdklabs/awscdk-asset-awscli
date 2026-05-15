@@ -1,6 +1,6 @@
 # Download the official aws cli Docker image
 # see https://hub.docker.com/r/amazon/aws-cli
-FROM amazon/aws-cli:2.34.45
+FROM amazon/aws-cli:2.34.47
 
 RUN mkdir -p /opt
 WORKDIR /tmp
