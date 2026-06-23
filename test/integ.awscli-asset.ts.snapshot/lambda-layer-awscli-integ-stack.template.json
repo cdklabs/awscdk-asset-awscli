@@ -7,7 +7,7 @@
      "S3Bucket": {
       "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
      },
-     "S3Key": "3d301bbfc395758cd3f6410479a78e1ae70ade29dc8615d846d2e16575a7e286.zip"
+     "S3Key": "e6a463e95312a95c5999d54b8f5dcd102ba801bfb07359ec2d1f60489d3058e4.zip"
     },
     "Description": "/opt/awscli/aws"
    }
@@ -184,7 +184,7 @@
      "S3Bucket": {
       "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
      },
-     "S3Key": "bdc104ed9cab1b5b6421713c8155f0b753380595356f710400609664d3635eca.zip"
+     "S3Key": "e16ffb3b34af185b8b30c88fdb19faa13b6c42bb38580485c4e84b384ee48b63.zip"
     },
     "Description": "AWS CDK resource provider framework - onEvent (lambda-layer-awscli-integ-stack/Providerpython3.9)",
     "Environment": {
@@ -208,7 +208,7 @@
       "Arn"
      ]
     },
-    "Runtime": "nodejs22.x",
+    "Runtime": "nodejs24.x",
     "Timeout": 900
    },
    "DependsOn": [
@@ -420,7 +420,7 @@
      "S3Bucket": {
       "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
      },
-     "S3Key": "bdc104ed9cab1b5b6421713c8155f0b753380595356f710400609664d3635eca.zip"
+     "S3Key": "e16ffb3b34af185b8b30c88fdb19faa13b6c42bb38580485c4e84b384ee48b63.zip"
     },
     "Description": "AWS CDK resource provider framework - onEvent (lambda-layer-awscli-integ-stack/Providerpython3.12)",
     "Environment": {
@@ -444,7 +444,7 @@
       "Arn"
      ]
     },
-    "Runtime": "nodejs22.x",
+    "Runtime": "nodejs24.x",
     "Timeout": 900
    },
    "DependsOn": [
@@ -484,7 +484,7 @@
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete"
   },
-  "Lambdanodejs22xServiceRole74AA7CFE": {
+  "Lambdanodejs24xServiceRoleBEBB1AE4": {
    "Type": "AWS::IAM::Role",
    "Properties": {
     "AssumeRolePolicyDocument": {
@@ -515,7 +515,7 @@
     ]
    }
   },
-  "Lambdanodejs22x725F10DD": {
+  "Lambdanodejs24xDB6C03F4": {
    "Type": "AWS::Lambda::Function",
    "Properties": {
     "Architectures": [
@@ -536,18 +536,18 @@
     "MemorySize": 512,
     "Role": {
      "Fn::GetAtt": [
-      "Lambdanodejs22xServiceRole74AA7CFE",
+      "Lambdanodejs24xServiceRoleBEBB1AE4",
       "Arn"
      ]
     },
-    "Runtime": "nodejs22.x",
+    "Runtime": "nodejs24.x",
     "Timeout": 30
    },
    "DependsOn": [
-    "Lambdanodejs22xServiceRole74AA7CFE"
+    "Lambdanodejs24xServiceRoleBEBB1AE4"
    ]
   },
-  "Lambdanodejs22xLogGroup31710D38": {
+  "Lambdanodejs24xLogGroup932B0ACF": {
    "Type": "AWS::Logs::LogGroup",
    "Properties": {
     "LogGroupName": {
@@ -556,7 +556,7 @@
       [
        "/aws/lambda/",
        {
-        "Ref": "Lambdanodejs22x725F10DD"
+        "Ref": "Lambdanodejs24xDB6C03F4"
        }
       ]
      ]
@@ -566,7 +566,7 @@
    "UpdateReplacePolicy": "Retain",
    "DeletionPolicy": "Retain"
   },
-  "Providernodejs22xframeworkonEventServiceRoleA9DD8394": {
+  "Providernodejs24xframeworkonEventServiceRole73FEAC7D": {
    "Type": "AWS::IAM::Role",
    "Properties": {
     "AssumeRolePolicyDocument": {
@@ -597,7 +597,7 @@
     ]
    }
   },
-  "Providernodejs22xframeworkonEventServiceRoleDefaultPolicyE3BDB517": {
+  "Providernodejs24xframeworkonEventServiceRoleDefaultPolicy94C3D9DA": {
    "Type": "AWS::IAM::Policy",
    "Properties": {
     "PolicyDocument": {
@@ -608,7 +608,7 @@
        "Resource": [
         {
          "Fn::GetAtt": [
-          "Lambdanodejs22x725F10DD",
+          "Lambdanodejs24xDB6C03F4",
           "Arn"
          ]
         },
@@ -618,7 +618,7 @@
           [
            {
             "Fn::GetAtt": [
-             "Lambdanodejs22x725F10DD",
+             "Lambdanodejs24xDB6C03F4",
              "Arn"
             ]
            },
@@ -633,7 +633,7 @@
        "Effect": "Allow",
        "Resource": {
         "Fn::GetAtt": [
-         "Lambdanodejs22x725F10DD",
+         "Lambdanodejs24xDB6C03F4",
          "Arn"
         ]
        }
@@ -641,29 +641,29 @@
      ],
      "Version": "2012-10-17"
     },
-    "PolicyName": "Providernodejs22xframeworkonEventServiceRoleDefaultPolicyE3BDB517",
+    "PolicyName": "Providernodejs24xframeworkonEventServiceRoleDefaultPolicy94C3D9DA",
     "Roles": [
      {
-      "Ref": "Providernodejs22xframeworkonEventServiceRoleA9DD8394"
+      "Ref": "Providernodejs24xframeworkonEventServiceRole73FEAC7D"
      }
     ]
    }
   },
-  "Providernodejs22xframeworkonEventBA9955DA": {
+  "Providernodejs24xframeworkonEvent1E765987": {
    "Type": "AWS::Lambda::Function",
    "Properties": {
     "Code": {
      "S3Bucket": {
       "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
      },
-     "S3Key": "bdc104ed9cab1b5b6421713c8155f0b753380595356f710400609664d3635eca.zip"
+     "S3Key": "e16ffb3b34af185b8b30c88fdb19faa13b6c42bb38580485c4e84b384ee48b63.zip"
     },
-    "Description": "AWS CDK resource provider framework - onEvent (lambda-layer-awscli-integ-stack/Providernodejs22.x)",
+    "Description": "AWS CDK resource provider framework - onEvent (lambda-layer-awscli-integ-stack/Providernodejs24.x)",
     "Environment": {
      "Variables": {
       "USER_ON_EVENT_FUNCTION_ARN": {
        "Fn::GetAtt": [
-        "Lambdanodejs22x725F10DD",
+        "Lambdanodejs24xDB6C03F4",
         "Arn"
        ]
       }
@@ -676,19 +676,19 @@
     },
     "Role": {
      "Fn::GetAtt": [
-      "Providernodejs22xframeworkonEventServiceRoleA9DD8394",
+      "Providernodejs24xframeworkonEventServiceRole73FEAC7D",
       "Arn"
      ]
     },
-    "Runtime": "nodejs22.x",
+    "Runtime": "nodejs24.x",
     "Timeout": 900
    },
    "DependsOn": [
-    "Providernodejs22xframeworkonEventServiceRoleDefaultPolicyE3BDB517",
-    "Providernodejs22xframeworkonEventServiceRoleA9DD8394"
+    "Providernodejs24xframeworkonEventServiceRoleDefaultPolicy94C3D9DA",
+    "Providernodejs24xframeworkonEventServiceRole73FEAC7D"
    ]
   },
-  "Providernodejs22xframeworkonEventLogGroupFCD8BB8F": {
+  "Providernodejs24xframeworkonEventLogGroup50ED6D2E": {
    "Type": "AWS::Logs::LogGroup",
    "Properties": {
     "LogGroupName": {
@@ -697,7 +697,7 @@
       [
        "/aws/lambda/",
        {
-        "Ref": "Providernodejs22xframeworkonEventBA9955DA"
+        "Ref": "Providernodejs24xframeworkonEvent1E765987"
        }
       ]
      ]
@@ -707,12 +707,12 @@
    "UpdateReplacePolicy": "Retain",
    "DeletionPolicy": "Retain"
   },
-  "CustomResourcenodejs22x": {
+  "CustomResourcenodejs24x": {
    "Type": "AWS::CloudFormation::CustomResource",
    "Properties": {
     "ServiceToken": {
      "Fn::GetAtt": [
-      "Providernodejs22xframeworkonEventBA9955DA",
+      "Providernodejs24xframeworkonEvent1E765987",
       "Arn"
      ]
     }
