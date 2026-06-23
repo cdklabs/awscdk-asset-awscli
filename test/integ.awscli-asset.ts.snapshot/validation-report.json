@@ -1,0 +1,27 @@
+{
+  "version": "54.0.0",
+  "title": "Validation Report",
+  "pluginReports": [
+    {
+      "pluginName": "Construct Annotations",
+      "conclusion": "success",
+      "violations": [
+        {
+          "ruleName": "@aws-cdk/aws-lambda:codeFromBucketObjectVersionNotSpecified",
+          "description": "objectVersion is not defined for S3Code.fromBucket(). The lambda will not be updated automatically if the code in the bucket is updated. This is because CDK/Cloudformation does not track changes on the source S3 Bucket. It is recommended to either use S3Code.fromAsset() instead or set objectVersion. [ack: @aws-cdk/aws-lambda:codeFromBucketObjectVersionNotSpecified]",
+          "severity": "warning",
+          "violatingConstructs": [
+            {
+              "constructPath": "lambda-layer-awscli-integ-stack/layer-asset/AssetBucket",
+              "constructFqn": "aws-cdk-lib.aws_s3.BucketBase",
+              "libraryVersion": "2.260.0",
+              "stackTraces": [
+                "Run with '--debug' to include location info\nRun with '--debug' to include location info\nRun with '--debug' to include location info"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
