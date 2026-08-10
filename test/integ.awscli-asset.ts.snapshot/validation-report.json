@@ -3,21 +3,46 @@
   "title": "Validation Report",
   "pluginReports": [
     {
-      "pluginName": "Construct Annotations",
-      "conclusion": "success",
+      "pluginName": "CloudFormation Validate",
+      "pluginVersion": "1.6.0",
+      "conclusion": "failure",
       "violations": [
         {
-          "ruleName": "@aws-cdk/aws-lambda:codeFromBucketObjectVersionNotSpecified",
-          "description": "objectVersion is not defined for S3Code.fromBucket(). The lambda will not be updated automatically if the code in the bucket is updated. This is because CDK/Cloudformation does not track changes on the source S3 Bucket. It is recommended to either use S3Code.fromAsset() instead or set objectVersion. [ack: @aws-cdk/aws-lambda:codeFromBucketObjectVersionNotSpecified]",
+          "ruleName": "F0001",
+          "description": "Resources section must exist and be non-empty",
+          "severity": "error",
+          "ruleMetadata": {
+            "category": "Structure"
+          },
+          "violatingConstructs": [
+            {
+              "constructPath": "integ-test/DefaultTest/DeployAssert",
+              "constructFqn": "aws-cdk-lib.Stack",
+              "libraryVersion": "2.263.0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pluginName": "Construct Annotations",
+      "conclusion": "success",
+      "metadata": {
+        "cdk:annotations": "true"
+      },
+      "violations": [
+        {
+          "ruleName": "Annotation::@aws-cdk/aws-lambda:codeFromBucketObjectVersionNotSpecified",
+          "description": "objectVersion is not defined for S3Code.fromBucket(). The lambda will not be updated automatically if the code in the bucket is updated. This is because CDK/Cloudformation does not track changes on the source S3 Bucket. It is recommended to either use S3Code.fromAsset() instead or set objectVersion.",
           "severity": "warning",
+          "ruleMetadata": {
+            "cdk:annotation": "true"
+          },
           "violatingConstructs": [
             {
               "constructPath": "lambda-layer-awscli-integ-stack/layer-asset/AssetBucket",
               "constructFqn": "aws-cdk-lib.aws_s3.BucketBase",
-              "libraryVersion": "2.260.0",
-              "stackTraces": [
-                "Run with '--debug' to include location info\nRun with '--debug' to include location info\nRun with '--debug' to include location info"
-              ]
+              "libraryVersion": "2.263.0"
             }
           ]
         }
