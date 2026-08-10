@@ -11,6 +11,13 @@ import { AwsCliAsset } from '../src';
  */
 const app = new cdk.App();
 
+// The integ-runner enables '@aws-cdk/core:validateAgainstDefaultRules' through its
+// recommended feature flags. This is a deploy-only test with no assertions, so the
+// IntegTest "DeployAssert" stack contains no resources, which trips the default
+// CloudFormation validation rule F0001 ("Resources section must exist and be
+// non-empty") and fails synthesis. Opt this test out of default-rule validation.
+app.node.setContext('@aws-cdk/core:validateAgainstDefaultRules', false);
+
 const stack = new cdk.Stack(app, 'lambda-layer-awscli-integ-stack');
 const asset = new AwsCliAsset(stack, 'layer-asset');
 const layer = new lambda.LayerVersion(stack, 'AwsCliLayer', {
