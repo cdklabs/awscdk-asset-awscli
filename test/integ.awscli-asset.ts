@@ -52,7 +52,13 @@ for (const runtime of runtimes) {
   });
 }
 
-new IntegTest(app, 'integ-test', {
+const integ = new IntegTest(app, 'integ-test', {
   testCases: [stack],
   stackUpdateWorkflow: false, // don't think it's necessary to test the update workflow for this test
+});
+
+// This test makes no assertions, so the assertions stack has no resources.
+cdk.Validations.of(integ).acknowledge({
+  id: 'CloudFormation-Validate::F0001',
+  reason: 'The assertions stack is empty because this test makes no assertions',
 });
