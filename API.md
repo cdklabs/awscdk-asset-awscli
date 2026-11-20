@@ -4,6 +4,8 @@
 
 ### AwsCliAsset <a name="AwsCliAsset" id="@aws-cdk/asset-awscli-v2.AwsCliAsset"></a>
 
+- *Implements:* constructs.IConstruct, constructs.IDependable, aws-cdk-lib.IAsset
+
 A CDK Asset construct that contains the AWS CLI.
 
 #### Initializers <a name="Initializers" id="@aws-cdk/asset-awscli-v2.AwsCliAsset.Initializer"></a>
